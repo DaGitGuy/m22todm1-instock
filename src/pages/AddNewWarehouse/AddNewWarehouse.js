@@ -17,6 +17,8 @@ class AddNewWarehouse extends Component {
     email: '',
   };
 
+// TODO: pull handleSubmit up to App.js to update warehouseData state
+
   handleSubmit = (e) => {
     e.preventDefault();
     const warehouseDetails = {

@@ -37,6 +37,7 @@
 
   &__section {
     display: flex;
+    flex-wrap: nowrap;
     flex-direction: column;
     flex-grow: 1;
     border: none;
@@ -59,11 +60,15 @@
   }
 
   &__label {
+    display:block;
     color: black;
     margin: 1rem 0 0.5rem 0;
   }
 
   &__input {
+    display:block;
+    width:100%;
+    margin-top:0.5rem;
     border-radius: 20px;
     border: 1px solid lightgrey;
     line-height: 2rem;

@@ -7,27 +7,27 @@ import backArrow from '../../assets/icons/arrow_back-24px.svg';
 
 class AddNewWarehouse extends Component {
   state = {
-    name: '',
+    warehouseName: '',
     address: '',
     city: '',
     country: '',
-    contactName: '',
-    contactPosition: '',
-    contactPhone: '',
-    contactEmail: '',
+    name: '',
+    position: '',
+    phone: '',
+    email: '',
   };
 
   handleSubmit = (e) => {
     e.preventDefault();
     const warehouseDetails = {
-      name: this.state.name,
+      warehouseName: this.state.warehouseName,
       address: this.state.address,
       city: this.state.city,
       country: this.state.country,
-      contactName: this.state.contactName,
-      contactPosition: this.state.contactPosition,
-      contactPhone: this.state.contactPhone,
-      contactEmail: this.state.contactEmail,
+      name: this.state.name,
+      position: this.state.position,
+      phone: this.state.phone,
+      email: this.state.email,
     };
     console.log('Submitted!', warehouseDetails);
     axios
@@ -57,15 +57,15 @@ class AddNewWarehouse extends Component {
           onSubmit={this.handleSubmit}>
           <fieldset className='warehouse-form__section warehouse-form__section--details'>
             <h3 className='warehouse-form__heading'>Warehouse Details</h3>
-            <label className='warehouse-form__label' htmlFor='name'>
+            <label className='warehouse-form__label' htmlFor='warehouseName'>
               Warehouse Name
               <input
                 className='warehouse-form__input'
-                name='name'
-                value={this.state.name}
+                name='warehouseName'
+                value={this.state.warehouseName}
                 placeholder='Warehouse Name'
                 // Placeholders would be more useful if they showed example responses instead of repeating input label
-                onChange={(e) => this.setState({ name: e.target.value })}
+                onChange={(e) => this.setState({ warehouseName: e.target.value })}
               />
             </label>
 
@@ -105,54 +105,54 @@ class AddNewWarehouse extends Component {
 
           <fieldset className='warehouse-form__section warehouse-form__section--contact'>
             <h3 className='warehouse-form__heading'>Contact Details</h3>
-            <label className='warehouse-form__label' htmlFor='contactName'>
+            <label className='warehouse-form__label' htmlFor='name'>
               Contact Name
               <input
                 className='warehouse-form__input'
-                name='contactName'
-                value={this.state.contactName}
+                name='name'
+                value={this.state.name}
                 placeholder='Contact Name'
-                onChange={(e) => this.setState({ contactName: e.target.value })}
+                onChange={(e) => this.setState({ name: e.target.value })}
               />
             </label>
 
-            <label className='warehouse-form__label' htmlFor='contactPosition'>
+            <label className='warehouse-form__label' htmlFor='position'>
               Position
               <input
                 className='warehouse-form__input'
-                name='contactPosition'
-                value={this.state.contactPosition}
+                name='position'
+                value={this.state.position}
                 placeholder='Position'
                 onChange={(e) =>
-                  this.setState({ contactPosition: e.target.value })
+                  this.setState({ position: e.target.value })
                 }
               />
             </label>
 
-            <label className='warehouse-form__label' htmlFor='contactPhone'>
+            <label className='warehouse-form__label' htmlFor='phone'>
               Phone Number
               <input
                 className='warehouse-form__input'
-                name='contactPhone'
-                value={this.state.contactPhone}
+                name='phone'
+                value={this.state.phone}
                 placeholder='Phone Number'
                 type='tel'
                 onChange={(e) =>
-                  this.setState({ contactPhone: e.target.value })
+                  this.setState({ phone: e.target.value })
                 }
               />
             </label>
 
-            <label className='warehouse-form__label' htmlFor='contactEmail'>
+            <label className='warehouse-form__label' htmlFor='email'>
               Email
               <input
                 className='warehouse-form__input'
-                name='contactEmail'
-                value={this.state.contactEmail}
+                name='email'
+                value={this.state.email}
                 placeholder='Email'
                 type='email'
                 onChange={(e) =>
-                  this.setState({ contactEmail: e.target.value })
+                  this.setState({ email: e.target.value })
                 }
               />
             </label>

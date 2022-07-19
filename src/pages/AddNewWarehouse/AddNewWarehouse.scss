@@ -1,20 +1,62 @@
-.page-heading {
+// TODO: Import partials
+// TODO: Error styling
+// TODO: fonts, typography, padding from partials
+// TODO: responsive for breakpoints
+
+.main-container {
+  margin: 1.5rem;
+  box-shadow: 0px 2px 5px rgba(19, 24, 44, 0.1); // from figma CSS
+  border-radius: 3px;
+
+  @media (min-width: 1020px) {
+    max-width: 1020px;
+    margin: 3rem auto;
+  }
+}
+
+.main-heading {
   display: flex;
   padding: 1rem;
   margin: 0;
+
+  @media (min-width: 768px) {
+    border-bottom: 1px solid lightgrey;
+    padding: 1rem 2rem;
+  }
 }
 
 .warehouse-form {
   display: flex;
   flex-direction: column;
-  padding: 1rem;
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 0;
+  }
 
   &__section {
     display: flex;
     flex-direction: column;
+    flex-grow: 1;
     border: none;
     border-top: 1px solid lightgrey;
-    padding: 1rem 0;
+    padding: 1rem 1rem;
+    margin: 0;
+
+    @media (min-width: 768px) {
+      flex-basis: 49%;
+      border-top: 0;
+      padding: 0 2rem;
+      margin: 1rem 0 2rem 0;
+    }
+
+    &--details {
+      @media (min-width: 768px) {
+        border-right: 1px solid lightgrey;
+      }
+    }
   }
 
   &__label {
@@ -28,35 +70,44 @@
     line-height: 2rem;
     padding: 0 1rem;
 
-    &:active, &:focus {
+    &:active,
+    &:focus {
       border: 1px solid royalblue;
-      outline:none;
+      outline: none;
     }
   }
 
   &__button-wrapper {
     background-color: lightgrey;
     display: flex;
-    padding: 1rem 0;
+    flex-direction: row-reverse;
+    padding: 1rem;
     gap: 1rem;
+
+    @media (min-width: 768px) {
+      flex-basis: 100%;
+      padding: 1rem 2rem;
+    }
   }
 
   &__button {
+    flex-basis: 50%;
+    border-radius: 20px;
+    padding: 0.5rem 1rem;
+
+    @media (min-width: 768px) {
+      flex-basis: auto;
+      padding: 0.5rem 2rem;
+    }
     &--cancel {
-      flex-basis: 50%;
       background-color: white;
       border: 1px solid grey;
-      border-radius: 20px;
-      padding: 0.5rem 1rem;
     }
 
     &--CTA {
-      flex-basis: 50%;
       background-color: royalblue;
       color: white;
       border: 1px solid royalblue;
-      border-radius: 20px;
-      padding: 0.5rem 1rem;
     }
   }
 }

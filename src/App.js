@@ -1,6 +1,6 @@
 import "./App.scss";
 import {
-  BroweserRouter as Router,
+  BrowserRouter as Router,
   Route,
   Switch,
   Redirect,

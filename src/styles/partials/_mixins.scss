@@ -1,0 +1,37 @@
+@use "../partials/colors";
+
+// breakpoint variables
+$tablet-breakpoint: 48rem;
+$desktop-breakpoint: 80rem;
+
+//Media queries for tablet
+@mixin tablet {
+    @media (min-width: $tablet-breakpoint) {
+        @content;
+    }
+}
+// for desktop
+@mixin desktop {
+    @media (min-width: $desktop-breakpoint) {
+        @content;
+    }
+}
+
+// mixins for button style only, *size not included*
+@mixin button-primary {
+    background-color: colors.$primary-indigo;
+    height: 2.25rem;
+    border-radius: 1.25rem;
+}
+
+@mixin button-secondary {
+    background-color: colors.$primary-white;
+    height: 2.25rem;
+    border-radius: 1.25rem;
+}
+
+@mixin button-delete {
+    background-color: colors.$support-red;
+    height: 2.25rem;
+    border-radius: 1.25rem;
+}

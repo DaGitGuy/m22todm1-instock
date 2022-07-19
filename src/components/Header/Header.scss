@@ -1,0 +1,55 @@
+@use "../../styles/partials/colors";
+@use "../../styles/partials/fonts";
+@use "../../styles/partials/global";
+@use "../../styles/partials/mixins";
+
+.header {
+    background-color:colors.$background-graphite;
+    @include mixins.tablet {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    &__image-container {
+        display: block;
+        text-align: center;
+    }
+    &__image {
+        width: 5.6rem;
+        margin: 1rem auto;
+        @include mixins.tablet {
+            margin: 0.5rem 0 4rem 1.5rem;
+        }
+        @include mixins.desktop {
+            width: 8rem;
+            margin: 1rem 0 4rem 5rem;
+        }
+    }
+    &__navigation-list {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        margin: 0 ;
+        padding-left: 0;
+        @include mixins.desktop {
+            margin-right: 5rem;
+        }
+    }
+    &__nav-list-item {
+        color: colors.$primary-white;
+        list-style-type: none;
+        font-family: "Titillium Web";
+        font-weight: 600;
+        padding: 0.5rem 0 2rem 0;
+        font-size: 0.9375rem;
+        @include mixins.tablet {
+            margin: 0.5rem 1.5rem 0 0;
+            font-size: 1rem;
+            padding-bottom: 5rem;
+        }
+        @include mixins.desktop {
+            font-size: 1.2rem ;
+            margin: 1rem 1.5rem 0 0;
+        }
+    }
+}

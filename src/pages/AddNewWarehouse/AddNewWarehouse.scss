@@ -1,0 +1,62 @@
+.page-heading {
+  display: flex;
+  padding: 1rem;
+  margin: 0;
+}
+
+.warehouse-form {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+
+  &__section {
+    display: flex;
+    flex-direction: column;
+    border: none;
+    border-top: 1px solid lightgrey;
+    padding: 1rem 0;
+  }
+
+  &__label {
+    color: black;
+    margin: 1rem 0 0.5rem 0;
+  }
+
+  &__input {
+    border-radius: 20px;
+    border: 1px solid lightgrey;
+    line-height: 2rem;
+    padding: 0 1rem;
+
+    &:active, &:focus {
+      border: 1px solid royalblue;
+      outline:none;
+    }
+  }
+
+  &__button-wrapper {
+    background-color: lightgrey;
+    display: flex;
+    padding: 1rem 0;
+    gap: 1rem;
+  }
+
+  &__button {
+    &--cancel {
+      flex-basis: 50%;
+      background-color: white;
+      border: 1px solid grey;
+      border-radius: 20px;
+      padding: 0.5rem 1rem;
+    }
+
+    &--CTA {
+      flex-basis: 50%;
+      background-color: royalblue;
+      color: white;
+      border: 1px solid royalblue;
+      border-radius: 20px;
+      padding: 0.5rem 1rem;
+    }
+  }
+}

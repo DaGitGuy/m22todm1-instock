@@ -5,12 +5,13 @@ import {
   Switch,
   Redirect,
 } from "react-router-dom";
+import WarehouseModel from "./components/Modals/WarehouseModal";
 
 const App = () => {
   return (
     <div>
       <Router>
-        <Header />
+        {/* <Header /> */}
         <Switch>
           <Route exact path="/">
             <Redirect to="/warehouse" />
@@ -18,13 +19,14 @@ const App = () => {
           <Route
             path="/warehouse"
             render={(routeProps) => {
-              // return (
-              // 	<WarehousePage
-              // 		{...routeProps}
-              // 		warehouseList={this.state.warehouseList}
-              // 		inventoryList={this.state.inventoryList}
-              // 	/>
-              // );
+              return (
+                // <WarehousePage
+                // 	{...routeProps}
+                // 	warehouseList={this.state.warehouseList}
+                // 	inventoryList={this.state.inventoryList}
+                // />
+                <WarehouseModel />
+              );
             }}
           />
           <Route
@@ -40,7 +42,7 @@ const App = () => {
             }}
           />
         </Switch>
-        <Footer />
+        {/* <Footer /> */}
       </Router>
     </div>
   );

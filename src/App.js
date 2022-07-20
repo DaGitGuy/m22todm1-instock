@@ -1,10 +1,11 @@
-import "./App.scss";
 import {
   BrowserRouter as Router,
   Route,
   Switch,
   Redirect,
-} from "react-router-dom";
+} from 'react-router-dom';
+import AddNewWarehouse from './pages/AddNewWarehouse/AddNewWarehouse';
+import './App.scss';
 
 const App = () => {
   return (
@@ -12,11 +13,12 @@ const App = () => {
       <Router>
         {/* <Header /> */}
         <Switch>
-          <Route exact path="/">
-            <Redirect to="/warehouse" />
+          <Route exact path='/'>
+            <Redirect to='/warehouse' />
           </Route>
           <Route
-            path="/warehouse"
+            exact
+            path='/warehouse'
             render={(routeProps) => {
               // return (
               // 	<WarehousePage
@@ -27,8 +29,9 @@ const App = () => {
               // );
             }}
           />
+          <Route path='/warehouse/add' component={AddNewWarehouse} />
           <Route
-            path="/inventory"
+            path='/inventory'
             render={(routeProps) => {
               // return (
               //   <InventoryPage

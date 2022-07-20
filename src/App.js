@@ -12,7 +12,7 @@ const App = () => {
   return (
     <div>
       <Router>
-        <Header />
+        {/* <Header /> */}
         <Switch>
           <Route exact path='/'>
             <Redirect to='/warehouse' />
@@ -22,11 +22,11 @@ const App = () => {
             path='/warehouse'
             render={(routeProps) => {
               // return (
-              // 	<WarehousePage
-              // 		{...routeProps}
-              // 		warehouseList={this.state.warehouseList}
-              // 		inventoryList={this.state.inventoryList}
-              // 	/>
+              //   <WarehousePage
+              //   	{...routeProps}
+              //   	warehouseList={this.state.warehouseList}
+              //   	inventoryList={this.state.inventoryList}
+              //   />
               // );
             }}
           />

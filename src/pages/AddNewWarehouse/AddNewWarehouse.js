@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import validator from 'validator';
 import axios from 'axios';
 import './AddNewWarehouse.scss';
 import backArrow from '../../assets/icons/arrow_back-24px.svg';
@@ -17,7 +18,49 @@ class AddNewWarehouse extends Component {
     email: '',
   };
 
-// TODO: pull handleSubmit up to App.js to update warehouseData state
+  handleUserInput = (e) => {
+    this.setState({ [e.target.name]: e.target.value });
+  };
+
+  isPhoneValid = () => {
+      const phonePattern = new RegExp('^[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4}$');
+      if (phonePattern.test(this.state.phone)){
+          return true;
+      }
+      return false;
+  }
+
+  isEmailValid = () => {
+      if (validator.isEmail(this.state.email)){
+          return true;
+      }
+      return false;
+  }
+
+  isFormValid = () => {
+    if (
+      !this.state.warehouseName ||
+      !this.state.address ||
+      !this.state.city ||
+      !this.state.country ||
+      !this.state.name ||
+      !this.state.position ||
+      !this.state.phone ||
+      !this.state.email
+    ) {
+      return false;
+    }
+
+    if (!this.isPhoneValid()) {
+      return false;
+    }
+
+    if (!this.isEmailValid()) {
+      return false;
+    }
+
+    return true;
+  };
 
   handleSubmit = (e) => {
     e.preventDefault();
@@ -31,11 +74,9 @@ class AddNewWarehouse extends Component {
       phone: this.state.phone,
       email: this.state.email,
     };
-    console.log('Submitted!', warehouseDetails);
     axios
       .post('http://localhost:8080/warehouses/add', warehouseDetails)
-      .then((response) => {
-        console.log(response);
+      .then(() => {
         e.target.reset();
         // TODO succcess feedback
         // TODO page redirect
@@ -50,7 +91,7 @@ class AddNewWarehouse extends Component {
       <div className='main-container'>
         <div className='main-heading'>
           <img src={backArrow} />
-          <h2>Add New Warehouse</h2>
+          <h1>Add New Warehouse</h1>
         </div>
 
         <form
@@ -58,16 +99,16 @@ class AddNewWarehouse extends Component {
           type='submit'
           onSubmit={this.handleSubmit}>
           <fieldset className='warehouse-form__section warehouse-form__section--details'>
-            <h3 className='warehouse-form__heading'>Warehouse Details</h3>
+            <h2 className='warehouse-form__heading'>Warehouse Details</h2>
             <label className='warehouse-form__label' htmlFor='warehouseName'>
               Warehouse Name
               <input
+                required
                 className='warehouse-form__input'
                 name='warehouseName'
                 value={this.state.warehouseName}
                 placeholder='Warehouse Name'
-                // Placeholders would be more useful if they showed example responses instead of repeating input label
-                onChange={(e) => this.setState({ warehouseName: e.target.value })}
+                onChange={this.handleUserInput}
               />
             </label>
 
@@ -78,7 +119,7 @@ class AddNewWarehouse extends Component {
                 name='address'
                 value={this.state.address}
                 placeholder='Street Address'
-                onChange={(e) => this.setState({ address: e.target.value })}
+                onChange={this.handleUserInput}
               />
             </label>
 
@@ -89,24 +130,30 @@ class AddNewWarehouse extends Component {
                 name='city'
                 value={this.state.city}
                 placeholder='City'
-                onChange={(e) => this.setState({ city: e.target.value })}
+                onChange={this.handleUserInput}
               />
             </label>
 
             <label className='warehouse-form__label' htmlFor='country'>
               Country
-              <input
+              <select
+                required
                 className='warehouse-form__input'
+                id='country'
                 name='country'
                 value={this.state.country}
-                placeholder='Country'
-                onChange={(e) => this.setState({ country: e.target.value })}
-              />
+                onChange={this.handleUserInput}>
+                <option value='' disabled hidden>
+                  Choose country
+                </option>
+                <option value='canada'>Canada</option>
+                <option value='united states'>United States</option>
+              </select>
             </label>
           </fieldset>
 
           <fieldset className='warehouse-form__section warehouse-form__section--contact'>
-            <h3 className='warehouse-form__heading'>Contact Details</h3>
+            <h2 className='warehouse-form__heading'>Contact Details</h2>
             <label className='warehouse-form__label' htmlFor='name'>
               Contact Name
               <input
@@ -114,7 +161,7 @@ class AddNewWarehouse extends Component {
                 name='name'
                 value={this.state.name}
                 placeholder='Contact Name'
-                onChange={(e) => this.setState({ name: e.target.value })}
+                onChange={this.handleUserInput}
               />
             </label>
 
@@ -125,9 +172,7 @@ class AddNewWarehouse extends Component {
                 name='position'
                 value={this.state.position}
                 placeholder='Position'
-                onChange={(e) =>
-                  this.setState({ position: e.target.value })
-                }
+                onChange={this.handleUserInput}
               />
             </label>
 
@@ -139,9 +184,7 @@ class AddNewWarehouse extends Component {
                 value={this.state.phone}
                 placeholder='Phone Number'
                 type='tel'
-                onChange={(e) =>
-                  this.setState({ phone: e.target.value })
-                }
+                onChange={this.handleUserInput}
               />
             </label>
 
@@ -153,16 +196,16 @@ class AddNewWarehouse extends Component {
                 value={this.state.email}
                 placeholder='Email'
                 type='email'
-                onChange={(e) =>
-                  this.setState({ email: e.target.value })
-                }
+                onChange={this.handleUserInput}
               />
             </label>
           </fieldset>
 
           <div className='warehouse-form__button-wrapper'>
             {/* CTA button first in HTML for keyboarding order, reversed visually with flex:row-reverse */}
-            <button className='warehouse-form__button warehouse-form__button--CTA'>
+            <button
+              className='warehouse-form__button warehouse-form__button--CTA'
+              disabled={!this.isFormValid()}>
               + Add Warehouse
             </button>
             {/*  TODO check on expected behavior of cancel button: clear form or close form?  */}

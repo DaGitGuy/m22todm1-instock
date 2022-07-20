@@ -4,9 +4,6 @@
 @import "../../styles/partials/mixins";
 
 .modal {
-    display:flex;
-    justify-content: center; 
-
 	@include tablet {
         position: fixed;
         top: 0;
@@ -22,7 +19,7 @@
 
 	&__header {
 		font-size: 2rem;
-		width: 20rem;
+		// width: 20rem;
 		margin-top: 2rem;
         font-family: "Titillium Web Bold";
 
@@ -50,11 +47,9 @@
 
 .delete-modal {
 	background-color: $primary-white;
-	width: 100%;
+	width: 100vw;
+	height:100vh;
 	padding: 0.625rem;
-	border-radius: 3px;
-	pointer-events: auto;
-	
 
 	@include tablet {
         border-radius: 3px;

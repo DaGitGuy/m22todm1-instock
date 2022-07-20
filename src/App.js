@@ -5,7 +5,6 @@ import {
   Switch,
   Redirect,
 } from "react-router-dom";
-import WarehouseModel from "./components/Modals/WarehouseModal";
 
 const App = () => {
   return (
@@ -19,14 +18,13 @@ const App = () => {
           <Route
             path="/warehouse"
             render={(routeProps) => {
-              return (
-                // <WarehousePage
-                // 	{...routeProps}
-                // 	warehouseList={this.state.warehouseList}
-                // 	inventoryList={this.state.inventoryList}
-                // />
-                <WarehouseModel />
-              );
+              // return (
+              //   <WarehousePage
+              //   	{...routeProps}
+              //   	warehouseList={this.state.warehouseList}
+              //   	inventoryList={this.state.inventoryList}
+              //   />
+              // );
             }}
           />
           <Route

@@ -3,12 +3,21 @@ import "./Modal.scss";
 import XIcon from "../../assets/icons/close-24px.svg";
 
 export default class WarehouseModel extends React.Component {
-  // These can be passed in as props in the future from the warehouse details page
-  // this will be the modal that is displayed when the user clicks on the "Add Warehouse" button
+  // This will be the starting state which will also be in warehouse List component
 
-  // showModal = (id) => {
-  //   this.setState({ showModal: true, itemID: id });
-  // };
+  // state = {
+  //   showModal: false
+  // }
+
+  // These can be passed in as props  from the warehouse list page
+
+  // this will be the modal that is displayed when the user clicks on the "Garbage" button on the warehouse list
+
+  // showModal = () => {
+  //   this.setState(
+  //     {showModal: true}
+  //   )
+  // }
 
   // this will be the modal that is displayed when the user clicks on the "cancel button
 
@@ -16,20 +25,19 @@ export default class WarehouseModel extends React.Component {
   //   this.setState({ showModal: false });
   // };
 
-  // this will delete the inventory assoiciated with the warehouse, This will go in the delete function in the warehouse details ie delete={() => this.handleDelete(this.state.itemID)}/>
+  // this will delete the warehouse, This will go in the delete function in the warehouse details ie delete={() => this.handleDelete(this.handleDelete)}/>
 
-  // handleDelete(id) {
-  //   axios
-  //     .delete(`http://localhost:8080/inventory/${id}`)
-  //     .then((res) => {
-  //       this.setState({
-  //         showModal: false,
-  //         inventoryList: res.data,
-  //       });
+  // handleDelete() {
+  //   axios.delete(`http://localhost:8080/warehouse/${this.props.id}`)
+  //   .then(res => {
+  //     this.setState({
+  //       showModal: false,
   //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
+  //    console.log(res.data)
+  //   })
+  //   .catch(err => {
+  //     console.log(err);
+  //   })
   // }
 
   render() {

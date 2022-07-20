@@ -5,6 +5,7 @@
 
 .header {
     background-color:colors.$background-graphite;
+
     @include mixins.tablet {
         display: flex;
         justify-content: space-between;

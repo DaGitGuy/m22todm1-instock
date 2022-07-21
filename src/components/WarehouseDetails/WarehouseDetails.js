@@ -7,6 +7,7 @@ import './WarehouseDetails.scss';
 function WarehouseDetails() {
     return(
         <main className='details' >
+
             <section className='details__title-box' >
                 <div className='details__title-row1' >
                     <img src={arrowBack} />
@@ -41,29 +42,31 @@ function WarehouseDetails() {
             </article>
            
 
-            <article>
-                <section>
-                <p>INVENTORY ITEM</p>
-                <a>Television</a>
+            <article className='details__inventory'>
+                <section className='details__inventory-box' >
+                    <p className='details__inventory-title' >INVENTORY ITEM</p>
+                    <a className='details__inventory-item' >Television</a>
                 </section>
-                <section>
-                    <p>CATEGORY</p>
-                    <p>Electronics</p>
+
+                <section className='details__inventory-box'>
+                    <p className='details__category' >CATEGORY</p>
+                    <p className='details__category-item' >Electronics</p>
                 </section>
-                <section>
-                    <p>STATUS</p>
-                    <p>IN STOCK</p>
+
+                <section className='details__inventory-box'>
+                    <p className='details__inventory-status' >STATUS</p>
+                    <p className='details__inventory-message'>IN STOCK</p>
                 </section>
-                <section>
-                    <p>QTY</p>
-                    <p>500</p>
+
+                <section className='details__inventory-box' >
+                    <p className='details__quantity' >QTY</p>
+                    <p className='details__quantity-item'>500</p>
                 </section>
-                <section>
+            </article>
+            <section className='details__inventory-box' >
                     <img src={deleteIcon} />
                     <img src={editIcon} />
-                </section>
-                
-            </article>
+            </section>
         
         </main>
     )

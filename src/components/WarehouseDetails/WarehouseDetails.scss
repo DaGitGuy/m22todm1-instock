@@ -62,4 +62,29 @@
     margin: 0;
 }
 
+&__inventory {
+    display: flex;
+   flex-wrap: wrap;
+}
+&__inventory-box{
+    width: 50%;
+    padding-left: 1rem;
+}
+&__inventory-title,
+&__category,
+&__inventory-status,
+&__quantity {
+    font-size: 0.6875rem;
+    color: colors.$secondary-slate;
+    font-weight: bold;
+}
+&__inventory-title,
+&__category-item {
+    margin: 1rem 0 0 0 0;
+}
+
+&__inventory-box{
+    display: block;
+}
+
 }

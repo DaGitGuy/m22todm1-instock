@@ -1,11 +1,21 @@
 import deleteIcon from '../../assets/icons/delete_outline-24px.svg';
 import editIcon from '../../assets/icons/edit-24px.svg';
+import arrowBack from '../../assets/icons/arrow_back-24px.svg';
+import './WarehouseDetails.scss';
+
 
 function WarehouseDetails() {
     return(
         <main className='details' >
             <section className='details__title-box' >
-                <h2 className='details__title' >Washington</h2>
+                <div className='details__title-row1' >
+                    <img src={arrowBack} />
+                    <h2 className='details__title' >Washington</h2>
+                </div>
+              
+                <div className='details__title-row2' >
+                    <img src={editIcon} />
+                </div>
             </section>
 
             <article className='details__address' >

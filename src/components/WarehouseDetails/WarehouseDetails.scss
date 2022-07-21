@@ -1,0 +1,65 @@
+@use "../../styles/partials/colors";
+@use "../../styles/partials/fonts";
+@use "../../styles/partials/mixins";
+@use "../../styles/partials/global";
+
+.details {
+
+&__title-box {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-bottom: 0.01rem solid colors.$secondary-cloud  ;
+}
+&__title-row1 {
+    width: 85%;
+    display: flex;
+    padding-left: 1rem;
+}
+&__title {
+    padding-left: 0.5rem;
+}
+&__title-row2 {
+    width: 15%;
+    padding-left: 0.5rem;
+}
+
+&__address {
+    border-bottom: 0.01rem solid colors.$secondary-cloud
+}
+&__address-box {
+    margin-left: 2rem;
+}
+&__address-title {
+    font-size: 0.6875rem;
+    color: colors.$secondary-slate;
+    font-weight: bold;
+    margin-bottom: 0;
+}
+&__address-location {
+    font-size: 0.8125rem;
+    margin-top: 0;
+}
+
+&__manager {
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 1rem;
+}
+&__manager-contact,
+&__contact-info {
+    font-size: 0.6875rem;
+    color: colors.$secondary-slate;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+&__manager-name,
+&__manager-title,
+&__contact-number,
+&__contact-email {
+    font-size: 0.8125rem;
+    margin: 0;
+}
+
+}

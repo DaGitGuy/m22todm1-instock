@@ -2,6 +2,7 @@ import deleteIcon from '../../assets/icons/delete_outline-24px.svg';
 import editIcon from '../../assets/icons/edit-24px.svg';
 import arrowBack from '../../assets/icons/arrow_back-24px.svg';
 import chevronRight from '../../assets/icons/chevron_right-24px.svg';
+import sortArrow from '../../assets/icons/sort-24px.svg';
 import './WarehouseDetails.scss';
 
 
@@ -45,30 +46,51 @@ function WarehouseDetails() {
 
             <article className='details__inventory'>
                 <section className='details__inventory-box' >
-                    <p className='details__inventory-title' >INVENTORY ITEM</p>
+                    <div className='details__header' >
+                        <p className='details__inventory-title details__header--selected' >INVENTORY ITEM</p>
+                        <img className='details__sort-arrows' src={sortArrow} />
+                    </div>
+                   
                     <div className='details__item-box' >
                         <a className='details__inventory-item' >Television</a>
                         <img  className='details__chevron' src={chevronRight} />
                     </div>
                     
                 </section>
+
                 <section className='details__inventory-box'>
-                    <p className='details__inventory-status' >STATUS</p>
-                    <p className='details__inventory-message'>IN STOCK</p>
+                    <div className='details__header'>
+                        <p className='details__inventory-status details__header--selected' >STATUS</p>
+                        <img className='details__sort-arrows' src={sortArrow} />
+                    </div>
+                    <div className='details__stock-box'>
+                        <p className='details__inventory-message'>IN STOCK</p>
+                    </div>
+                    
                 </section>
 
                 <section className='details__inventory-box'>
-                    <p className='details__category' >CATEGORY</p>
+                    <div className='details__header'>
+                        <p className='details__category details__header--selected' >CATEGORY</p>
+                        <img className='details__sort-arrows' src={sortArrow} />
+                    </div>
                     <p className='details__category-item' >Electronics</p>
                 </section>
 
                 <section className='details__inventory-box' >
-                    <p className='details__quantity' >QTY</p>
+                    <div className='details__header' >
+                        <p className='details__quantity details__header--selected' >QTY</p>
+                        <img  className='details__sort-arrows' src={sortArrow} />
+                    </div>
                     <p className='details__quantity-item'>500</p>
                 </section>
                 <section className='details__inventory-icon' >
-                    <img className='details__delete-icon' src={deleteIcon} />
-                    <img className='details__edit-icon' src={editIcon} />
+                    <p className='details__inventory-action'>ACTIONS</p>
+                    <div className='details__action-icons' >
+                        <img className='details__delete-icon' src={deleteIcon} />
+                        <img className='details__edit-icon' src={editIcon} />
+                    </div>
+                    
                 </section>
             </article>
             

@@ -48,6 +48,7 @@ render(){
     <div>
       <Router>
         <Header />
+        <WarehouseDetails/>
         <Switch>
           <Route exact path='/'>
             <Redirect to='/warehouse' />

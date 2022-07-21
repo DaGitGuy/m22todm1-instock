@@ -1,0 +1,10 @@
+@use "./styles/partials/fonts";
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Titillium Web";
+}

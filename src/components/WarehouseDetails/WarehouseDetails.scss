@@ -25,7 +25,7 @@
 }
 
 &__address {
-    border-bottom: 0.01rem solid colors.$secondary-cloud
+    border-bottom: 0.01rem solid colors.$secondary-cloud;
 }
 &__address-box {
     margin-left: 2rem;
@@ -65,6 +65,10 @@
 &__inventory {
     display: flex;
    flex-wrap: wrap;
+   padding-left: 2rem;
+   margin-bottom: 1rem;
+   border-bottom: 0.01rem solid colors.$secondary-cloud;
+   width: 100%;
 }
 &__inventory-box{
     width: 50%;
@@ -78,13 +82,58 @@
     color: colors.$secondary-slate;
     font-weight: bold;
 }
+
+&__inventory-item {
+    color: colors.$primary-indigo;
+    font-size: 0.8125rem;
+    font-weight: bold;
+}
+
+&__inventory-message {
+    background-color: rgba(21, 132, 99, 0.07);
+    color: colors.$support-green;
+    height: 1.5rem;
+    width: 5rem;
+    font-size: 0.8125rem;
+    font-weight: bold;
+    padding: 0 0.5rem 0 0.5rem;
+    border-radius: 1.25rem;
+}
+&__category-item,
+&__quantity-item {
+    font-size: 0.8125rem;
+}
+&__inventory-item,
+&__inventory-message,
+&__category-item,
+&__quantity-item {
+    margin-top: 0;
+}
+
+&__item-box {
+    display: flex;
+}
+
 &__inventory-title,
-&__category-item {
-    margin: 1rem 0 0 0 0;
+&__inventory-status,
+&__category,
+&__quantity{
+    margin-bottom: 0;
 }
 
 &__inventory-box{
     display: block;
+    padding-left: 0;
+}
+
+&__inventory-icon {
+    display: flex;
+    width: 100%;
+    justify-content: space-between; 
+    margin-bottom: 1rem;   
+}
+&__edit-icon {
+    margin-right: 1rem;
 }
 
 }

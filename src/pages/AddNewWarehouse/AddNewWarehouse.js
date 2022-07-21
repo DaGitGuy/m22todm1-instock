@@ -4,9 +4,6 @@ import './AddNewWarehouse.scss';
 import backArrow from '../../assets/icons/arrow_back-24px.svg';
 import errorIcon from '../../assets/icons/error-24px.svg';
 
-// TODO prevent error messaging on page load
-// error messaging should only appear after field has been touched
-
 class AddNewWarehouse extends Component {
   state = {
     warehouseName: '',

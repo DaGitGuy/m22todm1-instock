@@ -6,13 +6,14 @@ import {
 } from 'react-router-dom';
 import Header from './components/Header/Header'
 import AddNewWarehouse from './pages/AddNewWarehouse/AddNewWarehouse';
+import AddNewInventory from './pages/AddNewInventory/AddNewInventory';
 import './App.scss';
 
 const App = () => {
   return (
     <div>
       <Router>
-        {/* <Header /> */}
+        <Header />
         <Switch>
           <Route exact path='/'>
             <Redirect to='/warehouse' />
@@ -31,6 +32,7 @@ const App = () => {
             }}
           />
           <Route path='/warehouse/add' component={AddNewWarehouse} />
+          <Route path='/inventory/add' component={AddNewInventory} />
           <Route
             path='/inventory'
             render={(routeProps) => {

@@ -3,7 +3,7 @@ import './Footer.scss';
 const Footer = () => {
   return (
     <section className='footer'>
-        <p><span>&copy;</span> InStock Inc. All Rights Reserved.</p>
+        <p id="p1"><span>&copy;</span> InStock Inc. All Rights Reserved.</p>
     </section>
   );
 };

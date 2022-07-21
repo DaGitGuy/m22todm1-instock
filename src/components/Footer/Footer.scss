@@ -1,10 +1,13 @@
+@use '../../styles/partials/colors';
+@use '../../styles/partials/mixins';
+
 .footer {
     display: flex;
     justify-content: center;
-    padding: 3rem 0 3rem 0;
+    padding: 1.5rem 0 1.5rem 0;
+    color: colors.$secondary-slate;
 
     span {
-        vertical-align: 27%;
-        font-size: 0.688rem;
+        font-size: 0.8rem;
     }
 }

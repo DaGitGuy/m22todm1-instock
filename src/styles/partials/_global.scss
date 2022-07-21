@@ -12,13 +12,3 @@ body {
     margin: 0;
     font-family:'Titillium Web';
 }
-
-#p1 {
-    font-size: 0.688rem;
-    line-height: 1rem;
-
-    @include mixins.tablet {
-        font-size: 0.75rem;
-        line-height: 1.125rem;
-    }
-}

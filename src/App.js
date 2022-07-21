@@ -19,19 +19,7 @@ const App = () => {
             <Redirect to="/warehouse" />
           </Route>
           <Route exact path="/warehouse" component={WarehousePage} />
-          <Route path="/warehouse/add" component={AddNewWarehouse} />
-          <Route
-            path="/inventory"
-            render={(routeProps) => {
-              // return (
-              //   <InventoryPage
-              //     {...routeProps}
-              //     warehouseList={this.state.warehouseList}
-              //     inventoryList={this.state.inventoryList}
-              //   />
-              // );
-            }}
-          />
+          <Route exact path="/inventory" component={InventoryPage} />
         </Switch>
         {/* <Footer /> */}
       </Router>

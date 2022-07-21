@@ -4,7 +4,7 @@ import {
   Switch,
   Redirect,
 } from "react-router-dom";
-//import Footer from "./components/Footer/Footer";
+import Footer from "./components/Footer/Footer";
 //import Header from './components/Header/Header'
 import AddNewWarehouse from './pages/AddNewWarehouse/AddNewWarehouse';
 import './App.scss';
@@ -45,7 +45,7 @@ const App = () => {
             }}
           />
         </Switch>
-        {/* <Footer /> */}
+        <Footer />
       </Router>
     </div>
   );

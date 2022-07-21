@@ -9,6 +9,7 @@ import InventoryPage from "./pages/InventoryPage/InventoryPage";
 import WarehousePage from "./pages/WarehousePage/WarehousePage";
 import "./App.scss";
 
+
 const App = () => {
   return (
     <div>
@@ -21,7 +22,7 @@ const App = () => {
           <Route exact path="/warehouse" component={WarehousePage} />
           <Route exact path="/inventory" component={InventoryPage} />
         </Switch>
-        {/* <Footer /> */}
+        <Footer />
       </Router>
     </div>
   );

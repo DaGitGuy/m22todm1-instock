@@ -23,7 +23,7 @@
         }
         @include mixins.desktop {
             width: 8rem;
-            margin: 1rem 0 4rem 5rem;
+            margin: 1rem 0 4rem 6em;
         }
     }
     &__navigation-list {
@@ -33,7 +33,7 @@
         margin: 0 ;
         padding-left: 0;
         @include mixins.desktop {
-            margin-right: 5rem;
+            margin-right: 7rem;
         }
     }
     &__nav-list-item {

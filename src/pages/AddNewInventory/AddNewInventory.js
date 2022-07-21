@@ -12,6 +12,9 @@ class AddNewInventory extends Component {
     status: 'Out of Stock',
     quantity: '0',
     warehouseName: '',
+    // TODO replace example data with props obtained from API
+    categoryList: ['Electronics', 'Clothing', 'Pharmacy'],
+    warehouseList: ['Montreal', 'Vancouver', 'Toronto'],
     touched: {
       itemName: false,
       description: false,
@@ -39,12 +42,17 @@ class AddNewInventory extends Component {
     this.setState({ touched: touchedStates });
   };
 
-  // TODO validation for fields
-  // item name - not empty
-  // description - not empty
-  // category not empty
-  // quantity : >0 if status === 'In stock'
-  // warehouse not empty
+  isQuantityValid = () => {
+    // if item is marked as in stock, but quantity is set to 0 or is not a number, quantity is not valid
+    if (
+      this.state.status === 'In Stock' &&
+      (parseInt(this.state.quantity) === 0 ||
+        isNaN(parseInt(this.state.quantity)))
+    ) {
+      return false;
+    }
+    return true;
+  };
 
   isFormValid = () => {
     if (
@@ -57,7 +65,10 @@ class AddNewInventory extends Component {
       return false;
     }
 
-    // extra validation calls
+    // TODO extra validation calls
+    if (!this.isQuantityValid()) {
+      return false;
+    }
 
     return true;
   };
@@ -182,8 +193,11 @@ class AddNewInventory extends Component {
                 <option disabled value=''>
                   Please select
                 </option>
-                <option value='test'>Test</option>
-                {/* TODO load dynamic list of categories */}
+                {this.state.categoryList.map((category, index) => (
+                  <option key={index} value={category}>
+                    {category}
+                  </option>
+                ))}
               </select>
               {!this.state.category && this.state.touched.category && (
                 <span className='inventory-form__error'>
@@ -292,8 +306,11 @@ class AddNewInventory extends Component {
                 <option disabled value=''>
                   Please select
                 </option>
-                <option value='test'>Test</option>
-                {/* Load dynamic list of warehouses */}
+                {this.state.warehouseList.map((warehouse, index) => (
+                  <option key={index} value={warehouse}>
+                    {warehouse}
+                  </option>
+                ))}
               </select>
               {!this.state.warehouseName && this.state.touched.warehouseName && (
                 <span className='inventory-form__error'>

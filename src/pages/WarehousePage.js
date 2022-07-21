@@ -44,7 +44,7 @@ export default class WarehousePage extends React.Component {
             return (
               <WarehouseList
                 {...routeProps}
-                warehouseData={props.warehouseData}
+                warehouseData={this.state.warehouseData}
               />
             );
           }}
@@ -64,8 +64,8 @@ export default class WarehousePage extends React.Component {
             return (
               <WarehouseDetails
                 {...routeProps}
-                inventoryData={props.inventoryData}
-                warehouseData={props.warehouseData}
+                inventoryData={this.state.inventoryData}
+                warehouseData={this.state.warehouseData}
               />
             );
           }}
@@ -77,7 +77,7 @@ export default class WarehousePage extends React.Component {
             return (
               <EditWarehouse
                 {...routeProps}
-                warehouseData={props.warehouseData}
+                warehouseData={this.state.warehouseData}
               />
             );
           }}

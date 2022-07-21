@@ -47,7 +47,7 @@ export default class InventoryPage extends React.Component {
             return (
               <InventoryList
                 {...routeProps}
-                inventoryList={this.props.inventoryList}
+                inventoryList={this.state.inventoryList}
               />
             );
           }}
@@ -60,8 +60,8 @@ export default class InventoryPage extends React.Component {
             return (
               <AddNewInventory
                 {...routeProps}
-                inventorylist={this.props.inventoryList}
-                warehouselist={this.props.warehouseList}
+                inventorylist={this.state.inventoryList}
+                warehouselist={this.state.warehouseList}
               />
             );
           }}

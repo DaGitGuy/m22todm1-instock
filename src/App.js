@@ -6,6 +6,7 @@ import {
 } from 'react-router-dom';
 import Header from './components/Header/Header'
 import AddNewWarehouse from './pages/AddNewWarehouse/AddNewWarehouse';
+import WarehouseDetails from './components/WarehouseDetails/WarehouseDetails';
 import './App.scss';
 
 const App = () => {
@@ -13,10 +14,12 @@ const App = () => {
     <div>
       <Router>
         <Header />
+        <WarehouseDetails/>
         <Switch>
           <Route exact path='/'>
             <Redirect to='/warehouse' />
           </Route>
+
           <Route
             exact
             path='/warehouse'
@@ -43,6 +46,7 @@ const App = () => {
               // );
             }}
           />
+          {/* <Route path='' component={WarehouseDetails} /> */}
         </Switch>
         {/* <Footer /> */}
       </Router>

@@ -90,9 +90,17 @@ class AddNewInventory extends Component {
       itemName: '',
       description: '',
       category: '',
-      status: 'Out of stock',
+      status: 'Out of Stock',
       quantity: '0',
       warehouseName: '',
+      touched: {
+        itemName: false,
+        description: false,
+        category: false,
+        status: false,
+        quantity: false,
+        warehouseName: false,
+      },
     });
   };
 
@@ -125,7 +133,7 @@ class AddNewInventory extends Component {
                 onChange={this.handleUserInput}
                 onBlur={this.handleBlur}
               />
-              {!this.state.inventoryName && this.state.touched.inventoryName && (
+              {!this.state.itemName && this.state.touched.itemName && (
                 <span className='inventory-form__error'>
                   <img className='inventory-form__error-icon' src={errorIcon} />
                   <p className='inventory-form__error-message'>
@@ -137,15 +145,15 @@ class AddNewInventory extends Component {
 
             <label className='inventory-form__label' htmlFor='description'>
               Description
-              <input
+              <textarea
                 className={
                   this.state.description || !this.state.touched.description
-                    ? 'inventory-form__input'
-                    : ' inventory-form__input inventory-form__input--invalid'
+                    ? 'inventory-form__input inventory-form__input--textarea'
+                    : ' inventory-form__input inventory-form__input--textarea inventory-form__input--invalid'
                 }
                 name='description'
                 value={this.state.description}
-                placeholder='Description'
+                placeholder='Please enter a brief item description...'
                 onChange={this.handleUserInput}
                 onBlur={this.handleBlur}
               />
@@ -164,16 +172,17 @@ class AddNewInventory extends Component {
               <select
                 className={
                   this.state.category || !this.state.touched.category
-                    ? 'inventory-form__input'
-                    : ' inventory-form__input inventory-form__input--invalid'
+                    ? 'inventory-form__input inventory-form__input--select'
+                    : ' inventory-form__input inventory-form__input--select inventory-form__input--invalid'
                 }
                 name='category'
                 value={this.state.category}
                 onChange={this.handleUserInput}
                 onBlur={this.handleBlur}>
-                <option disabled selected hidden>
+                <option disabled value=''>
                   Please select
                 </option>
+                <option value='test'>Test</option>
                 {/* TODO load dynamic list of categories */}
               </select>
               {!this.state.category && this.state.touched.category && (
@@ -189,7 +198,6 @@ class AddNewInventory extends Component {
 
           <fieldset className='inventory-form__section inventory-form__section--contact'>
             <h2 className='inventory-form__heading'>Item Availability</h2>
-            {/* TODO review radio button code - https://www.pluralsight.com/guides/how-to-use-radio-buttons-in-reactjs */}
             <label className='inventory-form__label' htmlFor='status'>
               Status
               <div className='inventory-form__radio'>
@@ -219,64 +227,72 @@ class AddNewInventory extends Component {
                 </label>
               </div>
             </label>
-            <label className='inventory-form__label' htmlFor=''>
-              Quantity
-              <input
-                className={
-                  this.state.quantity || !this.state.touched.quantity
-                    ? 'inventory-form__input'
-                    : ' inventory-form__input inventory-form__input--invalid'
-                }
-                name='quantity'
-                value={this.state.quantity}
-                placeholder='0'
-                disabled={this.state.status === 'Out of Stock'}
-                onChange={this.handleUserInput}
-                onBlur={this.handleBlur}
-              />
-              {/* After quantity has been modified, error message is displayed if the provided value is not a number */}
-              {isNaN(parseInt(this.state.quantity)) &&
-                this.state.touched.quantity && (
-                  <span className='inventory-form__error'>
-                    <img
-                      className='inventory-form__error-icon'
-                      src={errorIcon}
-                    />
-                    <p className='inventory-form__error-message'>
-                      Quantity must be provided as a number.
-                    </p>
-                  </span>
-                )}
-              {this.state.status === 'In Stock' &&
-                parseInt(this.state.quantity) === 0 &&
-                this.state.touched.quantity && (
-                  <span className='inventory-form__error'>
-                    <img
-                      className='inventory-form__error-icon'
-                      src={errorIcon}
-                    />
-                    <p className='inventory-form__error-message'>
-                      Please indicate quantity of items in stock or mark as out of stock.
-                    </p>
-                  </span>
-                )}
-            </label>
+            {!(this.state.status === 'Out of Stock') && (
+              <label
+                className='inventory-form__label'
+                htmlFor=''
+                hidden={this.state.status === 'Out of Stock'}>
+                Quantity
+                <input
+                  className={
+                    this.state.quantity || !this.state.touched.quantity
+                      ? 'inventory-form__input'
+                      : ' inventory-form__input inventory-form__input--invalid'
+                  }
+                  name='quantity'
+                  value={this.state.quantity}
+                  placeholder='0'
+                  disabled={this.state.status === 'Out of Stock'}
+                  onChange={this.handleUserInput}
+                  onBlur={this.handleBlur}
+                />
+                {/* After quantity has been modified, error message is displayed if the provided value is not a number */}
+                {isNaN(parseInt(this.state.quantity)) &&
+                  this.state.touched.quantity && (
+                    <span className='inventory-form__error'>
+                      <img
+                        className='inventory-form__error-icon'
+                        src={errorIcon}
+                      />
+                      <p className='inventory-form__error-message'>
+                        Quantity must be provided as a number.
+                      </p>
+                    </span>
+                  )}
+                {/* After quantity has been modified, returns an error message if the item is marked as in stock but the quantity is set to 0*/}
+                {this.state.status === 'In Stock' &&
+                  parseInt(this.state.quantity) === 0 &&
+                  this.state.touched.quantity && (
+                    <span className='inventory-form__error'>
+                      <img
+                        className='inventory-form__error-icon'
+                        src={errorIcon}
+                      />
+                      <p className='inventory-form__error-message'>
+                        Please indicate quantity of items in stock or mark as
+                        out of stock.
+                      </p>
+                    </span>
+                  )}
+              </label>
+            )}
 
-            <label className='inventory-form__label' htmlFor='warehouse'>
+            <label className='inventory-form__label' htmlFor='warehouseName'>
               Warehouse
               <select
                 className={
                   this.state.warehouseName || !this.state.touched.warehouseName
-                    ? 'inventory-form__input'
-                    : ' inventory-form__input inventory-form__input--invalid'
+                    ? 'inventory-form__input inventory-form__input--select'
+                    : ' inventory-form__input inventory-form__input--select inventory-form__input--invalid'
                 }
-                name='warehouse'
+                name='warehouseName'
                 value={this.state.warehouseName}
                 onChange={this.handleUserInput}
                 onBlur={this.handleBlur}>
-                <option disabled selected hidden>
+                <option disabled value=''>
                   Please select
                 </option>
+                <option value='test'>Test</option>
                 {/* Load dynamic list of warehouses */}
               </select>
               {!this.state.warehouseName && this.state.touched.warehouseName && (

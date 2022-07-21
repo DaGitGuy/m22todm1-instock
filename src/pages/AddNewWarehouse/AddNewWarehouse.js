@@ -118,6 +118,16 @@ class AddNewWarehouse extends Component {
       position: '',
       phone: '',
       email: '',
+      touched: {
+        warehouseName: false,
+        address: false,
+        city: false,
+        country: false,
+        name: false,
+        position: false,
+        phone: false,
+        email: false,
+      },
     });
   };
 

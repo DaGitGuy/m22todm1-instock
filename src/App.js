@@ -1,20 +1,20 @@
-import React from 'react';
+import React from "react";
 import {
   BrowserRouter as Router,
   Route,
   Switch,
   Redirect,
-} from 'react-router-dom';
-import axios from 'axios';
+} from "react-router-dom";
+import axios from "axios";
 
-import Footer from './components/Footer/Footer';
-import Header from './components/Header/Header';
-import AddNewWarehouse from './components/AddNewWarehouse/AddNewWarehouse';
-import AddNewInventory from './components/AddNewInventory/AddNewInventory';
-import './App.scss';
+import Footer from "./components/Footer/Footer";
+import Header from "./components/Header/Header";
+import AddNewWarehouse from "./components/AddNewWarehouse/AddNewWarehouse";
+import AddNewInventory from "./components/AddNewInventory/AddNewInventory";
+import EditWarehouse from "./components/EditWarehouse/EditWarehouse";
+import "./App.scss";
 
-class App extends React.Component{
-
+class App extends React.Component {
   state = {
     warehouseData: [],
     inventoryData: [],
@@ -43,16 +43,16 @@ class App extends React.Component{
         console.log(err);
       });
   }
-render(){
-  return (
-    <div>
-      <Router>
-        <Header />
-        <Switch>
-          <Route exact path='/'>
-            <Redirect to='/warehouse' />
-          </Route>
-          {/* <Route
+  render() {
+    return (
+      <div>
+        <Router>
+          <Header />
+          <Switch>
+            <Route exact path="/">
+              <Redirect to="/warehouse" />
+            </Route>
+            {/* <Route
           path="/warehouse"
           exact
           render={(routeProps) => {
@@ -64,14 +64,14 @@ render(){
             );
           }}
         /> */}
-          <Route
-            path='/warehouse/add'
-            render={(routeProps) => {
-              return <AddNewWarehouse {...routeProps} />;
-            }}
-          />
+            <Route
+              path="/warehouse/add"
+              render={(routeProps) => {
+                return <AddNewWarehouse {...routeProps} />;
+              }}
+            />
 
-          {/* <Route
+            {/* <Route
           exact
           path="/warehouse/:id"
           render={(routeProps) => {
@@ -85,18 +85,18 @@ render(){
           }}
         /> */}
 
-          {/* <Route
-          path="/warehouse/:id/edit"
-          render={(routeProps) => {
-            return (
-              <EditWarehouse
-                {...routeProps}
-                warehouseData={this.state.warehouseData}
-              />
-            );
-          }}
-        /> */}
-          {/* <Route
+            <Route
+              path="/warehouse/edit"
+              render={(routeProps) => {
+                return (
+                  <EditWarehouse
+                    {...routeProps}
+                    warehouseData={this.state.warehouseData}
+                  />
+                );
+              }}
+            />
+            {/* <Route
           path="/inventory"
           exact
           render={(routeProps) => {
@@ -109,21 +109,21 @@ render(){
           }}
         /> */}
 
-          <Route
-            exact
-            path='/inventory/add'
-            render={(routeProps) => {
-              return (
-                <AddNewInventory
-                  {...routeProps}
-                  // inventorylist={this.state.inventoryData}
-                  // warehouselist={this.state.warehouseData}
-                />
-              );
-            }}
-          />
+            <Route
+              exact
+              path="/inventory/add"
+              render={(routeProps) => {
+                return (
+                  <AddNewInventory
+                    {...routeProps}
+                    // inventorylist={this.state.inventoryData}
+                    // warehouselist={this.state.warehouseData}
+                  />
+                );
+              }}
+            />
 
-          {/* <Route
+            {/* <Route
           path="/inventory/:id/edit"
           render={(routeProps) => {
             return (
@@ -132,19 +132,19 @@ render(){
           }}
         /> */}
 
-          {/* <Route
+            {/* <Route
           exact
           path="/inventory/item/:id"
           render={(routeProps) => {
             return <InventoryDetails {...routeProps} />;
           }}
         /> */}
-        </Switch>
-        <Footer />
-      </Router>
-    </div>
-  );
-};
+          </Switch>
+          <Footer />
+        </Router>
+      </div>
+    );
+  }
 }
 
 export default App;

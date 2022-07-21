@@ -38,7 +38,7 @@ export default class WarehousePage extends React.Component {
     return (
       <div>
         <Route
-          path="/warehouse"
+          path="/"
           exact
           render={(routeProps) => {
             return (
@@ -51,7 +51,7 @@ export default class WarehousePage extends React.Component {
         />
 
         <Route
-          path="/warehouse/add"
+          path="/add"
           render={(routeProps) => {
             return <AddNewWarehouse {...routeProps} />;
           }}
@@ -59,7 +59,7 @@ export default class WarehousePage extends React.Component {
 
         <Route
           exact
-          path="/warehouse/warehouse/:id"
+          path="/:id"
           render={(routeProps) => {
             return (
               <WarehouseDetails
@@ -72,7 +72,7 @@ export default class WarehousePage extends React.Component {
         />
 
         <Route
-          path="/warehouse/:id/edit"
+          path="/:id/edit"
           render={(routeProps) => {
             return (
               <EditWarehouse

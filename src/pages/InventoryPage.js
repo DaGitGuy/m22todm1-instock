@@ -41,7 +41,7 @@ export default class InventoryPage extends React.Component {
     return (
       <div>
         <Route
-          path="/inventory"
+          path="/"
           exact
           render={(routeProps) => {
             return (
@@ -55,7 +55,7 @@ export default class InventoryPage extends React.Component {
 
         <Route
           exact
-          path="/inventory/add"
+          path="/add"
           render={(routeProps) => {
             return (
               <AddNewInventory
@@ -68,7 +68,7 @@ export default class InventoryPage extends React.Component {
         />
 
         <Route
-          path="/inventory/:id/edit"
+          path="/:id/edit"
           render={(routeProps) => {
             return (
               <EditInventory {...routeProps} warehouseNames={warehouseNames} />
@@ -78,7 +78,7 @@ export default class InventoryPage extends React.Component {
 
         <Route
           exact
-          path="/inventory/item/:id"
+          path="/item/:id"
           render={(routeProps) => {
             return <InventoryDetails {...routeProps} />;
           }}

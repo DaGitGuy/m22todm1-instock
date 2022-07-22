@@ -1,28 +1,29 @@
-import React from 'react';
+import React from "react";
 import {
   BrowserRouter as Router,
   Route,
   Switch,
   Redirect,
-} from 'react-router-dom';
-import axios from 'axios';
+} from "react-router-dom";
+import axios from "axios";
 
-import Header from './components/Header/Header';
-import Footer from './components/Footer/Footer';
-import WarehouseList from './components/WarehouseList/WarehouseList';
-import WarehouseDetails from './components/WarehouseDetails/WarehouseDetails';
-import AddNewWarehouse from './components/AddNewWarehouse/AddNewWarehouse';
-import AddNewInventory from './components/AddNewInventory/AddNewInventory';
-import EditWarehouse from './components/EditWarehouse/EditWarehouse';
-import './App.scss';
+import Header from "./components/Header/Header";
+import Footer from "./components/Footer/Footer";
+import WarehouseList from "./components/WarehouseList/WarehouseList";
+import WarehouseDetails from "./components/WarehouseDetails/WarehouseDetails";
+import AddNewWarehouse from "./components/AddNewWarehouse/AddNewWarehouse";
+import AddNewInventory from "./components/AddNewInventory/AddNewInventory";
+import EditWarehouse from "./components/EditWarehouse/EditWarehouse";
+import EditInventory from "./components/EditInventory/EditInventory";
+import "./App.scss";
 
 const SERVER_URL =
   process.env.REACT_APP_SERVER_URL || process.env.REACT_APP_SERVER_URL_BACKUP;
 
 class App extends React.Component {
   state = {
-    warehouseData: '',
-    inventoryData: '',
+    warehouseData: "",
+    inventoryData: "",
   };
 
   componentDidMount() {
@@ -59,11 +60,11 @@ class App extends React.Component {
           <Header />
           {/* <WarehouseDetails/> */}
           <Switch>
-            <Route exact path='/'>
-              <Redirect to='/warehouse' />
+            <Route exact path="/">
+              <Redirect to="/warehouse" />
             </Route>
             <Route
-              path='/warehouse'
+              path="/warehouse"
               exact
               render={(routeProps) => {
                 return (
@@ -75,7 +76,7 @@ class App extends React.Component {
               }}
             />
             <Route
-              path='/warehouse/add'
+              path="/warehouse/add"
               render={(routeProps) => {
                 return <AddNewWarehouse {...routeProps} />;
               }}
@@ -83,7 +84,7 @@ class App extends React.Component {
 
             <Route
               exact
-              path='/warehouse/:id'
+              path="/warehouse/:id"
               render={(routeProps) => {
                 return (
                   <WarehouseDetails
@@ -96,7 +97,7 @@ class App extends React.Component {
             />
 
             <Route
-              path='/warehouse/:id/edit'
+              path="/warehouse/:id/edit"
               render={(routeProps) => {
                 return (
                   <EditWarehouse
@@ -122,7 +123,7 @@ class App extends React.Component {
 
             <Route
               exact
-              path='/inventory/add'
+              path="/inventory/add"
               render={(routeProps) => {
                 return (
                   <AddNewInventory
@@ -134,14 +135,18 @@ class App extends React.Component {
               }}
             />
 
-            {/* <Route
-          path="/inventory/:id/edit"
-          render={(routeProps) => {
-            return (
-              <EditInventory {...routeProps} warehouseNames={warehouseNames} />
-            );
-          }}
-        /> */}
+            <Route
+              path="/inventory/:id/edit"
+              render={(routeProps) => {
+                return (
+                  <EditInventory
+                    {...routeProps}
+                    inventoryData={this.state.inventoryData}
+                    warehouseData={this.state.warehouseData}
+                  />
+                );
+              }}
+            />
 
             {/* <Route
           exact

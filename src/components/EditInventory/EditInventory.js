@@ -139,25 +139,6 @@ class EditInventory extends Component {
     }
   };
 
-  handleCancel = () => {
-    this.setState({
-      itemName: "",
-      description: "",
-      category: "",
-      status: "Out of Stock",
-      quantity: "0",
-      warehouseName: "",
-      touched: {
-        itemName: false,
-        description: false,
-        category: false,
-        status: false,
-        quantity: false,
-        warehouseName: false,
-      },
-    });
-  };
-
   render() {
     if (!this.state) {
       return <h1>Loading...</h1>;
@@ -283,7 +264,7 @@ class EditInventory extends Component {
 
           <fieldset className="inventory-form__section inventory-form__section--contact">
             <h2 className="inventory-form__heading">Item Availability</h2>
-            <label className="inventory-form__label" htmlFor="">
+            <label className="inventory-form__label" htmlFor="status">
               Status
               <div className="inventory-form__radio">
                 <label className="inventory-form__radio-label">
@@ -312,11 +293,11 @@ class EditInventory extends Component {
                 </label>
               </div>
             </label>
-            {!("" === "Out of Stock") && (
+            {!(this.state.status === "Out of Stock") && (
               <label
                 className="inventory-form__label"
                 htmlFor=""
-                hidden={"" === "Out of Stock"}
+                hidden={this.state.status === "Out of Stock"}
               >
                 Quantity
                 <input
@@ -333,18 +314,19 @@ class EditInventory extends Component {
                   onBlur={this.handleBlur}
                 />
                 {/* After quantity has been modified, error message is displayed if the provided value is not a number */}
-                {!this.state.quantity && !this.state.touched.quantity && (
-                  <span className="inventory-form__error">
-                    <img
-                      className="inventory-form__error-icon"
-                      src={errorIcon}
-                      alt="error"
-                    />
-                    <p className="inventory-form__error-message">
-                      Quantity must be provided as a number.
-                    </p>
-                  </span>
-                )}
+                {isNaN(parseInt(this.state.quantity)) &&
+                  this.state.touched.quantity && (
+                    <span className="inventory-form__error">
+                      <img
+                        className="inventory-form__error-icon"
+                        src={errorIcon}
+                        alt="error"
+                      />
+                      <p className="inventory-form__error-message">
+                        Quantity must be provided as a number.
+                      </p>
+                    </span>
+                  )}
                 {/* After quantity has been modified, returns an error message if the item is marked as in stock but the quantity is set to 0*/}
                 {"" === "In Stock" &&
                   parseInt(this.state.quantity) === 0 &&
@@ -410,13 +392,11 @@ class EditInventory extends Component {
               + Add Item
             </button>
             {/*  TODO check on expected behavior of cancel button: clear form or close form?  */}
-            <button
-              className=" inventory-form__button inventory-form__button--cancel"
-              type="reset"
-              onClick={this.handleCancel}
-            >
-              Cancel
-            </button>
+            <Link to="/inventory">
+              <button className=" inventory-form__button inventory-form__button--cancel">
+                Cancel
+              </button>
+            </Link>
           </div>
         </form>
       </div>

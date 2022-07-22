@@ -16,6 +16,7 @@ import AddNewInventory from './components/AddNewInventory/AddNewInventory';
 import EditWarehouse from './components/EditWarehouse/EditWarehouse';
 import InventoryList from './components/InventoryList/InventoryList';
 import './App.scss';
+import DeleteItemModal from './components/Modals/DeleteItemModal';
 
 const SERVER_URL =
   process.env.REACT_APP_SERVER_URL || process.env.REACT_APP_SERVER_URL_BACKUP;
@@ -59,7 +60,7 @@ class App extends React.Component {
       <div>
         <Router>
           <Header />
-          <InventoryList/>
+          <DeleteItemModal />
           <Switch>
             <Route exact path='/'>
               <Redirect to='/warehouse' />
@@ -129,8 +130,8 @@ class App extends React.Component {
                 return (
                   <AddNewInventory
                     {...routeProps}
-                    inventorylist={this.state.inventoryData}
-                    warehouselist={this.state.warehouseData}
+                    inventoryData={this.state.inventoryData}
+                    warehouseData={this.state.warehouseData}
                   />
                 );
               }}

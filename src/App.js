@@ -13,6 +13,7 @@ import WarehouseList from "./components/WarehouseList/WarehouseList";
 import WarehouseDetails from "./components/WarehouseDetails/WarehouseDetails";
 import AddNewWarehouse from "./components/AddNewWarehouse/AddNewWarehouse";
 import AddNewInventory from "./components/AddNewInventory/AddNewInventory";
+import EditWarehouse from "./components/EditWarehouse/EditWarehouse";
 import "./App.scss";
 
 const SERVER_URL =

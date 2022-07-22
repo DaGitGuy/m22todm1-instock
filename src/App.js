@@ -14,8 +14,8 @@ import WarehouseDetails from "./components/WarehouseDetails/WarehouseDetails";
 import AddNewWarehouse from "./components/AddNewWarehouse/AddNewWarehouse";
 import AddNewInventory from "./components/AddNewInventory/AddNewInventory";
 import EditWarehouse from "./components/EditWarehouse/EditWarehouse";
-import EditInventory from "./components/EditInventory/EditInventory";
 import "./App.scss";
+import DeleteItemModal from "./components/Modals/DeleteItemModal";
 
 const SERVER_URL =
   process.env.REACT_APP_SERVER_URL || process.env.REACT_APP_SERVER_URL_BACKUP;
@@ -58,7 +58,7 @@ class App extends React.Component {
       <div>
         <Router>
           <Header />
-          {/* <WarehouseDetails/> */}
+          <DeleteItemModal />
           <Switch>
             <Route exact path="/">
               <Redirect to="/warehouse" />

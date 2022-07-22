@@ -6,6 +6,8 @@ import errorIcon from '../../assets/icons/error-24px.svg';
 
 class AddNewInventory extends Component {
   state = {
+    inventoryData: {},
+    warehouseData: {},
     itemName: '',
     description: '',
     category: '',
@@ -13,8 +15,6 @@ class AddNewInventory extends Component {
     quantity: '0',
     warehouseName: '',
     // TODO replace example data with props obtained from API
-    categoryList: ['Electronics', 'Clothing', 'Pharmacy'],
-    warehouseList: ['Montreal', 'Vancouver', 'Toronto'],
     touched: {
       itemName: false,
       description: false,
@@ -23,6 +23,52 @@ class AddNewInventory extends Component {
       quantity: false,
       warehouseName: false,
     },
+  };
+
+  componentDidMount() {
+    axios
+      .get('http://localhost:5050/warehouses')
+      .then((res) => {
+        this.setState({
+          warehouseData: res.data,
+        });
+        console.log(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+
+    axios
+      .get('http://localhost:5050/inventories')
+      .then((res) => {
+        this.setState({
+          inventoryData: res.data,
+        });
+        console.log(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
+  getCategories = () => {
+    const inventoryData = this.state.inventoryData;
+    const allCategories = inventoryData.map((item) => {
+      return item.category;
+    });
+    const uniqueCategories = [...new Set(allCategories)];
+    const categoryList = uniqueCategories.sort();
+    return categoryList;
+  };
+
+  getWarehouseList = () => {
+    const warehouseData = this.state.warehouseData;
+    const allWarehouses = warehouseData.map((warehouse) => {
+      return warehouse.warehouseName;
+    });
+    const uniqueWarehouseNames = [...new Set(allWarehouses)];
+    const warehouseList = uniqueWarehouseNames.sort();
+    return warehouseList;
   };
 
   handleUserInput = (e) => {
@@ -116,6 +162,14 @@ class AddNewInventory extends Component {
   };
 
   render() {
+    // if (!this.state.warehouseData & !this.state.inventoryData) {
+    //   return <h1>Loading...</h1>;
+    // }
+    console.log(this.state.warehouseData);
+    console.log(this.state.inventoryData);
+    const categoryList = this.getCategories();
+    const warehouseList = this.getWarehouseList();
+
     return (
       <div className='main-container'>
         <div className='main-heading'>
@@ -193,7 +247,7 @@ class AddNewInventory extends Component {
                 <option disabled value=''>
                   Please select
                 </option>
-                {this.state.categoryList.map((category, index) => (
+                {categoryList.map((category, index) => (
                   <option key={index} value={category}>
                     {category}
                   </option>
@@ -306,7 +360,7 @@ class AddNewInventory extends Component {
                 <option disabled value=''>
                   Please select
                 </option>
-                {this.state.warehouseList.map((warehouse, index) => (
+                {warehouseList.map((warehouse, index) => (
                   <option key={index} value={warehouse}>
                     {warehouse}
                   </option>

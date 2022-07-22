@@ -10,7 +10,6 @@ class EditWarehouse extends React.Component {
       .get(`http://localhost:5050/warehouses/${this.props.match.params.id}`)
       .then((res) => {
         const warehouse = res.data;
-        // console.log(warehouse);
         this.setState({
           warehouseId: warehouse.id,
           warehouseName: warehouse.name,
@@ -75,6 +74,13 @@ class EditWarehouse extends React.Component {
           console.log(err);
         });
     }
+  };
+
+  handleBlur = (e) => {
+    let touchedInput = e.target.name;
+    let touchedStates = { ...this.state.touched };
+    touchedStates[touchedInput] = true;
+    this.setState({ touched: touchedStates });
   };
 
   isFormValid = () => {
@@ -143,7 +149,6 @@ class EditWarehouse extends React.Component {
     if (!this.state) {
       return <h1>Loading...</h1>;
     }
-    // console.log(this.state);
 
     return (
       <div className="main-container">
@@ -171,7 +176,7 @@ class EditWarehouse extends React.Component {
                 name="warehouseName"
                 value={this.state.warehouseName}
                 onChange={this.handleNameOnChange}
-                // onBlur={this.handleBlur}
+                onBlur={this.handleBlur}
               />
               {!this.state.warehouseName && this.state.touched.warehouseName && (
                 <span className="warehouse-form__error">
@@ -194,7 +199,7 @@ class EditWarehouse extends React.Component {
                 name="address"
                 value={this.state.address}
                 onChange={this.handleAddressOnChange}
-                // onBlur={this.handleBlur}
+                onBlur={this.handleBlur}
               />
               {!this.state.address && this.state.touched.address && (
                 <span className="warehouse-form__error">
@@ -217,7 +222,7 @@ class EditWarehouse extends React.Component {
                 name="city"
                 value={this.state.city}
                 onChange={this.handleCityOnChange}
-                // onBlur={this.handleBlur}
+                onBlur={this.handleBlur}
               />
               {!this.state.city && this.state.touched.city && (
                 <span className="warehouse-form__error">
@@ -241,7 +246,7 @@ class EditWarehouse extends React.Component {
                 placeholder="Country"
                 value={this.state.country}
                 onChange={this.handleCountryOnChange}
-                // onBlur={this.handleBlur}
+                onBlur={this.handleBlur}
               />
               {!this.state.country && this.state.touched.country && (
                 <span className="warehouse-form__error">
@@ -265,10 +270,9 @@ class EditWarehouse extends React.Component {
                     : " warehouse-form__input warehouse-form__input--invalid"
                 }
                 name="name"
-                // value={this.state.name}
                 placeholder="Contact Name"
                 onChange={this.handleContactNameOnChange}
-                // onBlur={this.handleBlur}
+                onBlur={this.handleBlur}
               />
               {!this.state.name && this.state.touched.name && (
                 <span className="warehouse-form__error">
@@ -289,10 +293,9 @@ class EditWarehouse extends React.Component {
                     : " warehouse-form__input warehouse-form__input--invalid"
                 }
                 name="position"
-                // value={this.state.position}
                 placeholder="Position"
                 onChange={this.handleContactPositionOnChange}
-                // onBlur={this.handleBlur}
+                onBlur={this.handleBlur}
               />
               {!this.state.position && this.state.touched.position && (
                 <span className="warehouse-form__error">
@@ -313,11 +316,10 @@ class EditWarehouse extends React.Component {
                     : " warehouse-form__input warehouse-form__input--invalid"
                 }
                 name="phone"
-                // value={this.state.phone}
                 placeholder="Phone Number"
                 type="tel"
                 onChange={this.handleContactPhoneOnChange}
-                // onBlur={this.handleBlur}
+                onBlur={this.handleBlur}
               />
               {!this.state.phone && this.state.touched.phone && (
                 <span className="warehouse-form__error">
@@ -346,11 +348,9 @@ class EditWarehouse extends React.Component {
                     : "warehouse-form__input warehouse-form__input--invalid"
                 }
                 name="email"
-                // value={this.state.email}
                 placeholder="Email"
                 type="email"
-                // onChange={this.handleUserInput}
-                // onBlur={this.handleBlur}
+                onBlur={this.handleBlur}
               />
               {!this.state.email && this.state.touched.email && (
                 <span className="warehouse-form__error">
@@ -377,13 +377,13 @@ class EditWarehouse extends React.Component {
               className="warehouse-form__button warehouse-form__button--CTA"
               //   disabled={!this.isFormValid()}
             >
-              + Add Warehouse
+              Save
             </button>
             {/*  TODO check on expected behavior of cancel button: clear form or close form?  */}
             <button
               className=" warehouse-form__button warehouse-form__button--cancel"
               type="reset"
-              //   onClick={this.handleCancel}
+              onClick={this.handleOnCancel}
             >
               Cancel
             </button>

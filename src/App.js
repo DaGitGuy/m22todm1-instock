@@ -7,22 +7,27 @@ import {
 } from 'react-router-dom';
 import axios from 'axios';
 
-import Footer from './components/Footer/Footer';
 import Header from './components/Header/Header';
+import Footer from './components/Footer/Footer';
+import WarehouseList from './components/WarehouseList/WarehouseList';
+import WarehouseDetails from './components/WarehouseDetails/WarehouseDetails';
 import AddNewWarehouse from './components/AddNewWarehouse/AddNewWarehouse';
 import AddNewInventory from './components/AddNewInventory/AddNewInventory';
+import EditWarehouse from './components/EditWarehouse/EditWarehouse';
 import './App.scss';
 
-class App extends React.Component{
+const SERVER_URL =
+  process.env.REACT_APP_SERVER_URL || process.env.REACT_APP_SERVER_URL_BACKUP;
 
+class App extends React.Component {
   state = {
-    warehouseData: [],
-    inventoryData: [],
+    warehouseData: '',
+    inventoryData: '',
   };
 
   componentDidMount() {
     axios
-      .get("http://localhost:5050/warehouses")
+      .get(`${SERVER_URL}/warehouses`)
       .then((res) => {
         console.log(res.data);
         this.setState({
@@ -30,75 +35,80 @@ class App extends React.Component{
         });
       })
       .catch((err) => {
-        console.log(err);
+        console.log("Couldn't fetch warehouses: ", err);
       });
 
     axios
-      .get("http://localhost:5050/inventories")
+      .get(`${SERVER_URL}/inventories`)
       .then((res) => {
         this.setState({
           inventoryData: res.data,
         });
       })
       .catch((err) => {
-        console.log(err);
+        console.log("Couldn't fetch inventories: ", err);
       });
   }
-render(){
-  return (
-    <div>
-      <Router>
-        <Header />
-        
-        <Switch>
-          <Route exact path='/'>
-            <Redirect to='/warehouse' />
-          </Route>
-          {/* <Route
-          path="/warehouse"
-          exact
-          render={(routeProps) => {
-            return (
-              <WarehouseList
-                {...routeProps}
-                warehouseData={this.state.warehouseData}
-              />
-            );
-          }}
-        /> */}
-          <Route
-            path='/warehouse/add'
-            render={(routeProps) => {
-              return <AddNewWarehouse {...routeProps} />;
-            }}
-          />
+  render() {
+    if (!this.state.warehouseData) {
+      return <h1>Loading...</h1>;
+    }
 
-          {/* <Route
-          exact
-          path="/warehouse/:id"
-          render={(routeProps) => {
-            return (
-              <WarehouseDetails
-                {...routeProps}
-                inventoryData={this.state.inventoryData}
-                warehouseData={this.state.warehouseData}
-              />
-            );
-          }}
-        /> */}
+    return (
+      <div>
+        <Router>
+          <Header />
+          {/* <WarehouseDetails/> */}
+          <Switch>
+            <Route exact path='/'>
+              <Redirect to='/warehouse' />
+            </Route>
+            <Route
+              path='/warehouse'
+              exact
+              render={(routeProps) => {
+                return (
+                  <WarehouseList
+                    {...routeProps}
+                    warehouseData={this.state.warehouseData}
+                  />
+                );
+              }}
+            />
+            <Route
+              path='/warehouse/add'
+              render={(routeProps) => {
+                return <AddNewWarehouse {...routeProps} />;
+              }}
+            />
 
-          {/* <Route
-          path="/warehouse/:id/edit"
-          render={(routeProps) => {
-            return (
-              <EditWarehouse
-                {...routeProps}
-                warehouseData={this.state.warehouseData}
-              />
-            );
-          }}
-        /> */}
-          {/* <Route
+            <Route
+              exact
+              path='/warehouse/:id'
+              render={(routeProps) => {
+                return (
+                  <WarehouseDetails
+                    {...routeProps}
+                    inventoryData={this.state.inventoryData}
+                    warehouseData={this.state.warehouseData}
+                  />
+                );
+              }}
+            />
+
+            <Route
+              path='/warehouse/:id/edit'
+              render={(routeProps) => {
+                return (
+                  <EditWarehouse
+                    {...routeProps}
+                    // warehouseData={this.state.warehouseData}
+                  />
+                );
+              }}
+            />
+
+            {/* <Route
           path="/inventory"
           exact
           render={(routeProps) => {
@@ -111,21 +121,21 @@ render(){
           }}
         /> */}
 
-          <Route
-            exact
-            path='/inventory/add'
-            render={(routeProps) => {
-              return (
-                <AddNewInventory
-                  {...routeProps}
-                  // inventorylist={this.state.inventoryData}
-                  // warehouselist={this.state.warehouseData}
-                />
-              );
-            }}
-          />
+            <Route
+              exact
+              path='/inventory/add'
+              render={(routeProps) => {
+                return (
+                  <AddNewInventory
+                    {...routeProps}
+                    inventorylist={this.state.inventoryData}
+                    warehouselist={this.state.warehouseData}
+                  />
+                );
+              }}
+            />
 
-          {/* <Route
+            {/* <Route
           path="/inventory/:id/edit"
           render={(routeProps) => {
             return (
@@ -134,19 +144,19 @@ render(){
           }}
         /> */}
 
-          {/* <Route
+            {/* <Route
           exact
           path="/inventory/item/:id"
           render={(routeProps) => {
             return <InventoryDetails {...routeProps} />;
           }}
         /> */}
-        </Switch>
-        <Footer />
-      </Router>
-    </div>
-  );
-};
+          </Switch>
+          <Footer />
+        </Router>
+      </div>
+    );
+  }
 }
 
 export default App;

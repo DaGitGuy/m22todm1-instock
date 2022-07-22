@@ -1,0 +1,19 @@
+@use '../../styles/partials/mixins';
+@use '../../styles/partials/colors';
+
+.search-bar {
+    background-image: url('../../assets/icons/search-24px.svg');
+    background-repeat: no-repeat;
+    background-position: 99% center;
+
+    height: 2.25rem;
+    width: 100%;
+    padding: 0 1rem 0 1rem;
+    border-radius: 1.25rem;
+    border: solid 0.063rem colors.$secondary-cloud;
+
+
+    @include mixins.tablet {
+        height: 2.375rem;
+    }
+}

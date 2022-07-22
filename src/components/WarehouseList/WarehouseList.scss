@@ -1,0 +1,45 @@
+@use '../../styles/partials/mixins';
+@use '../../styles/partials/colors';
+
+
+.warehouse-list {
+    &__header {
+        @include mixins.tablet {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }   
+    }
+
+    &__headings {
+        display: none;
+        @include mixins.tablet {
+            display: flex;
+            gap: 1rem;
+        }
+    }
+}
+.warehouse-list-nav {
+    display: flex;
+    flex-direction: column;
+
+    &__button {
+        display: flex;
+        align-items: center;   
+        justify-content: center;
+        background-color: colors.$primary-indigo;
+
+        height: 2.25rem;
+        width: 100%;
+        padding: 0 1rem 0 1rem;
+        border-radius: 1.25rem;
+        border: none;
+        color: colors.$primary-white;
+    }
+
+    @include mixins.tablet {
+        flex-direction: row;
+
+        height: 2.375rem;
+    }
+}

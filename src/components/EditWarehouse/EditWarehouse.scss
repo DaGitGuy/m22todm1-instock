@@ -3,6 +3,9 @@
 @use '../../styles/partials/global';
 @use '../../styles/partials/mixins';
 
+// TODO: Error styling
+// TODO: fonts, typography, padding, breakpoints from partials
+
 .main-container {
   margin: -3rem 1.5rem 1.5rem 1.5rem;
   box-shadow: 0px 2px 5px colors.$secondary-slate;
@@ -17,7 +20,6 @@
 
 .main-heading {
   display: flex;
-  align-items:center;
   padding: 1rem;
   margin: 0;
 
@@ -25,20 +27,9 @@
     border-bottom: 1px solid colors.$secondary-cloud;
     padding: 1rem 2rem;
   }
-  &__nav-link {
-    margin-right: 1rem;
-    padding: 0;
-  }
-
-  &__nav-icon {
-    margin:0;
-    padding:0;
-    height:1.75rem;
-    width:auto;
-  }
 }
 
-.inventory-form {
+.warehouse-form {
   display: flex;
   flex-direction: column;
 
@@ -76,7 +67,7 @@
   &__label {
     display: block;
     color: colors.$primary-black;
-    margin: 0.5rem 0;
+    margin: .5rem 0;
   }
 
   &__input {
@@ -96,40 +87,9 @@
       outline: none;
     }
 
-    &--textarea {
-      height: 8rem;
-      font-size: 0.9rem;
-      word-wrap: break-word;
-      resize: vertical;
-    }
-
-    &--select {
-      background-color: colors.$primary-white;
-      cursor: pointer;
-    }
-
     &--invalid {
-      border-color: colors.$support-red;
+      border-color:colors.$support-red;
     }
-  }
-
-  &__radio {
-    display: flex;
-    flex-direction: row;
-    gap: 2rem;
-    padding: 0.5rem 0;
-  }
-
-  &__radio-label {
-    display: flex;
-    align-items: center;
-    font-size: 1rem;
-    line-height: 2rem;
-    cursor: pointer;
-  }
-
-  &__radio-button {
-    accent-color: colors.$primary-indigo;
   }
 
   &__error {

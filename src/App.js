@@ -14,6 +14,7 @@ import WarehouseDetails from './components/WarehouseDetails/WarehouseDetails';
 import AddNewWarehouse from './components/AddNewWarehouse/AddNewWarehouse';
 import AddNewInventory from './components/AddNewInventory/AddNewInventory';
 import EditWarehouse from './components/EditWarehouse/EditWarehouse';
+import InventoryList from './components/InventoryList/InventoryList';
 import './App.scss';
 
 const SERVER_URL =
@@ -58,7 +59,7 @@ class App extends React.Component {
       <div>
         <Router>
           <Header />
-          {/* <WarehouseDetails/> */}
+          <InventoryList/>
           <Switch>
             <Route exact path='/'>
               <Redirect to='/warehouse' />
@@ -108,7 +109,7 @@ class App extends React.Component {
               }}
             />
 
-            {/* <Route
+            <Route
           path="/inventory"
           exact
           render={(routeProps) => {
@@ -119,7 +120,7 @@ class App extends React.Component {
               />
             );
           }}
-        /> */}
+        />
 
             <Route
               exact

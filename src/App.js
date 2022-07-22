@@ -22,7 +22,7 @@ class App extends React.Component {
 
   componentDidMount() {
     axios
-      .get("http://localhost:5050/warehouse")
+      .get("http://localhost:5050/warehouses")
       .then((res) => {
         this.setState({
           warehouseData: res.data,
@@ -33,7 +33,7 @@ class App extends React.Component {
       });
 
     axios
-      .get("http://localhost:5050/inventory")
+      .get("http://localhost:5050/inventories")
       .then((res) => {
         this.setState({
           inventoryData: res.data,
@@ -86,12 +86,12 @@ class App extends React.Component {
         /> */}
 
             <Route
-              path="/warehouse/edit"
+              path="/warehouse/:id/edit"
               render={(routeProps) => {
                 return (
                   <EditWarehouse
                     {...routeProps}
-                    warehouseData={this.state.warehouseData}
+                    // warehouseData={this.state.warehouseData}
                   />
                 );
               }}

@@ -4,109 +4,137 @@ import "./EditWarehouse.scss";
 import backArrow from "../../assets/icons/arrow_back-24px.svg";
 import errorIcon from "../../assets/icons/error-24px.svg";
 
-class EditWarehouse extends Component {
-  state = {
-    warehouseName: "",
-    address: "",
-    city: "",
-    country: "",
-    name: "",
-    position: "",
-    phone: "",
-    email: "",
-    touched: {
-      warehouseName: false,
-      address: false,
-      city: false,
-      country: false,
-      name: false,
-      position: false,
-      phone: false,
-      email: false,
-    },
-  };
+class EditWarehouse extends React.Component {
+  componentDidMount() {
+    axios
+      .get(`http://localhost:5050/warehouses/${this.props.match.params.id}`)
+      .then((res) => {
+        const warehouse = res.data;
+        // console.log(warehouse);
+        this.setState({
+          warehouseId: warehouse.id,
+          warehouseName: warehouse.name,
+          address: warehouse.address,
+          city: warehouse.city,
+          country: warehouse.country,
+          name: warehouse.contact.name,
+          position: warehouse.contact.position,
+          phone: warehouse.contact.phone,
+          email: warehouse.contact.email,
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
 
-  handleUserInput = (e) => {
-    this.setState({ [e.target.name]: e.target.value });
-  };
+  handleSubmit = (e) => {
+    e.preventDefault();
 
-  // Mark inputs as 'touched' after user has accessed them
-  // Form error notifications only activated for 'touched' items
-  handleBlur = (e) => {
-    let touchedInput = e.target.name;
-    let touchedStates = { ...this.state.touched };
-    touchedStates[touchedInput] = true;
-    this.setState({ touched: touchedStates });
-  };
-
-  // TODO better validation rule
-  isPhoneValid = () => {
-    const phonePattern = new RegExp("^[0-9]{3}[-][0-9]{3}[-][0-9]{4}$");
-    const phoneNum = this.state.phone;
-
-    if (phonePattern.test(phoneNum)) {
-      return true;
-    }
-    return false;
-  };
-
-  // TODO better validation rule
-  isEmailValid = () => {
-    if (this.state.email.includes("@")) {
-      return true;
-    }
-    return false;
-  };
-
-  isFormValid = () => {
     if (
-      !this.state.warehouseName ||
-      !this.state.address ||
-      !this.state.city ||
-      !this.state.country ||
-      !this.state.name ||
-      !this.state.position ||
-      !this.state.phone ||
-      !this.state.email
+      this.state.warehouseName === "" ||
+      this.state.address === "" ||
+      this.state.city === "" ||
+      this.state.country === "" ||
+      this.state.name === "" ||
+      this.state.position === "" ||
+      this.state.phone === "" ||
+      this.state.email === ""
     ) {
-      return false;
+      alert("Please fill out all fields");
+    } else {
+      axios
+        .put(`http://localhost:5050/warehouses/${this.props.match.params.id}`, {
+          name: this.state.warehouseName,
+          address: this.state.address,
+          city: this.state.city,
+          country: this.state.country,
+          name: this.state.name,
+          position: this.state.position,
+          phone: this.state.phone,
+          email: this.state.email,
+        })
+        .then((res) => {
+          console.log(res);
+          alert("Warehouse updated successfully");
+          this.props.history.push(
+            `/warehouse/warehouse/${this.props.match.params.id}`
+          );
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     }
-
-    if (!this.isPhoneValid()) {
-      return false;
-    }
-
-    if (!this.isEmailValid()) {
-      return false;
-    }
-
-    return true;
   };
 
-  handleCancel = () => {
-    this.setState({
-      warehouseName: "",
-      address: "",
-      city: "",
-      country: "",
-      name: "",
-      position: "",
-      phone: "",
-      email: "",
-      touched: {
-        warehouseName: false,
-        address: false,
-        city: false,
-        country: false,
-        name: false,
-        position: false,
-        phone: false,
-        email: false,
-      },
-    });
+  //   isFormValid = () => {
+  //     if (
+  //       !this.state.warehouseName ||
+  //       !this.state.address ||
+  //       !this.state.city ||
+  //       !this.state.country ||
+  //       !this.state.name ||
+  //       !this.state.position ||
+  //       !this.state.phone ||
+  //       !this.state.email
+  //     ) {
+  //       return false;
+  //     }
+
+  //     if (!this.isPhoneValid()) {
+  //       return false;
+  //     }
+
+  //     if (!this.isEmailValid()) {
+  //       return false;
+  //     }
+
+  //     return true;
+  //   };
+
+  handleNameOnChange = (e) => {
+    this.setState({ warehouseName: e.target.value });
+  };
+
+  handleAddressOnChange = (e) => {
+    this.setState({ warehouseAddress: e.target.value });
+  };
+
+  handleCityOnChange = (e) => {
+    this.setState({ warehouseCity: e.target.value });
+  };
+
+  handleCountryOnChange = (e) => {
+    this.setState({ warehouseCountry: e.target.value });
+  };
+
+  handleContactNameOnChange = (e) => {
+    this.setState({ warehouseContactName: e.target.value });
+  };
+
+  handleContactPositionOnChange = (e) => {
+    this.setState({ warehouseContactPosition: e.target.value });
+  };
+
+  handleContactPhoneOnChange = (e) => {
+    this.setState({ warehouseContactPhone: e.target.value });
+  };
+
+  handleContactEmailOnChange = (e) => {
+    this.setState({ warehouseContactEmail: e.target.value });
+  };
+
+  handleOnCancel = (e) => {
+    e.preventDefault();
+    this.props.history.goBack();
   };
 
   render() {
+    if (!this.state) {
+      return <h1>Loading...</h1>;
+    }
+    console.log(this.state);
+
     return (
       <div className="main-container">
         <div className="main-heading">
@@ -131,10 +159,9 @@ class EditWarehouse extends Component {
                     : " warehouse-form__input warehouse-form__input--invalid"
                 }
                 name="warehouseName"
-                placeholder="Warehouse Name"
                 value={this.state.warehouseName}
-                onChange={this.handleUserInput}
-                onBlur={this.handleBlur}
+                onChange={this.handleNameOnChange}
+                // onBlur={this.handleBlur}
               />
               {!this.state.warehouseName && this.state.touched.warehouseName && (
                 <span className="warehouse-form__error">
@@ -156,9 +183,8 @@ class EditWarehouse extends Component {
                 }
                 name="address"
                 value={this.state.address}
-                placeholder="Street Address"
-                onChange={this.handleUserInput}
-                onBlur={this.handleBlur}
+                onChange={this.handleAddressOnChange}
+                // onBlur={this.handleBlur}
               />
               {!this.state.address && this.state.touched.address && (
                 <span className="warehouse-form__error">
@@ -180,9 +206,8 @@ class EditWarehouse extends Component {
                 }
                 name="city"
                 value={this.state.city}
-                placeholder="City"
-                onChange={this.handleUserInput}
-                onBlur={this.handleBlur}
+                onChange={this.handleCityOnChange}
+                // onBlur={this.handleBlur}
               />
               {!this.state.city && this.state.touched.city && (
                 <span className="warehouse-form__error">
@@ -205,8 +230,8 @@ class EditWarehouse extends Component {
                 name="country"
                 placeholder="Country"
                 value={this.state.country}
-                onChange={this.handleUserInput}
-                onBlur={this.handleBlur}
+                onChange={this.handleCountryOnChange}
+                // onBlur={this.handleBlur}
               />
               {!this.state.country && this.state.touched.country && (
                 <span className="warehouse-form__error">
@@ -230,10 +255,10 @@ class EditWarehouse extends Component {
                     : " warehouse-form__input warehouse-form__input--invalid"
                 }
                 name="name"
-                value={this.state.name}
+                // value={this.state.name}
                 placeholder="Contact Name"
-                onChange={this.handleUserInput}
-                onBlur={this.handleBlur}
+                onChange={this.handleContactNameOnChange}
+                // onBlur={this.handleBlur}
               />
               {!this.state.name && this.state.touched.name && (
                 <span className="warehouse-form__error">
@@ -254,10 +279,10 @@ class EditWarehouse extends Component {
                     : " warehouse-form__input warehouse-form__input--invalid"
                 }
                 name="position"
-                value={this.state.position}
+                // value={this.state.position}
                 placeholder="Position"
-                onChange={this.handleUserInput}
-                onBlur={this.handleBlur}
+                onChange={this.handleContactPositionOnChange}
+                // onBlur={this.handleBlur}
               />
               {!this.state.position && this.state.touched.position && (
                 <span className="warehouse-form__error">
@@ -272,69 +297,60 @@ class EditWarehouse extends Component {
             <label className="warehouse-form__label" htmlFor="phone">
               Phone Number
               <input
-                className={
-                  !this.state.touched.phone ||
-                  (this.isPhoneValid() && this.state.phone)
-                    ? "warehouse-form__input"
-                    : " warehouse-form__input warehouse-form__input--invalid"
-                }
+                // className={
+                //   !this.state.touched.phone || this.state.phone
+                //     ? "warehouse-form__input"
+                //     : " warehouse-form__input warehouse-form__input--invalid"
+                // }
                 name="phone"
                 value={this.state.phone}
                 placeholder="Phone Number"
                 type="tel"
-                onChange={this.handleUserInput}
-                onBlur={this.handleBlur}
+                onChange={this.handleContactPhoneOnChange}
+                // onBlur={this.handleBlur}
               />
-              {!this.state.phone && this.state.touched.phone && (
-                <span className="warehouse-form__error">
-                  <img className="warehouse-form__error-icon" src={errorIcon} />
-                  <p className="warehouse-form__error-message">
-                    This field is required
-                  </p>
-                </span>
-              )}
-              {this.state.touched.phone && !this.isPhoneValid() && (
-                <span className="warehouse-form__error">
-                  <img className="warehouse-form__error-icon" src={errorIcon} />
-                  <p className="warehouse-form__error-message">
-                    Phone number must follow XXX-XXX-XXXX format
-                  </p>
-                </span>
-              )}
+              <span className="warehouse-form__error">
+                <img className="warehouse-form__error-icon" src={errorIcon} />
+                <p className="warehouse-form__error-message">
+                  This field is required
+                </p>
+              </span>
+              <span className="warehouse-form__error">
+                <img className="warehouse-form__error-icon" src={errorIcon} />
+                <p className="warehouse-form__error-message">
+                  Phone number must follow XXX-XXX-XXXX format
+                </p>
+              </span>
             </label>
 
             <label className="warehouse-form__label" htmlFor="email">
               Email
               <input
-                className={
-                  !this.state.touched.email ||
-                  (this.isEmailValid() && this.state.email)
-                    ? "warehouse-form__input"
-                    : "warehouse-form__input warehouse-form__input--invalid"
-                }
+                // className={
+                //   !this.state.touched.email ||
+                //   (this.isEmailValid() && this.state.email)
+                //     ? "warehouse-form__input"
+                //     : "warehouse-form__input warehouse-form__input--invalid"
+                // }
                 name="email"
-                value={this.state.email}
+                // value={this.state.email}
                 placeholder="Email"
                 type="email"
-                onChange={this.handleUserInput}
-                onBlur={this.handleBlur}
+                // onChange={this.handleUserInput}
+                // onBlur={this.handleBlur}
               />
-              {this.state.touched.email && !this.state.email && (
-                <span className="warehouse-form__error">
-                  <img className="warehouse-form__error-icon" src={errorIcon} />
-                  <p className="warehouse-form__error-message">
-                    This field is required
-                  </p>
-                </span>
-              )}
-              {this.state.touched.email && !this.isEmailValid() && (
-                <span className="warehouse-form__error">
-                  <img className="warehouse-form__error-icon" src={errorIcon} />
-                  <p className="warehouse-form__error-message">
-                    Email address must include an @ sign
-                  </p>
-                </span>
-              )}
+              <span className="warehouse-form__error">
+                <img className="warehouse-form__error-icon" src={errorIcon} />
+                <p className="warehouse-form__error-message">
+                  This field is required
+                </p>
+              </span>
+              <span className="warehouse-form__error">
+                <img className="warehouse-form__error-icon" src={errorIcon} />
+                <p className="warehouse-form__error-message">
+                  Email address must include an @ sign
+                </p>
+              </span>
             </label>
           </fieldset>
 
@@ -342,7 +358,7 @@ class EditWarehouse extends Component {
             {/* CTA button first in HTML for keyboarding order, reversed visually with flex:row-reverse */}
             <button
               className="warehouse-form__button warehouse-form__button--CTA"
-              disabled={!this.isFormValid()}
+              //   disabled={!this.isFormValid()}
             >
               + Add Warehouse
             </button>
@@ -350,7 +366,7 @@ class EditWarehouse extends Component {
             <button
               className=" warehouse-form__button warehouse-form__button--cancel"
               type="reset"
-              onClick={this.handleCancel}
+              //   onClick={this.handleCancel}
             >
               Cancel
             </button>

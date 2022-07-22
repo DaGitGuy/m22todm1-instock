@@ -59,7 +59,7 @@ class App extends React.Component {
       <div>
         <Router>
           <Header />
-          <DeleteItemModal />
+          {/* <DeleteItemModal /> */}
           <Switch>
             <Route exact path="/">
               <Redirect to="/warehouse" />

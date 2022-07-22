@@ -11,7 +11,7 @@ const SERVER_URL =
 class EditInventory extends Component {
   componentDidMount() {
     axios
-      .get(`http://localhost:8080/inventories/${this.props.match.params.id}`)
+      .get(`${SERVER_URL}/inventories/${this.props.match.params.id}`)
       .then((res) => {
         const item = res.data;
         this.setState({
@@ -36,8 +36,8 @@ class EditInventory extends Component {
       });
   }
 
-  handleChangeName = (e) => {
-    this.setState({ itemName: e.target.value });
+  handleChangeItem = (e) => {
+    this.setState({ item: e.target.value });
   };
 
   handleChangeDescription = (e) => {
@@ -45,10 +45,14 @@ class EditInventory extends Component {
   };
 
   handleChangeWarehouse = (e) => {
-    this.props.warehouseNames.forEach((warehouse) => {
-      if (warehouse.id === e.target.value) {
+    const warehouseNames = this.props.warehouseData.map((warehouse) => {
+      return { id: warehouse.id, name: warehouse.name };
+    });
+    console.log(warehouseNames);
+    warehouseNames.forEach((warehouse) => {
+      if (warehouse.name === e.target.value) {
         this.setState({
-          warehouseID: e.target.value,
+          warehouseId: warehouse.id,
           warehouseName: warehouse.name,
         });
       }
@@ -124,7 +128,7 @@ class EditInventory extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     if (
-      this.state.itemName === "" ||
+      this.state.item === "" ||
       this.state.description === "" ||
       this.state.quantity === ""
     ) {
@@ -136,7 +140,7 @@ class EditInventory extends Component {
         .put(`http://localhost:8080/inventory/${this.props.match.params.id}`, {
           warehouseID: this.state.warehouseID,
           warehouseName: this.state.warehouseName,
-          itemName: this.state.itemName,
+          itemName: this.state.item,
           description: this.state.description,
           category: this.state.category,
           status: this.state.status,
@@ -155,7 +159,7 @@ class EditInventory extends Component {
     if (!this.state) {
       return <h1>Loading...</h1>;
     }
-    console.log(this.props);
+    console.log(this.state);
     return (
       <div className="main-container">
         <div className="main-heading">
@@ -188,11 +192,10 @@ class EditInventory extends Component {
                     : " inventory-form__input inventory-form__input--invalid"
                 }
                 name="itemName"
-                placeholder="Item Name"
-                // value={this.state.inventoryName}
-                onChange={this.handleChangeName}
-                onBlur={this.handleBlur}
                 value={this.state.item}
+                placeholder="Item Name"
+                onChange={this.handleChangeItem}
+                onBlur={this.handleBlur}
               />
               {!this.state.itemName ||
                 (!this.state.touched.itemName && (
@@ -367,9 +370,9 @@ class EditInventory extends Component {
                     : " inventory-form__input inventory-form__input--select inventory-form__input--invalid"
                 }
                 name="warehouseName"
+                onBlur={this.handleBlur}
                 value={this.state.warehouseName}
                 onChange={this.handleChangeWarehouse}
-                onBlur={this.handleBlur}
               >
                 <option disabled value="">
                   Please select

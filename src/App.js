@@ -22,8 +22,9 @@ class App extends React.Component{
 
   componentDidMount() {
     axios
-      .get("http://localhost:5050/warehouse")
+      .get("http://localhost:5050/warehouses")
       .then((res) => {
+        console.log(res.data);
         this.setState({
           warehouseData: res.data,
         });
@@ -33,7 +34,7 @@ class App extends React.Component{
       });
 
     axios
-      .get("http://localhost:5050/inventory")
+      .get("http://localhost:5050/inventories")
       .then((res) => {
         this.setState({
           inventoryData: res.data,
@@ -48,7 +49,7 @@ render(){
     <div>
       <Router>
         <Header />
-        <WarehouseDetails/>
+        
         <Switch>
           <Route exact path='/'>
             <Redirect to='/warehouse' />

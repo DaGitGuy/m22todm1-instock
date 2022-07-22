@@ -53,7 +53,7 @@ class EditWarehouse extends React.Component {
       alert("Please fill out all fields");
     } else {
       axios
-        .put(`http://localhost:5050/warehouses/${this.props.match.params.id}`, {
+        .put(`http://localhost:8080/warehouses/${this.props.match.params.id}`, {
           name: this.state.warehouseName,
           address: this.state.address,
           city: this.state.city,

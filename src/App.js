@@ -7,11 +7,15 @@ import {
 } from 'react-router-dom';
 import axios from 'axios';
 
-import Footer from './components/Footer/Footer';
 import Header from './components/Header/Header';
+import Footer from './components/Footer/Footer';
+import WarehouseList from './components/WarehouseList/WarehouseList';
+import WarehouseDetails from './components/WarehouseDetails/WarehouseDetails';
 import AddNewWarehouse from './components/AddNewWarehouse/AddNewWarehouse';
 import AddNewInventory from './components/AddNewInventory/AddNewInventory';
 import './App.scss';
+
+const SERVER_URL = process.env.REACT_APP_SERVER_URL || process.env.REACT_APP_SERVER_URL_BACKUP;
 
 class App extends React.Component{
 
@@ -22,25 +26,25 @@ class App extends React.Component{
 
   componentDidMount() {
     axios
-      .get("http://localhost:5050/warehouse")
+      .get(`${SERVER_URL}/warehouses`)
       .then((res) => {
         this.setState({
           warehouseData: res.data,
         });
       })
       .catch((err) => {
-        console.log(err);
+        console.log("Couldn't fetch warehouses: ", err);
       });
 
     axios
-      .get("http://localhost:5050/inventory")
+      .get(`${SERVER_URL}/inventories`)
       .then((res) => {
         this.setState({
           inventoryData: res.data,
         });
       })
       .catch((err) => {
-        console.log(err);
+        console.log("Couldn't fetch inventories: ", err);
       });
   }
 render(){
@@ -48,12 +52,12 @@ render(){
     <div>
       <Router>
         <Header />
-        <WarehouseDetails/>
+        {/* <WarehouseDetails/> */}
         <Switch>
           <Route exact path='/'>
             <Redirect to='/warehouse' />
           </Route>
-          {/* <Route
+          <Route
           path="/warehouse"
           exact
           render={(routeProps) => {
@@ -64,7 +68,7 @@ render(){
               />
             );
           }}
-        /> */}
+        />
           <Route
             path='/warehouse/add'
             render={(routeProps) => {
@@ -72,7 +76,7 @@ render(){
             }}
           />
 
-          {/* <Route
+          <Route
           exact
           path="/warehouse/:id"
           render={(routeProps) => {
@@ -84,7 +88,7 @@ render(){
               />
             );
           }}
-        /> */}
+        />
 
           {/* <Route
           path="/warehouse/:id/edit"

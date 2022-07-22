@@ -127,8 +127,8 @@ class App extends React.Component {
                 return (
                   <AddNewInventory
                     {...routeProps}
-                    inventorylist={this.state.inventoryData}
-                    warehouselist={this.state.warehouseData}
+                    inventoryData={this.state.inventoryData}
+                    warehouseData={this.state.warehouseData}
                   />
                 );
               }}

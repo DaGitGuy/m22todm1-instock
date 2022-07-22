@@ -1,15 +1,18 @@
 import './WarehouseListItem.scss';
 import deleteIcon from '../../assets/icons/delete_outline-24px.svg';
 import editIcon from '../../assets/icons/edit-24px.svg';
+import { Link } from 'react-router-dom';
 
-const WarehouseListItem = ({ name, address, city, country, contact }) => {
+const WarehouseListItem = ({ id, name, address, city, country, contact }) => {
     return (
         <article className="warehouse-list-item">
             <div className="warehouse-info">
                 <div className="warehouse-info__name-address">
                     <div>
                         <h4>Warehouse</h4>
-                        <p>{name}</p>
+                        <Link to={`/warehouse/${id}`}>
+                            <p>{name}</p>
+                        </Link>
                     </div>
                     <div>
                         <h4>Address</h4>

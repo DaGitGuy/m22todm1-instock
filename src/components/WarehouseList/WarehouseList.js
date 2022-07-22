@@ -24,6 +24,7 @@ const WarehouseList = ({ warehouseData }) => {
         return (
           <WarehouseListItem 
             key={warehouse.id}
+            id={warehouse.id}
             name={warehouse.name}
             address={warehouse.address}
             city={warehouse.city}

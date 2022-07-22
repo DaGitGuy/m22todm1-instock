@@ -76,7 +76,7 @@ render(){
             }}
           />
 
-          {/* <Route
+          <Route
           exact
           path="/warehouse/:id"
           render={(routeProps) => {
@@ -88,7 +88,7 @@ render(){
               />
             );
           }}
-        /> */}
+        />
 
           {/* <Route
           path="/warehouse/:id/edit"

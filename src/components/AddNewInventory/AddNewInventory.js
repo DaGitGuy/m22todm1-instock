@@ -3,6 +3,10 @@ import axios from 'axios';
 import './AddNewInventory.scss';
 import backArrow from '../../assets/icons/arrow_back-24px.svg';
 import errorIcon from '../../assets/icons/error-24px.svg';
+import { Link, Redirect, useHistory } from 'react-router-dom';
+
+const SERVER_URL =
+process.env.REACT_APP_SERVER_URL || process.env.REACT_APP_SERVER_URL_BACKUP;
 
 class AddNewInventory extends Component {
   state = {
@@ -12,9 +16,6 @@ class AddNewInventory extends Component {
     status: 'Out of Stock',
     quantity: '0',
     warehouseName: '',
-    // TODO replace example data with props obtained from API
-    categoryList: ['Electronics', 'Clothing', 'Pharmacy'],
-    warehouseList: ['Montreal', 'Vancouver', 'Toronto'],
     touched: {
       itemName: false,
       description: false,
@@ -23,6 +24,32 @@ class AddNewInventory extends Component {
       quantity: false,
       warehouseName: false,
     },
+  };
+
+  // Retrieve list of unique categories from full list of inventory data
+  // then sort alphabetically
+  getCategories = () => {
+    const { inventoryData } = this.props;
+    const allCategories = [];
+    Array.from(inventoryData).map(({ category }) => {
+      allCategories.push(category);
+    });
+    const uniqueCategories = [...new Set(allCategories)];
+    const categoryList = uniqueCategories.sort();
+    return categoryList;
+  };
+
+  // Retrieve list of unique warehouse names from full list of warehouse data
+  // then sort alphabetically
+  getWarehouseList = () => {
+    const { warehouseData } = this.props;
+    const allWarehouseNames = [];
+    Array.from(warehouseData).map(({ name }) => {
+      allWarehouseNames.push(name);
+    });
+    const uniqueWarehouseNames = [...new Set(allWarehouseNames)];
+    const warehouseList = uniqueWarehouseNames.sort();
+    return warehouseList;
   };
 
   handleUserInput = (e) => {
@@ -65,7 +92,6 @@ class AddNewInventory extends Component {
       return false;
     }
 
-    // TODO extra validation calls
     if (!this.isQuantityValid()) {
       return false;
     }
@@ -75,7 +101,10 @@ class AddNewInventory extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
+    const { warehouseData } = this.props; 
+    const warehouse = Array.from(warehouseData).find((warehouse) => warehouse.name === this.state.warehouseName);
     const inventoryDetails = {
+      warehouseId: warehouse.id,
       itemName: this.state.itemName,
       description: this.state.description,
       category: this.state.category,
@@ -84,12 +113,12 @@ class AddNewInventory extends Component {
       warehouseName: this.state.warehouseName,
     };
     axios
-      .post('http://localhost:8080/inventories/add', inventoryDetails)
+      .post(`${SERVER_URL}/inventories/add`, inventoryDetails)
       .then(() => {
         e.target.reset();
-        // TODO success message
+        // TODO user-friendly success message
         alert('New item added!');
-        // TODO page redirect - to warehouse details?
+        this.props.history.push('/inventory');
       })
       .catch((err) => {
         console.log(err);
@@ -116,10 +145,22 @@ class AddNewInventory extends Component {
   };
 
   render() {
+    if (!this.props) {
+      return <h1>Loading...</h1>;
+    }
+
     return (
       <div className='main-container'>
         <div className='main-heading'>
-          <img src={backArrow} />
+          <Link to='/inventory' className='main-heading__nav-link'>
+            <img
+              className='main-heading__nav-icon'
+              src={backArrow}
+              alt='Go back to warehouse list'
+              role='link'
+              tabIndex='0'
+            />
+          </Link>
           <h1>Add New Inventory Item</h1>
         </div>
 
@@ -146,7 +187,11 @@ class AddNewInventory extends Component {
               />
               {!this.state.itemName && this.state.touched.itemName && (
                 <span className='inventory-form__error'>
-                  <img className='inventory-form__error-icon' src={errorIcon} />
+                  <img
+                    className='inventory-form__error-icon'
+                    src={errorIcon}
+                    alt='error'
+                  />
                   <p className='inventory-form__error-message'>
                     This field is required
                   </p>
@@ -170,7 +215,11 @@ class AddNewInventory extends Component {
               />
               {!this.state.description && this.state.touched.description && (
                 <span className='inventory-form__error'>
-                  <img className='inventory-form__error-icon' src={errorIcon} />
+                  <img
+                    className='inventory-form__error-icon'
+                    src={errorIcon}
+                    alt='error'
+                  />
                   <p className='inventory-form__error-message'>
                     This field is required
                   </p>
@@ -193,7 +242,7 @@ class AddNewInventory extends Component {
                 <option disabled value=''>
                   Please select
                 </option>
-                {this.state.categoryList.map((category, index) => (
+                {this.getCategories().map((category, index) => (
                   <option key={index} value={category}>
                     {category}
                   </option>
@@ -201,7 +250,11 @@ class AddNewInventory extends Component {
               </select>
               {!this.state.category && this.state.touched.category && (
                 <span className='inventory-form__error'>
-                  <img className='inventory-form__error-icon' src={errorIcon} />
+                  <img
+                    className='inventory-form__error-icon'
+                    src={errorIcon}
+                    alt='error'
+                  />
                   <p className='inventory-form__error-message'>
                     This field is required
                   </p>
@@ -267,6 +320,7 @@ class AddNewInventory extends Component {
                       <img
                         className='inventory-form__error-icon'
                         src={errorIcon}
+                        alt='error'
                       />
                       <p className='inventory-form__error-message'>
                         Quantity must be provided as a number.
@@ -281,6 +335,7 @@ class AddNewInventory extends Component {
                       <img
                         className='inventory-form__error-icon'
                         src={errorIcon}
+                        alt='error'
                       />
                       <p className='inventory-form__error-message'>
                         Please indicate quantity of items in stock or mark as
@@ -306,7 +361,7 @@ class AddNewInventory extends Component {
                 <option disabled value=''>
                   Please select
                 </option>
-                {this.state.warehouseList.map((warehouse, index) => (
+                {this.getWarehouseList().map((warehouse, index) => (
                   <option key={index} value={warehouse}>
                     {warehouse}
                   </option>
@@ -314,7 +369,11 @@ class AddNewInventory extends Component {
               </select>
               {!this.state.warehouseName && this.state.touched.warehouseName && (
                 <span className='inventory-form__error'>
-                  <img className='inventory-form__error-icon' src={errorIcon} />
+                  <img
+                    className='inventory-form__error-icon'
+                    src={errorIcon}
+                    alt='error'
+                  />
                   <p className='inventory-form__error-message'>
                     This field is required
                   </p>

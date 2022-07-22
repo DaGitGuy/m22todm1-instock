@@ -7,7 +7,7 @@ import errorIcon from "../../assets/icons/error-24px.svg";
 class EditWarehouse extends React.Component {
   componentDidMount() {
     axios
-      .get(`http://localhost:5050/warehouses/${this.props.match.params.id}`)
+      .get(`http://localhost:8080/warehouses/${this.props.match.params.id}`)
       .then((res) => {
         const warehouse = res.data;
         this.setState({

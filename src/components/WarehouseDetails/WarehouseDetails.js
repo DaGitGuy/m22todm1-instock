@@ -13,7 +13,8 @@ function WarehouseDetails( { warehouseData, inventoryData }) {
             <section className='details__title-box' >
                 <div className='details__title-row1' >
                     <img src={arrowBack} />
-                    <h2 className='details__title' >{warehouseData.name}</h2>
+                    {/* <h2 className='details__title' >{warehouseData.name}</h2> */}
+                    <h2 className='details__title' >Washington</h2>
                 </div>
               
                 <div className='details__title-row2' >
@@ -24,20 +25,26 @@ function WarehouseDetails( { warehouseData, inventoryData }) {
             <article className='details__address' >
                 <section className='details__address-box' >
                     <p className='details__address-title' >WAREHOUSE ADDRESS:</p>
-                    <p className='details__address-location' >{`${warehouseData.address}, ${warehouseData.city}, ${warehouseData.country}`}</p>
+                    {/* <p className='details__address-location' >{`${warehouseData.address}, ${warehouseData.city}, ${warehouseData.country}`}</p> */}
+                    <p className='details__address-location' > 33 Pearl Street SW, Washington, USA</p>
                 </section>
 
                 <article className='details__manager'>
                     <section className='details__manager-box' >
                         <p className='details__manager-contact' >CONTACT NAME:</p>
-                        <p className='details__manager-name' >{warehouseData.contact.name}</p>
-                        <p className='details__manager-title' >{warehouseData.contact.position}</p>
+                        {/* <p className='details__manager-name' >{warehouseData.contact.name}</p> */}
+                        <p className='details__manager-name' > Graeme Lyon</p>
+                        {/* <p className='details__manager-title' >{warehouseData.contact.position}</p> */}
+                        <p className='details__manager-title' > Warehouse Manager</p>
+
                     </section>
 
                     <section className='details__contact' >
                         <p className='details__contact-info' >CONTACT INFORMATION:</p>
-                        <p className='details__contact-number' >{warehouseData.contact.phone}</p>
-                        <p className='details__contact-email' >{warehouseData.contact.email}</p>
+                        {/* <p className='details__contact-number' >{warehouseData.contact.phone}</p> */}
+                        <p className='details__contact-number' > +1(647) 504-0911</p>
+                        {/* <p className='details__contact-email' >{warehouseData.contact.email}</p> */}
+                        <p className='details__contact-email' >glyon@instock.com</p>
                     </section>
                 </article>
 

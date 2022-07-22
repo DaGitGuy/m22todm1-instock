@@ -13,6 +13,7 @@ import WarehouseList from './components/WarehouseList/WarehouseList';
 import WarehouseDetails from './components/WarehouseDetails/WarehouseDetails';
 import AddNewWarehouse from './components/AddNewWarehouse/AddNewWarehouse';
 import AddNewInventory from './components/AddNewInventory/AddNewInventory';
+import EditWarehouse from './components/EditWarehouse/EditWarehouse';
 import './App.scss';
 
 const SERVER_URL =
@@ -94,17 +95,18 @@ class App extends React.Component {
               }}
             />
 
-            {/* <Route
-          path="/warehouse/:id/edit"
-          render={(routeProps) => {
-            return (
-              <EditWarehouse
-                {...routeProps}
-                warehouseData={this.state.warehouseData}
-              />
-            );
-          }}
-        /> */}
+            <Route
+              path='/warehouse/:id/edit'
+              render={(routeProps) => {
+                return (
+                  <EditWarehouse
+                    {...routeProps}
+                    // warehouseData={this.state.warehouseData}
+                  />
+                );
+              }}
+            />
+
             {/* <Route
           path="/inventory"
           exact
@@ -121,13 +123,15 @@ class App extends React.Component {
             <Route
               exact
               path='/inventory/add'
-              render={(routeProps) => (
-                <AddNewInventory
-                  {...routeProps}
-                  inventoryData={this.state.inventoryData}
-                  warehouseData={this.state.warehouseData}
-                />
-              )}
+              render={(routeProps) => {
+                return (
+                  <AddNewInventory
+                    {...routeProps}
+                    inventorylist={this.state.inventoryData}
+                    warehouselist={this.state.warehouseData}
+                  />
+                );
+              }}
             />
 
             {/* <Route

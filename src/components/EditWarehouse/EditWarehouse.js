@@ -21,6 +21,16 @@ class EditWarehouse extends React.Component {
           position: warehouse.contact.position,
           phone: warehouse.contact.phone,
           email: warehouse.contact.email,
+          touched: {
+            warehouseName: false,
+            address: false,
+            city: false,
+            country: false,
+            name: false,
+            position: false,
+            phone: false,
+            email: false,
+          },
         });
       })
       .catch((err) => {
@@ -67,30 +77,30 @@ class EditWarehouse extends React.Component {
     }
   };
 
-  //   isFormValid = () => {
-  //     if (
-  //       !this.state.warehouseName ||
-  //       !this.state.address ||
-  //       !this.state.city ||
-  //       !this.state.country ||
-  //       !this.state.name ||
-  //       !this.state.position ||
-  //       !this.state.phone ||
-  //       !this.state.email
-  //     ) {
-  //       return false;
-  //     }
+  isFormValid = () => {
+    if (
+      !this.state.warehouseName ||
+      !this.state.address ||
+      !this.state.city ||
+      !this.state.country ||
+      !this.state.name ||
+      !this.state.position ||
+      !this.state.phone ||
+      !this.state.email
+    ) {
+      return false;
+    }
 
-  //     if (!this.isPhoneValid()) {
-  //       return false;
-  //     }
+    if (!this.isPhoneValid()) {
+      return false;
+    }
 
-  //     if (!this.isEmailValid()) {
-  //       return false;
-  //     }
+    if (!this.isEmailValid()) {
+      return false;
+    }
 
-  //     return true;
-  //   };
+    return true;
+  };
 
   handleNameOnChange = (e) => {
     this.setState({ warehouseName: e.target.value });
@@ -133,7 +143,7 @@ class EditWarehouse extends React.Component {
     if (!this.state) {
       return <h1>Loading...</h1>;
     }
-    console.log(this.state);
+    // console.log(this.state);
 
     return (
       <div className="main-container">
@@ -297,41 +307,44 @@ class EditWarehouse extends React.Component {
             <label className="warehouse-form__label" htmlFor="phone">
               Phone Number
               <input
-                // className={
-                //   !this.state.touched.phone || this.state.phone
-                //     ? "warehouse-form__input"
-                //     : " warehouse-form__input warehouse-form__input--invalid"
-                // }
+                className={
+                  this.state.phone || !this.state.touched.phone
+                    ? "warehouse-form__input"
+                    : " warehouse-form__input warehouse-form__input--invalid"
+                }
                 name="phone"
-                value={this.state.phone}
+                // value={this.state.phone}
                 placeholder="Phone Number"
                 type="tel"
                 onChange={this.handleContactPhoneOnChange}
                 // onBlur={this.handleBlur}
               />
-              <span className="warehouse-form__error">
-                <img className="warehouse-form__error-icon" src={errorIcon} />
-                <p className="warehouse-form__error-message">
-                  This field is required
-                </p>
-              </span>
-              <span className="warehouse-form__error">
-                <img className="warehouse-form__error-icon" src={errorIcon} />
-                <p className="warehouse-form__error-message">
-                  Phone number must follow XXX-XXX-XXXX format
-                </p>
-              </span>
+              {!this.state.phone && this.state.touched.phone && (
+                <span className="warehouse-form__error">
+                  <img className="warehouse-form__error-icon" src={errorIcon} />
+                  <p className="warehouse-form__error-message">
+                    This field is required
+                  </p>
+                </span>
+              )}
+              {!this.state.phone && !this.isPhoneValid() && (
+                <span className="warehouse-form__error">
+                  <img className="warehouse-form__error-icon" src={errorIcon} />
+                  <p className="warehouse-form__error-message">
+                    Phone number must follow XXX-XXX-XXXX format
+                  </p>
+                </span>
+              )}
             </label>
 
             <label className="warehouse-form__label" htmlFor="email">
               Email
               <input
-                // className={
-                //   !this.state.touched.email ||
-                //   (this.isEmailValid() && this.state.email)
-                //     ? "warehouse-form__input"
-                //     : "warehouse-form__input warehouse-form__input--invalid"
-                // }
+                className={
+                  !this.state.email || !this.state.touched.email
+                    ? "warehouse-form__input"
+                    : "warehouse-form__input warehouse-form__input--invalid"
+                }
                 name="email"
                 // value={this.state.email}
                 placeholder="Email"
@@ -339,18 +352,22 @@ class EditWarehouse extends React.Component {
                 // onChange={this.handleUserInput}
                 // onBlur={this.handleBlur}
               />
-              <span className="warehouse-form__error">
-                <img className="warehouse-form__error-icon" src={errorIcon} />
-                <p className="warehouse-form__error-message">
-                  This field is required
-                </p>
-              </span>
-              <span className="warehouse-form__error">
-                <img className="warehouse-form__error-icon" src={errorIcon} />
-                <p className="warehouse-form__error-message">
-                  Email address must include an @ sign
-                </p>
-              </span>
+              {!this.state.email && this.state.touched.email && (
+                <span className="warehouse-form__error">
+                  <img className="warehouse-form__error-icon" src={errorIcon} />
+                  <p className="warehouse-form__error-message">
+                    This field is required
+                  </p>
+                </span>
+              )}
+              {!this.state.email && !this.isEmailValid() && (
+                <span className="warehouse-form__error">
+                  <img className="warehouse-form__error-icon" src={errorIcon} />
+                  <p className="warehouse-form__error-message">
+                    Email address must include an @ sign
+                  </p>
+                </span>
+              )}
             </label>
           </fieldset>
 

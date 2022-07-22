@@ -36,6 +36,44 @@ class EditInventory extends Component {
       });
   }
 
+  handleChangeName = (e) => {
+    this.setState({ itemName: e.target.value });
+  };
+
+  handleChangeDescription = (e) => {
+    this.setState({ description: e.target.value });
+  };
+
+  handleChangeWarehouse = (e) => {
+    this.props.warehouseNames.forEach((warehouse) => {
+      if (warehouse.id === e.target.value) {
+        this.setState({
+          warehouseID: e.target.value,
+          warehouseName: warehouse.name,
+        });
+      }
+    });
+  };
+
+  handleChangeCategory = (e) => {
+    this.setState({ category: e.target.value });
+  };
+
+  handleChangeStatus = (e) => {
+    if (e.target.value === "Out of Stock") {
+      this.setState({
+        status: e.target.value,
+        quantity: 0,
+      });
+    } else {
+      this.setState({ status: e.target.value });
+    }
+  };
+
+  handleChangeQuantity = (e) => {
+    this.setState({ quantity: e.target.value });
+  };
+
   // Retrieve list of unique categories from full list of inventory data
   // then sort alphabetically
   getCategories = () => {
@@ -62,14 +100,6 @@ class EditInventory extends Component {
     return warehouseList;
   };
 
-  handleUserInput = (e) => {
-    this.setState({ [e.target.name]: e.target.value });
-    // if item is marked as out of stock, set quantity to 0
-    if (e.target.name === "status" && e.target.value === "Out of Stock") {
-      this.setState({ quantity: "0" });
-    }
-  };
-
   // Mark inputs as 'touched' after user has accessed them
   // Form error notifications only activated for 'touched' items
   handleBlur = (e) => {
@@ -88,24 +118,6 @@ class EditInventory extends Component {
     ) {
       return false;
     }
-    return true;
-  };
-
-  isFormValid = () => {
-    if (
-      !this.state.itemName ||
-      !this.state.description ||
-      !this.state.category ||
-      !this.state.quantity ||
-      !this.state.warehouseName
-    ) {
-      return false;
-    }
-
-    if (!this.isQuantityValid()) {
-      return false;
-    }
-
     return true;
   };
 
@@ -178,7 +190,7 @@ class EditInventory extends Component {
                 name="itemName"
                 placeholder="Item Name"
                 // value={this.state.inventoryName}
-                onChange={this.handleUserInput}
+                onChange={this.handleChangeName}
                 onBlur={this.handleBlur}
                 value={this.state.item}
               />
@@ -208,7 +220,7 @@ class EditInventory extends Component {
                 name="description"
                 value={this.state.description}
                 placeholder="Please enter a brief item description..."
-                onChange={this.handleUserInput}
+                onChange={this.handleChangeDescription}
                 onBlur={this.handleBlur}
               />
               {!this.state.description && this.state.touched.description && (
@@ -234,7 +246,7 @@ class EditInventory extends Component {
                     : " inventory-form__input inventory-form__input--select inventory-form__input--invalid"
                 }
                 name="category"
-                onChange={this.handleUserInput}
+                onChange={this.handleChangeCategory}
                 onBlur={this.handleBlur}
                 value={this.state.category}
               >
@@ -275,7 +287,7 @@ class EditInventory extends Component {
                     name="status"
                     checked={this.state.status === "In Stock"}
                     value="In Stock"
-                    onChange={this.handleUserInput}
+                    onChange={this.handleChangeStatus}
                   />
                   In Stock
                 </label>
@@ -287,7 +299,7 @@ class EditInventory extends Component {
                     name="status"
                     checked={this.state.status === "Out of Stock"}
                     value="Out of Stock"
-                    onChange={this.handleUserInput}
+                    onChange={this.handleChangeStatus}
                   />
                   Out of Stock
                 </label>
@@ -310,7 +322,7 @@ class EditInventory extends Component {
                   value={this.state.quantity}
                   placeholder="0"
                   disabled={"" === "Out of Stock"}
-                  onChange={this.handleUserInput}
+                  onChange={this.handleChangeQuantity}
                   onBlur={this.handleBlur}
                 />
                 {/* After quantity has been modified, error message is displayed if the provided value is not a number */}
@@ -356,7 +368,7 @@ class EditInventory extends Component {
                 }
                 name="warehouseName"
                 value={this.state.warehouseName}
-                onChange={this.handleUserInput}
+                onChange={this.handleChangeWarehouse}
                 onBlur={this.handleBlur}
               >
                 <option disabled value="">
@@ -385,13 +397,9 @@ class EditInventory extends Component {
 
           <div className="inventory-form__button-wrapper">
             {/* CTA button first in HTML for keyboarding order, reversed visually with flex:row-reverse */}
-            <button
-              className="inventory-form__button inventory-form__button--CTA"
-              //   disabled={!this.isFormValid()}
-            >
-              + Add Item
+            <button className="inventory-form__button inventory-form__button--CTA">
+              Save
             </button>
-            {/*  TODO check on expected behavior of cancel button: clear form or close form?  */}
             <Link to="/inventory">
               <button className=" inventory-form__button inventory-form__button--cancel">
                 Cancel

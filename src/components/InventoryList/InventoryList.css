@@ -1,0 +1,140 @@
+/*Primary Colors */
+/* Secondary Colors */
+/* Background colors */
+/* Supporting colors */
+@font-face {
+  font-family: "Titillium Web";
+  src: url("../../assets/fonts/TitilliumWeb-Regular.ttf");
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Titillium Web Bold";
+  src: url("../../assets/fonts/TitilliumWeb-SemiBold.ttf");
+  font-weight: 600;
+  font-style: normal;
+}
+/*Global Styles*/
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Titillium Web";
+}
+
+.inventory-list {
+  margin: 1rem;
+  border: 0.01rem solid #FFFFFF;
+  box-shadow: 0px 2px 5px rgba(19, 24, 44, 0.1);
+  background-color: #FFFFFF;
+  z-index: 1;
+  position: relative;
+  bottom: 4rem;
+  border-radius: 0.25rem;
+}
+@media (min-width: 48rem) {
+  .inventory-list {
+    margin: 1rem 2rem 2rem 2rem;
+  }
+}
+@media (min-width: 80rem) {
+  .inventory-list {
+    margin: 1rem 6rem 6rem 6rem;
+  }
+}
+.inventory-list__header {
+  border-bottom: 0.01rem solid #BDC5D5;
+}
+@media (min-width: 48rem) {
+  .inventory-list__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+  }
+}
+.inventory-list__title {
+  padding-left: 1rem;
+  font-size: 1.75rem;
+}
+@media (min-width: 48rem) {
+  .inventory-list__title {
+    font-size: 2rem;
+  }
+}
+.inventory-list .inventory-list-nav {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem;
+}
+@media (min-width: 48rem) {
+  .inventory-list .inventory-list-nav {
+    justify-content: center;
+    align-items: center;
+  }
+}
+.inventory-list .inventory-list-nav__button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #2E66E5;
+  margin: 1rem 0;
+  height: 2.25rem;
+  width: 100%;
+  padding: 0 1rem 0 1rem;
+  border-radius: 1.25rem;
+  border: none;
+  color: #FFFFFF;
+}
+@media (min-width: 48rem) {
+  .inventory-list .inventory-list-nav__button {
+    margin: 1rem;
+  }
+}
+@media (min-width: 48rem) {
+  .inventory-list .inventory-list-nav {
+    flex-direction: row;
+    height: 2.375rem;
+  }
+}
+.inventory-list__headings {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+@media (min-width: 48rem) {
+  .inventory-list__headings {
+    flex-wrap: nowrap;
+    justify-content: center;
+    background-color: rgba(247, 248, 249, 0.7);
+  }
+}
+@media (min-width: 80rem) {
+  .inventory-list__headings {
+    justify-content: space-around;
+  }
+}
+.inventory-list__header-box {
+  padding-left: 1rem;
+}
+@media (min-width: 48rem) {
+  .inventory-list__header-box {
+    display: flex;
+    justify-content: center;
+  }
+}
+.inventory-list__header-title {
+  font-size: 0.6875rem;
+  color: #5C667E;
+  font-weight: bold;
+}
+@media (min-width: 48rem) {
+  .inventory-list__header-title {
+    padding: 0.5rem;
+    font-size: 0.75rem;
+  }
+}/*# sourceMappingURL=InventoryList.css.map */

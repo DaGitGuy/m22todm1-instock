@@ -1,0 +1,53 @@
+/*Primary Colors */
+/* Secondary Colors */
+/* Background colors */
+/* Supporting colors */
+@media (min-width: 48rem) {
+  .warehouse-list-item {
+    display: flex;
+  }
+}
+
+.warehouse-info {
+  display: flex;
+}
+@media (min-width: 48rem) {
+  .warehouse-info__name-address h4 {
+    display: none;
+  }
+}
+@media (min-width: 48rem) {
+  .warehouse-info__name-address p {
+    max-width: 114px;
+  }
+}
+@media (min-width: 48rem) {
+  .warehouse-info__name-address {
+    display: flex;
+    gap: 1rem;
+    margin-right: 1rem;
+  }
+}
+@media (min-width: 48rem) {
+  .warehouse-info__contacts h4 {
+    display: none;
+  }
+}
+@media (min-width: 48rem) {
+  .warehouse-info__contacts {
+    display: flex;
+    gap: 1rem;
+  }
+}
+
+.warehouse-actions {
+  display: flex;
+  justify-content: space-between;
+}
+@media (min-width: 48rem) {
+  .warehouse-actions img {
+    width: 100%;
+    max-width: 30px;
+    height: auto;
+  }
+}/*# sourceMappingURL=WarehouseListItem.css.map */

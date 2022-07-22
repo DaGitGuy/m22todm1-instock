@@ -3,6 +3,10 @@ import sortArrow from "../../assets/icons/sort-24px.svg";
 import "./InventoryList.scss";
 
 const InventoryList = ({inventoryData}) => {
+
+    if (!inventoryData) {
+        return <h1>Loading...</h1>;
+      }
     console.log(inventoryData)
     return (
         <main className="inventory-list">
@@ -43,6 +47,10 @@ const InventoryList = ({inventoryData}) => {
                 </div>
             </article>
         </main>
+
+        // {
+        //     //InventoryListitem willw go here
+        // }
     )
 }
 

@@ -60,7 +60,8 @@ class App extends React.Component {
       <div>
         <Router>
           <Header />
-          <DeleteItemModal />
+
+          {/* <DeleteItemModal /> */}
           <Switch>
             <Route exact path='/'>
               <Redirect to='/warehouse' />
@@ -104,24 +105,24 @@ class App extends React.Component {
                 return (
                   <EditWarehouse
                     {...routeProps}
-                    // warehouseData={this.state.warehouseData}
+                  // warehouseData={this.state.warehouseData}
                   />
                 );
               }}
             />
 
             <Route
-          path="/inventory"
-          exact
-          render={(routeProps) => {
-            return (
-              <InventoryList
-                {...routeProps}
-                inventoryList={this.state.inventoryData}
-              />
-            );
-          }}
-        />
+              path="/inventory"
+              exact
+              render={(routeProps) => {
+                return (
+                  <InventoryList
+                     {...routeProps}
+                    inventoryData={this.state.inventoryData}
+                  />
+                );
+              }}
+            />
 
             <Route
               exact
@@ -144,7 +145,7 @@ class App extends React.Component {
               <EditInventory {...routeProps} warehouseNames={warehouseNames} />
             );
           }}
-        /> */}
+          /> */}
 
             {/* <Route
           exact
@@ -152,7 +153,7 @@ class App extends React.Component {
           render={(routeProps) => {
             return <InventoryDetails {...routeProps} />;
           }}
-        /> */}
+         /> */}
           </Switch>
           <Footer />
         </Router>

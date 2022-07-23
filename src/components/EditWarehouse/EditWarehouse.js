@@ -83,29 +83,23 @@ class EditWarehouse extends React.Component {
     this.setState({ touched: touchedStates });
   };
 
-  isFormValid = () => {
-    if (
-      !this.state.warehouseName ||
-      !this.state.address ||
-      !this.state.city ||
-      !this.state.country ||
-      !this.state.name ||
-      !this.state.position ||
-      !this.state.phone ||
-      !this.state.email
-    ) {
-      return false;
-    }
+   // TODO better validation rule
+   isPhoneValid = () => {
+    const phonePattern = new RegExp('^[0-9]{3}[-][0-9]{3}[-][0-9]{4}$');
+    const phoneNum = this.state.phone;
 
-    if (!this.isPhoneValid()) {
-      return false;
+    if (phonePattern.test(phoneNum)) {
+      return true;
     }
+    return false;
+  };
 
-    if (!this.isEmailValid()) {
-      return false;
+  // TODO better validation rule
+  isEmailValid = () => {
+    if (this.state.email.includes('@')) {
+      return true;
     }
-
-    return true;
+    return false;
   };
 
   handleNameOnChange = (e) => {
@@ -113,31 +107,31 @@ class EditWarehouse extends React.Component {
   };
 
   handleAddressOnChange = (e) => {
-    this.setState({ warehouseAddress: e.target.value });
+    this.setState({ address: e.target.value });
   };
 
   handleCityOnChange = (e) => {
-    this.setState({ warehouseCity: e.target.value });
+    this.setState({ city: e.target.value });
   };
 
   handleCountryOnChange = (e) => {
-    this.setState({ warehouseCountry: e.target.value });
+    this.setState({ country: e.target.value });
   };
 
   handleContactNameOnChange = (e) => {
-    this.setState({ warehouseContactName: e.target.value });
+    this.setState({ name: e.target.value });
   };
 
   handleContactPositionOnChange = (e) => {
-    this.setState({ warehouseContactPosition: e.target.value });
+    this.setState({ position: e.target.value });
   };
 
   handleContactPhoneOnChange = (e) => {
-    this.setState({ warehouseContactPhone: e.target.value });
+    this.setState({ phone: e.target.value });
   };
 
   handleContactEmailOnChange = (e) => {
-    this.setState({ warehouseContactEmail: e.target.value });
+    this.setState({ email: e.target.value });
   };
 
   handleOnCancel = (e) => {
@@ -149,7 +143,7 @@ class EditWarehouse extends React.Component {
     if (!this.state) {
       return <h1>Loading...</h1>;
     }
-
+console.log(this.state)
     return (
       <div className="main-container">
         <div className="main-heading">
@@ -271,6 +265,7 @@ class EditWarehouse extends React.Component {
                 }
                 name="name"
                 placeholder="Contact Name"
+                value={this.state.name}
                 onChange={this.handleContactNameOnChange}
                 onBlur={this.handleBlur}
               />
@@ -294,6 +289,7 @@ class EditWarehouse extends React.Component {
                 }
                 name="position"
                 placeholder="Position"
+                value={this.state.position}
                 onChange={this.handleContactPositionOnChange}
                 onBlur={this.handleBlur}
               />
@@ -318,6 +314,7 @@ class EditWarehouse extends React.Component {
                 name="phone"
                 placeholder="Phone Number"
                 type="tel"
+                value={this.state.phone}
                 onChange={this.handleContactPhoneOnChange}
                 onBlur={this.handleBlur}
               />
@@ -350,6 +347,8 @@ class EditWarehouse extends React.Component {
                 name="email"
                 placeholder="Email"
                 type="email"
+                value={this.state.email}
+                onChange={this.handleContactEmailOnChange}
                 onBlur={this.handleBlur}
               />
               {!this.state.email && this.state.touched.email && (
@@ -375,7 +374,6 @@ class EditWarehouse extends React.Component {
             {/* CTA button first in HTML for keyboarding order, reversed visually with flex:row-reverse */}
             <button
               className="warehouse-form__button warehouse-form__button--CTA"
-              //   disabled={!this.isFormValid()}
             >
               Save
             </button>

@@ -15,7 +15,7 @@ import AddNewWarehouse from "./components/AddNewWarehouse/AddNewWarehouse";
 import AddNewInventory from "./components/AddNewInventory/AddNewInventory";
 import EditInventory from "./components/EditInventory/EditInventory";
 import EditWarehouse from "./components/EditWarehouse/EditWarehouse";
-import InventoryList from './components/InventoryList/InventoryList';
+import InventoryList from "./components/InventoryList/InventoryList";
 
 import "./App.scss";
 
@@ -100,32 +100,6 @@ class App extends React.Component {
                 }}
               />
 
-<<<<<<< HEAD
-            <Route
-              path="/warehouse/:id/edit"
-              render={(routeProps) => {
-                return (
-                  <EditWarehouse
-                    {...routeProps}
-                  // warehouseData={this.state.warehouseData}
-                  />
-                );
-              }}
-            />
-
-            <Route
-              path="/inventory"
-              exact
-              render={(routeProps) => {
-                return (
-                  <InventoryList
-                     {...routeProps}
-                    inventoryData={this.state.inventoryData}
-                  />
-                );
-              }}
-            />
-=======
               <Route
                 path="/warehouse/:id/edit"
                 render={(routeProps) => {
@@ -150,7 +124,6 @@ class App extends React.Component {
             );
           }}
         /> */}
->>>>>>> develop
 
               <Route
                 exact
@@ -185,20 +158,12 @@ class App extends React.Component {
           render={(routeProps) => {
             return <InventoryDetails {...routeProps} />;
           }}
-<<<<<<< HEAD
-         /> */}
-          </Switch>
-          <Footer />
-        </Router>
-      </div>
-=======
         /> */}
             </Switch>
           </Router>
         </div>
         <Footer />
       </>
->>>>>>> develop
     );
   }
 }

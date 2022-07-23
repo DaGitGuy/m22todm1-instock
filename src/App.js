@@ -111,18 +111,18 @@ class App extends React.Component {
                 }}
               />
 
-              {/* <Route
-            path="/inventory"
-            exact
-            render={(routeProps) => {
-              return (
-                <InventoryList
-                  {...routeProps}
-                  inventoryList={this.state.inventoryData}
-                />
-              );
-            }}
-          /> */}
+              <Route
+                path="/inventory"
+                exact
+                render={(routeProps) => {
+                  return (
+                    <InventoryList
+                      {...routeProps}
+                      inventoryData={this.state.inventoryData}
+                    />
+                  );
+                }}
+              />
 
               <Route
                 exact

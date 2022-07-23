@@ -1,31 +1,34 @@
+import deleteIcon from "../../assets/icons/delete_outline-24px.svg";
+import editIcon from "../../assets/icons/edit-24px.svg";
 
-const InventoryListitem = () => {
+
+const InventoryListitem = ({id, category, itemName, status, quantity, warehouseName}) => {
     
     return (
         <main>
-                    <article className="warehouse-list-item">
-            <div className="warehouse-info">
-                <div className="warehouse-info__name-address">
+            <article className="inventory-list-item">
+            <div className="inventory-info">
+                <div className="inventory-info__name-address">
                     <div>
                         <h4>Inventories</h4>
-                        <Link to={`//${id}`}>
-                            <p>{name}</p>
-                        </Link>
+                        
+                            <p>{itemName}</p>
+                        
                     </div>
                     <div>
                         <h4>Address</h4>
-                        <p>{`${address}, ${city}, ${country}`}</p>
+                        {/* <p>{`${address}, ${city}, ${country}`}</p> */}
                     </div>
                 </div>
                 <div className="warehouse-info__contacts">
                     <div>
                         <h4>Contact Name</h4>
-                        <p>{contact.name}</p>
+                        {/* <p>{contact.name}</p> */}
                     </div>
                     <div>
                         <h4>Contact Information</h4>
-                        <p>{contact.phone}</p>
-                        <p>{contact.email}</p>
+                        {/* <p>{contact.phone}</p> */}
+                        {/* <p>{contact.email}</p> */}
                     </div>
                 </div>
             </div>

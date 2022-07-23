@@ -102,31 +102,6 @@ class EditWarehouse extends React.Component {
     return false;
   };
 
-  // isFormValid = () => {
-  //   if (
-  //     !this.state.warehouseName ||
-  //     !this.state.address ||
-  //     !this.state.city ||
-  //     !this.state.country ||
-  //     !this.state.name ||
-  //     !this.state.position ||
-  //     !this.state.phone ||
-  //     !this.state.email
-  //   ) {
-  //     return false;
-  //   }
-
-  //   if (!this.isPhoneValid()) {
-  //     return false;
-  //   }
-
-  //   if (!this.isEmailValid()) {
-  //     return false;
-  //   }
-
-  //   return true;
-  // };
-
   handleNameOnChange = (e) => {
     this.setState({ warehouseName: e.target.value });
   };
@@ -399,7 +374,6 @@ console.log(this.state)
             {/* CTA button first in HTML for keyboarding order, reversed visually with flex:row-reverse */}
             <button
               className="warehouse-form__button warehouse-form__button--CTA"
-                // disabled={!this.isFormValid()}
             >
               Save
             </button>

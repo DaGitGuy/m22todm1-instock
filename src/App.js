@@ -18,7 +18,6 @@ import EditWarehouse from "./components/EditWarehouse/EditWarehouse";
 import InventoryList from './components/InventoryList/InventoryList';
 
 import "./App.scss";
-import DeleteItemModal from "./components/Modals/DeleteItemModal";
 
 const SERVER_URL =
   process.env.REACT_APP_SERVER_URL || process.env.REACT_APP_SERVER_URL_BACKUP;
@@ -59,47 +58,49 @@ class App extends React.Component {
     }
 
     return (
-      <div>
-        <Router>
+      <>
+        <div className="page__wrapper">
           <Header />
           {/* <DeleteItemModal /> */}
-          <Switch>
-            <Route exact path="/">
-              <Redirect to="/warehouse" />
-            </Route>
-            <Route
-              path="/warehouse"
-              exact
-              render={(routeProps) => {
-                return (
-                  <WarehouseList
-                    {...routeProps}
-                    warehouseData={this.state.warehouseData}
-                  />
-                );
-              }}
-            />
-            <Route
-              path="/warehouse/add"
-              render={(routeProps) => {
-                return <AddNewWarehouse {...routeProps} />;
-              }}
-            />
+          <Router>
+            <Switch>
+              <Route exact path="/">
+                <Redirect to="/warehouse" />
+              </Route>
+              <Route
+                path="/warehouse"
+                exact
+                render={(routeProps) => {
+                  return (
+                    <WarehouseList
+                      {...routeProps}
+                      warehouseData={this.state.warehouseData}
+                    />
+                  );
+                }}
+              />
+              <Route
+                path="/warehouse/add"
+                render={(routeProps) => {
+                  return <AddNewWarehouse {...routeProps} />;
+                }}
+              />
 
-            <Route
-              exact
-              path="/warehouse/:id"
-              render={(routeProps) => {
-                return (
-                  <WarehouseDetails
-                    {...routeProps}
-                    inventoryData={this.state.inventoryData}
-                    warehouseData={this.state.warehouseData}
-                  />
-                );
-              }}
-            />
+              <Route
+                exact
+                path="/warehouse/:id"
+                render={(routeProps) => {
+                  return (
+                    <WarehouseDetails
+                      {...routeProps}
+                      inventoryData={this.state.inventoryData}
+                      warehouseData={this.state.warehouseData}
+                    />
+                  );
+                }}
+              />
 
+<<<<<<< HEAD
             <Route
               path="/warehouse/:id/edit"
               render={(routeProps) => {
@@ -124,45 +125,80 @@ class App extends React.Component {
                 );
               }}
             />
+=======
+              <Route
+                path="/warehouse/:id/edit"
+                render={(routeProps) => {
+                  return (
+                    <EditWarehouse
+                      {...routeProps}
+                      // warehouseData={this.state.warehouseData}
+                    />
+                  );
+                }}
+              />
 
-            <Route
-              exact
-              path="/inventory/add"
-              render={(routeProps) => {
-                return (
-                  <AddNewInventory
-                    {...routeProps}
-                    inventoryData={this.state.inventoryData}
-                    warehouseData={this.state.warehouseData}
-                  />
-                );
-              }}
-            />
+              {/* <Route
+          path="/inventory"
+          exact
+          render={(routeProps) => {
+            return (
+              <InventoryList
+                {...routeProps}
+                inventoryList={this.state.inventoryData}
+              />
+            );
+          }}
+        /> */}
+>>>>>>> develop
 
-            <Route
-              path="/inventory/:id/edit"
-              render={(routeProps) => {
-                return (
-                  <EditInventory
-                    {...routeProps}
-                    inventoryData={this.state.inventoryData}
-                    warehouseData={this.state.warehouseData}
-                  />
-                );
-              }}
-            />
+              <Route
+                exact
+                path="/inventory/add"
+                render={(routeProps) => {
+                  return (
+                    <AddNewInventory
+                      {...routeProps}
+                      inventoryData={this.state.inventoryData}
+                      warehouseData={this.state.warehouseData}
+                    />
+                  );
+                }}
+              />
 
-            {/* <Route
+              <Route
+                path="/inventory/:id/edit"
+                render={(routeProps) => {
+                  return (
+                    <EditInventory
+                      {...routeProps}
+                      inventoryData={this.state.inventoryData}
+                      warehouseData={this.state.warehouseData}
+                    />
+                  );
+                }}
+              />
+
+              {/* <Route
           exact
           path="/inventory/item/:id"
           render={(routeProps) => {
             return <InventoryDetails {...routeProps} />;
           }}
+<<<<<<< HEAD
          /> */}
           </Switch>
           <Footer />
         </Router>
       </div>
+=======
+        /> */}
+            </Switch>
+          </Router>
+        </div>
+        <Footer />
+      </>
+>>>>>>> develop
     );
   }
 }

@@ -61,8 +61,8 @@ class App extends React.Component {
     return (
       <>
         <div className="page__wrapper">
-          <Header />
           <Router>
+            <Header />
             <Switch>
               <Route exact path="/">
                 <Redirect to="/warehouse" />
@@ -164,8 +164,8 @@ class App extends React.Component {
                 }}
               />
             </Switch>
+            <Footer />
           </Router>
-          <Footer />
         </div>
       </>
     );

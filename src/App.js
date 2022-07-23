@@ -16,6 +16,8 @@ import AddNewWarehouse from "./components/AddNewWarehouse/AddNewWarehouse";
 import AddNewInventory from "./components/AddNewInventory/AddNewInventory";
 import EditWarehouse from "./components/EditWarehouse/EditWarehouse";
 import EditInventory from "./components/EditInventory/EditInventory";
+import InventoryList from "./components/InventoryList/InventoryList";
+
 
 import "./App.scss";
 
@@ -32,6 +34,7 @@ class App extends React.Component {
     axios
       .get(`${SERVER_URL}/warehouses`)
       .then((res) => {
+        console.log(res.data);
         this.setState({
           warehouseData: res.data,
         });
@@ -57,8 +60,8 @@ class App extends React.Component {
     }
 
     return (
-      <div>
-        <Router>
+      <>
+        <div className="page__wrapper">
           <Header />
           <Switch>
             <Route exact path="/">
@@ -82,34 +85,33 @@ class App extends React.Component {
                 return <AddNewWarehouse {...routeProps} />;
               }}
             />
+              <Route
+                exact
+                path="/warehouse/:id"
+                render={(routeProps) => {
+                  return (
+                    <WarehouseDetails
+                      {...routeProps}
+                      inventoryData={this.state.inventoryData}
+                      warehouseData={this.state.warehouseData}
+                    />
+                  );
+                }}
+              />
 
-            <Route
-              exact
-              path="/warehouse/:id"
-              render={(routeProps) => {
-                return (
-                  <WarehouseDetails
-                    {...routeProps}
-                    inventoryData={this.state.inventoryData}
-                    warehouseData={this.state.warehouseData}
-                  />
-                );
-              }}
-            />
+              <Route
+                path="/warehouse/:id/edit"
+                render={(routeProps) => {
+                  return (
+                    <EditWarehouse
+                      {...routeProps}
+                      // warehouseData={this.state.warehouseData}
+                    />
+                  );
+                }}
+              />
 
-            <Route
-              path="/warehouse/:id/edit"
-              render={(routeProps) => {
-                return (
-                  <EditWarehouse
-                    {...routeProps}
-                    // warehouseData={this.state.warehouseData}
-                  />
-                );
-              }}
-            />
-
-            {/* <Route
+              {/* <Route
           path="/inventory"
           exact
           render={(routeProps) => {
@@ -122,33 +124,32 @@ class App extends React.Component {
           }}
         /> */}
 
-            <Route
-              exact
-              path="/inventory/add"
-              render={(routeProps) => {
-                return (
-                  <AddNewInventory
-                    {...routeProps}
-                    inventoryData={this.state.inventoryData}
-                    warehouseData={this.state.warehouseData}
-                  />
-                );
-              }}
-            />
+              <Route
+                exact
+                path="/inventory/add"
+                render={(routeProps) => {
+                  return (
+                    <AddNewInventory
+                      {...routeProps}
+                      inventoryData={this.state.inventoryData}
+                      warehouseData={this.state.warehouseData}
+                    />
+                  );
+                }}
+              />
 
-            <Route
-              path="/inventory/:id/edit"
-              render={(routeProps) => {
-                return (
-                  <EditInventory
-                    {...routeProps}
-                    inventoryData={this.state.inventoryData}
-                    warehouseData={this.state.warehouseData}
-                  />
-                );
-              }}
-            />
-
+              <Route
+                path="/inventory/:id/edit"
+                render={(routeProps) => {
+                  return (
+                    <EditInventory
+                      {...routeProps}
+                      inventoryData={this.state.inventoryData}
+                      warehouseData={this.state.warehouseData}
+                    />
+                  );
+                }}
+              />
             <Route
               exact
               path="/inventory/:id"
@@ -166,6 +167,7 @@ class App extends React.Component {
           <Footer />
         </Router>
       </div>
+
     );
   }
 }

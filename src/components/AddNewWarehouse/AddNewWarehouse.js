@@ -101,7 +101,7 @@ class AddNewWarehouse extends Component {
         e.target.reset();
         // TODO success message
         alert('New warehouse added!');
-        // TODO page redirect - to warehouse details?
+        this.props.history.push('/warehouse');
       })
       .catch((err) => {
         console.log(err);

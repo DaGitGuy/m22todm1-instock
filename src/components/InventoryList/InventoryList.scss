@@ -100,4 +100,11 @@
             font-size: 0.75rem;
         }
     }
+
+    &__tablet-heading {
+        display: none;
+        @include mixins.tablet {
+            
+        }
+    }
 }

@@ -24,7 +24,7 @@ const InventoryList = ({ inventoryData }) => {
                 </div>
             </article>
             
-               <article>  
+               <article className="inventory-list__tablet-heading" >  
                 {/* { Hide this in mobile} */}
                     <div className='details__header' >
                             <p className='details__inventory-title details__header--selected' >INVENTORY ITEM</p>
@@ -53,7 +53,8 @@ const InventoryList = ({ inventoryData }) => {
 
                 <article className='details__inventory'>
                     <section className='details__inventory-box' >
-                        
+                        <p className='details__inventory-title details__header--selected' >INVENTORY ITEM</p>
+
                             {/* { Add Headings here that are visible in mobile + none in tablet} */}
                         <div className='details__item-box' >
                             <a className='details__inventory-item' >{inventory.itemName}</a>
@@ -63,7 +64,7 @@ const InventoryList = ({ inventoryData }) => {
                     </section>
 
                     <section className='details__inventory-box'>
-   
+                         <p className='details__inventory-status details__header--selected' >STATUS</p>
                         <div className='details__stock-box'>
                             <p className='details__inventory-message'>{inventory.status}</p>
                         </div>
@@ -71,18 +72,25 @@ const InventoryList = ({ inventoryData }) => {
                     </section>
 
                     <section className='details__inventory-box'>
-                      
-                        <p className='details__category-item' >{inventory.category}</p>
+                    <p className='details__category details__header--selected' >CATEGORY</p>
+                        <div>
+                            <p className='details__category-item' >{inventory.category}</p>
+                        </div>
                     </section>
 
                     <section className='details__inventory-box' >
-                        
-                        <p className='details__quantity-item'>{inventory.quantity}</p>
+                        <p className='details__quantity details__header--selected' >QTY</p>
+                        <div>
+                          <p className='details__quantity-item'>{inventory.quantity}</p>
+                        </div>
                     </section>
 
                     <section className='details__inventory-box' >
-                        
-                        <p className='details__quantity-item'>{inventory.warehouseName}</p>
+                    <p className='details__quantity details__header--selected' >WAREHOUSE</p>
+
+                        <div>
+                            <p className='details__quantity-item'>{inventory.warehouseName}</p>
+                        </div>
                     </section>
 
                     <section className='details__inventory-icon' >

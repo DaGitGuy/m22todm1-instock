@@ -164,9 +164,9 @@ class App extends React.Component {
                 }}
               />
             </Switch>
-            <Footer />
           </Router>
         </div>
+        <Footer />
       </>
     );
   }

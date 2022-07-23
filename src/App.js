@@ -105,7 +105,7 @@ class App extends React.Component {
                   return (
                     <EditWarehouse
                       {...routeProps}
-                      // warehouseData={this.state.warehouseData}
+                      warehouseData={this.state.warehouseData}
                     />
                   );
                 }}

@@ -83,6 +83,25 @@ class EditWarehouse extends React.Component {
     this.setState({ touched: touchedStates });
   };
 
+   // TODO better validation rule
+   isPhoneValid = () => {
+    const phonePattern = new RegExp('^[0-9]{3}[-][0-9]{3}[-][0-9]{4}$');
+    const phoneNum = this.state.phone;
+
+    if (phonePattern.test(phoneNum)) {
+      return true;
+    }
+    return false;
+  };
+
+  // TODO better validation rule
+  isEmailValid = () => {
+    if (this.state.email.includes('@')) {
+      return true;
+    }
+    return false;
+  };
+
   isFormValid = () => {
     if (
       !this.state.warehouseName ||
@@ -380,7 +399,7 @@ console.log(this.state)
             {/* CTA button first in HTML for keyboarding order, reversed visually with flex:row-reverse */}
             <button
               className="warehouse-form__button warehouse-form__button--CTA"
-              //   disabled={!this.isFormValid()}
+                disabled={!this.isFormValid()}
             >
               Save
             </button>

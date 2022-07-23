@@ -1,15 +1,21 @@
 import './WarehouseList.scss';
+import { useHistory } from 'react-router-dom';
 import SearchBar from '../../components/SearchBar/SearchBar';
 import WarehouseListItem from '../../components/WarehouseListItem/WarehouseListItem';
 
 const WarehouseList = ({ warehouseData }) => {
+  const history = useHistory();
+  const handleClick = () => {
+    history.push('/warehouse/add');
+  }
+
   return (
     <div className="warehouse-list">
         <div className="warehouse-list__header">
             <h1>Warehouses</h1>
             <div className="warehouse-list-nav">
                 <SearchBar />
-                <button className="warehouse-list-nav__button">+ Add New Warehouse</button>
+                <button className="warehouse-list-nav__button" onClick={handleClick}>+ Add New Warehouse</button>
             </div>
         </div>
         <div className="warehouse-list__headings">

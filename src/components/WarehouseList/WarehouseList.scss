@@ -35,6 +35,7 @@
         border-radius: 1.25rem;
         border: none;
         color: colors.$primary-white;
+        cursor: pointer;
     }
 
     @include mixins.tablet {

@@ -57,6 +57,8 @@
             border-radius: 1.25rem;
             border: none;
             color: colors.$primary-white;
+            cursor: pointer;
+            
             @include mixins.tablet {
                 margin:1rem ;
             }
@@ -149,7 +151,16 @@
             position: relative;
         }
     }
+
+    .details__link {
+        display:flex;
+        align-items:center;
+    }
+
     .details__inventory-item {
+        padding:0;
+        margin:0;
+        line-height: 1.5rem;
        @include mixins.tablet {
             width: 6rem;
        }
@@ -164,6 +175,7 @@
         }
     }
     .details__chevron {
+        height:1.5rem;
         @include mixins.tablet {
             padding-right: 4rem;
             position: relative;

@@ -6,11 +6,10 @@ import editIcon from "../../assets/icons/edit-24px.svg";
 
 
 import "./InventoryList.scss";
-// import InventoryListitem from "../InventoryListItem/InventoryListItem";
 import "../WarehouseDetails/WarehouseDetails.scss";
 
 const InventoryList = ({ inventoryData }) => {
-
+console.log(inventoryData);
     if (!inventoryData) {
         return <h1>Loading...</h1>;
     }
@@ -20,7 +19,7 @@ const InventoryList = ({ inventoryData }) => {
             <article className="inventory-list__header">
                 <h1 className="inventory-list__title" >Inventory</h1>
                 <div className="inventory-list-nav">
-                    <SearchBar className="inventory-list-search" />
+                    <SearchBar  />
                     <button className="inventory-list-nav__button">+ Add New Item</button>
                 </div>
             </article>

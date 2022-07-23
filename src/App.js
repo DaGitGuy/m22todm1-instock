@@ -33,7 +33,6 @@ class App extends React.Component {
     axios
       .get(`${SERVER_URL}/warehouses`)
       .then((res) => {
-        console.log(res.data);
         this.setState({
           warehouseData: res.data,
         });
@@ -57,7 +56,6 @@ class App extends React.Component {
     if (!this.state.warehouseData) {
       return <h1>Loading...</h1>;
     }
-
     return (
       <>
         <div className="page__wrapper">
@@ -111,7 +109,7 @@ class App extends React.Component {
                 }}
               />
 
-              {/* <Route
+              <Route
             path="/inventory"
             exact
             render={(routeProps) => {
@@ -122,7 +120,7 @@ class App extends React.Component {
                 />
               );
             }}
-          /> */}
+          />
 
               <Route
                 exact

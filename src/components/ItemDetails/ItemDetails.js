@@ -1,5 +1,5 @@
 import { Component } from "react";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 import axios from "axios";
 import editIcon from "../../assets/icons/edit-24px.svg";
 import arrowBack from "../../assets/icons/arrow_back-24px.svg";
@@ -32,21 +32,23 @@ class ItemDetails extends Component {
     return (
       <main className="main-container">
         <section className="main-heading">
-          <Link to='/inventory' className="main-heading__nav-link">
-          <img
-            className="main-heading__back-button"
-            src={arrowBack}
-            alt="Go back to inventory list"
-          />
+          <Link to="/inventory" className="main-heading__nav-link">
+            <img
+              className="main-heading__back-button"
+              src={arrowBack}
+              alt="Go back to inventory list"
+            />
           </Link>
           <h2 className="main-heading__title">
             {this.state.itemDetails.itemName}
           </h2>
-          <img
-            className="main-heading__edit-icon"
-            src={editIcon}
-            alt="Edit item"
-          />
+          <Link to={`./${this.itemId}/edit`} className="main-heading__nav-link">
+            <img
+              className="main-heading__edit-icon"
+              src={editIcon}
+              alt="Edit item"
+            />
+          </Link>
         </section>
 
         <article className="item-details">
@@ -80,12 +82,12 @@ class ItemDetails extends Component {
                 </p>
               </div>
             </div>
-          <div className="item-details__wrapper">
-            <p className="item-details__label">WAREHOUSE:</p>
-            <p className="item-details__text">
-              {this.state.itemDetails.warehouseName}
-            </p>
-          </div>
+            <div className="item-details__wrapper">
+              <p className="item-details__label">WAREHOUSE:</p>
+              <p className="item-details__text">
+                {this.state.itemDetails.warehouseName}
+              </p>
+            </div>
           </section>
         </article>
       </main>

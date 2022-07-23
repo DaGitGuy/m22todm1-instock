@@ -13,7 +13,7 @@ class EditInventory extends Component {
     axios
       .get(`${SERVER_URL}/inventories/${this.props.match.params.id}`)
       .then((res) => {
-        const item = res.data;
+        const item = res.data[0];
         this.setState({
           warehouseId: item.warehouseID,
           warehouseName: item.warehouseName,
@@ -137,7 +137,7 @@ class EditInventory extends Component {
       alert("Quantity should be greater than 0");
     } else {
       axios
-        .put(`http://localhost:8080/inventory/${this.props.match.params.id}`, {
+        .put(`${SERVER_URL}/inventory/${this.props.match.params.id}`, {
           warehouseID: this.state.warehouseID,
           warehouseName: this.state.warehouseName,
           itemName: this.state.item,
@@ -159,7 +159,6 @@ class EditInventory extends Component {
     if (!this.state) {
       return <h1>Loading...</h1>;
     }
-    console.log(this.state);
     return (
       <div className="main-container">
         <div className="main-heading">
@@ -178,8 +177,7 @@ class EditInventory extends Component {
         <form
           className="inventory-form"
           type="submit"
-          onSubmit={this.handleSubmit}
-        >
+          onSubmit={this.handleSubmit}>
           <fieldset className="inventory-form__section inventory-form__section--details">
             <h2 className="inventory-form__heading">Item Details</h2>
             <label className="inventory-form__label" htmlFor="itemName">
@@ -251,8 +249,7 @@ class EditInventory extends Component {
                 name="category"
                 onChange={this.handleChangeCategory}
                 onBlur={this.handleBlur}
-                value={this.state.category}
-              >
+                value={this.state.category}>
                 <option disabled value="">
                   Please select
                 </option>
@@ -312,8 +309,7 @@ class EditInventory extends Component {
               <label
                 className="inventory-form__label"
                 htmlFor=""
-                hidden={this.state.status === "Out of Stock"}
-              >
+                hidden={this.state.status === "Out of Stock"}>
                 Quantity
                 <input
                   className={
@@ -372,8 +368,7 @@ class EditInventory extends Component {
                 name="warehouseName"
                 onBlur={this.handleBlur}
                 value={this.state.warehouseName}
-                onChange={this.handleChangeWarehouse}
-              >
+                onChange={this.handleChangeWarehouse}>
                 <option disabled value="">
                   Please select
                 </option>
@@ -400,7 +395,7 @@ class EditInventory extends Component {
 
           <div className="inventory-form__button-wrapper">
             {/* CTA button first in HTML for keyboarding order, reversed visually with flex:row-reverse */}
-            <button className="inventory-form__button inventory-form__button--CTA">
+            <button className="inventory-form__button inventory-form__button--CTA" >
               Save
             </button>
             <Link to="/inventory">

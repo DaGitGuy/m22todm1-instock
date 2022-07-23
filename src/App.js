@@ -18,7 +18,6 @@ import EditWarehouse from "./components/EditWarehouse/EditWarehouse";
 import EditInventory from "./components/EditInventory/EditInventory";
 import InventoryList from "./components/InventoryList/InventoryList";
 
-
 import "./App.scss";
 
 const SERVER_URL =
@@ -63,28 +62,29 @@ class App extends React.Component {
       <>
         <div className="page__wrapper">
           <Header />
-          <Switch>
-            <Route exact path="/">
-              <Redirect to="/warehouse" />
-            </Route>
-            <Route
-              path="/warehouse"
-              exact
-              render={(routeProps) => {
-                return (
-                  <WarehouseList
-                    {...routeProps}
-                    warehouseData={this.state.warehouseData}
-                  />
-                );
-              }}
-            />
-            <Route
-              path="/warehouse/add"
-              render={(routeProps) => {
-                return <AddNewWarehouse {...routeProps} />;
-              }}
-            />
+          <Router>
+            <Switch>
+              <Route exact path="/">
+                <Redirect to="/warehouse" />
+              </Route>
+              <Route
+                path="/warehouse"
+                exact
+                render={(routeProps) => {
+                  return (
+                    <WarehouseList
+                      {...routeProps}
+                      warehouseData={this.state.warehouseData}
+                    />
+                  );
+                }}
+              />
+              <Route
+                path="/warehouse/add"
+                render={(routeProps) => {
+                  return <AddNewWarehouse {...routeProps} />;
+                }}
+              />
               <Route
                 exact
                 path="/warehouse/:id"
@@ -112,17 +112,17 @@ class App extends React.Component {
               />
 
               {/* <Route
-          path="/inventory"
-          exact
-          render={(routeProps) => {
-            return (
-              <InventoryList
-                {...routeProps}
-                inventoryList={this.state.inventoryData}
-              />
-            );
-          }}
-        /> */}
+            path="/inventory"
+            exact
+            render={(routeProps) => {
+              return (
+                <InventoryList
+                  {...routeProps}
+                  inventoryList={this.state.inventoryData}
+                />
+              );
+            }}
+          /> */}
 
               <Route
                 exact
@@ -150,24 +150,24 @@ class App extends React.Component {
                   );
                 }}
               />
-            <Route
-              exact
-              path="/inventory/:id"
-              render={(routeProps) => {
-                return (
-                  <ItemDetails
-                    {...routeProps}
-                    inventoryData={this.state.inventoryData}
-                    warehouseData={this.state.warehouseData}
-                  />
-                );
-              }}
-            />
-          </Switch>
+              <Route
+                exact
+                path="/inventory/:id"
+                render={(routeProps) => {
+                  return (
+                    <ItemDetails
+                      {...routeProps}
+                      inventoryData={this.state.inventoryData}
+                      warehouseData={this.state.warehouseData}
+                    />
+                  );
+                }}
+              />
+            </Switch>
+          </Router>
           <Footer />
-        </Router>
-      </div>
-
+        </div>
+      </>
     );
   }
 }

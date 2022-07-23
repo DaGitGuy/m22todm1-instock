@@ -4,6 +4,9 @@ import "./EditWarehouse.scss";
 import backArrow from "../../assets/icons/arrow_back-24px.svg";
 import errorIcon from "../../assets/icons/error-24px.svg";
 
+const SERVER_URL =
+process.env.REACT_APP_SERVER_URL || process.env.REACT_APP_SERVER_URL_BACKUP;
+
 class EditWarehouse extends React.Component {
   componentDidMount() {
     axios

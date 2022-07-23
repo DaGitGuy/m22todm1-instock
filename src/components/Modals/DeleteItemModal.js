@@ -1,52 +1,54 @@
-// import './DeleteItemModal.scss';
-// import closeIcon from '../../assets/icons/close-24px.svg';
+// import "./DeleteItemModal.scss";
+// import closeIcon from "../../assets/icons/close-24px.svg";
 
 // const SERVER_URL =
 //   process.env.REACT_APP_SERVER_URL || process.env.REACT_APP_SERVER_URL_BACKUP;
 
 // const DeleteItemModal = (props) => {
-  /// CODE BELOW TO BE REVIEWED ONCE INVENTORY LIST COMPONENT IS READY
-  // ADD TO INVENTORY LIST and WAREHOUSE DETAILS COMPONENTS CODE
+//   /// CODE BELOW TO BE REVIEWED ONCE INVENTORY LIST COMPONENT IS READY
+//   // ADD TO INVENTORY LIST and WAREHOUSE DETAILS COMPONENTS CODE
 
-  // Default state
+//   // Default state
 
-  // state = {
-  //   showModal: false
-  // }
+//   state = {
+//     showModal: false
+//   }
 
-  // code to conditionally show/hide delete modal -
+//   // hide modal without deleting item (called from modal)
+//   const closeModal = () => {
+//     this.setState({ showModal: false });
+//   };
 
-  // if (this.state.showModal){
-  //   return <DeleteItemModal itemId={this.state.selectedItem} closeModal={this.closeModal}/>
-  //}
 
-  // show modal (called by clicking the trash can icon)
-  // showModal = (id) => {
-  //   this.setState(
-  //     {showModal: true, selectedItemId:{id}}
-  //   )
-  // }
+//   // code to conditionally show/hide delete modal -
 
-  // hide modal without deleting item (called from modal)
-  // const closeModal = () => {
-  //   this.setState({ showModal: false });
-  // };
+//   if (this.state.showModal){
+//     return <DeleteItemModal itemId={this.state.selectedItem} closeModal={this.closeModal}/>
+//   }
 
-  // ----- END OF CODE TO BE TRANSFERRED TO INVENTORY LIST AND WAREHOUSE DETAILS ----
+//   // show modal (called by clicking the trash can icon)
+//   showModal = (id) => {
+//     this.setState(
+//       {showModal: true, selectedItemId:{id}}
+//     )
+//   }
 
-  // ADD TO INVENTORY LIST ITEM COMPONENT CODE
 
-  // Add to delete button attributes and pass item id
-  // onClick = this.showModal(id);
+//   // ----- END OF CODE TO BE TRANSFERRED TO INVENTORY LIST AND WAREHOUSE DETAILS ----
 
-  // ----- END OF CODE TO BE TRANSFERRED TO INVENTORY LIST ITEM ----
+//   // ADD TO INVENTORY LIST ITEM COMPONENT CODE
 
-  // Send delete item request to the API
+//   // Add to delete button attributes and pass item id
+//   onClick = this.showModal(id);
+
+//   // ----- END OF CODE TO BE TRANSFERRED TO INVENTORY LIST ITEM ----
+
+//   // Send delete item request to the API
 //   const handleDelete = () => {
 //     axios
 //       .delete(`${SERVER_URL}/warehouse/${this.props.id}`)
 //       .then((res) => {
-//         alert('Item deleted!');
+//         alert("Item deleted!");
 //         <Link to="/inventory" />;
 //       })
 //       .catch((err) => {
@@ -54,9 +56,9 @@
 //       });
 //   };
 
-//   const handleCancelClick = () =>{
+//   const handleCancelClick = () => {
 //     this.props.handleCancel();
-//   }
+//   };
 
 //   if (!this.props) {
 //     return <h1>Loading...</h1>;
@@ -70,18 +72,23 @@
 //         </a>
 //         <h1 className="modal__header">Delete {selectedItem} inventory item?</h1>
 //         <p className="modal__text">
-//           Please confirm that you'd like to delete {selectedItem} from the inventory list. You won't be able to undo this action.
+//           Please confirm that you'd like to delete {selectedItem} from the
+//           inventory list. You won't be able to undo this action.
 //         </p>
 //         <div className="modal__button-container">
 //           {/* When keyboarding, cancel should be first to prevent accidental selection of destructive action */}
 //           <button
 //             className="modal__button modal__button--cancel"
-//             onClick={handleCancelClick}>
+//             onClick={handleCancelClick}
+//           >
 //             Cancel
 //           </button>
 //           <button
 //             className="modal__button modal__button--delete"
-//             onClick={() => {handleDelete(this.props.selectedItemId)}}>
+//             onClick={() => {
+//               handleDelete(this.props.selectedItemId);
+//             }}
+//           >
 //             Delete
 //           </button>
 //         </div>

@@ -47,18 +47,20 @@ const InventoryList = ({ inventoryData }) => {
                             </section>
                         </div>
 
+                        <div className='details__header details__header-quantity' >
+                            <p className='details__quantity details__header--selected' >QTY</p>
+                            <section>
+                            <img className='details__sort-arrows details__sort-arrows--selected' src={sortArrow} />
+                            </section>
+                        </div>
+
                         <div className='details__header' >
                             <p className='details__quantity details__header--selected' >WAREHOUSE</p>
                             <section>
                                 <img className='details__sort-arrows details__sort-arrows--selected' src={sortArrow} />
                             </section>
                         </div>
-                        <div className='details__header' >
-                            <p className='details__quantity details__header--selected' >QTY</p>
-                            <section>
-                            <img className='details__sort-arrows details__sort-arrows--selected' src={sortArrow} />
-                            </section>
-                        </div>
+                        
                         <div className='details__header'>
                         <p className='details__inventory-action'>ACTIONS</p>
                         </div>
@@ -104,7 +106,7 @@ const InventoryList = ({ inventoryData }) => {
                     <p className='details__quantity details__header--selected details__mobile' >WAREHOUSE</p>
 
                         <div>
-                            <p className='details__quantity-item'>{inventory.warehouseName}</p>
+                            <p className='details__warehouse-name'>{inventory.warehouseName}</p>
                         </div>
                     </section>
 

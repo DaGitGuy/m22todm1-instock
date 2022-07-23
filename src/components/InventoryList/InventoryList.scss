@@ -110,6 +110,7 @@
             padding: 0 1rem;
         }
     }
+
     .details__mobile {
         @include mixins.tablet {
             display: none;
@@ -126,6 +127,11 @@
             padding: 0 1rem 0 1rem;
         }
     }
+    .details__header--selected {
+        @include mixins.desktop {
+            font-size: 1rem;
+        }
+    }
     .details__item-box,
     .details__stock-box,
     .details__category-item,
@@ -133,6 +139,11 @@
     .details__warehouse-name {
         @include mixins.tablet {
             padding: 1rem 0 0.5rem 0rem;
+        }
+    }
+    .details__item-box {
+        @include mixins.tablet {
+            position: relative;
         }
     }
     .details__inventory-item {
@@ -145,10 +156,19 @@
             padding: 0.5rem 0.5rem 0 0;
             margin-bottom: 0;
         }
+        @include mixins.desktop {
+            font-size: 1rem;
+        }
     }
     .details__chevron {
         @include mixins.tablet {
             padding-right: 4rem;
+            position: relative;
+            right: 0.3rem;
+        }
+        @include mixins.desktop {
+            padding-right: 7rem;
+            right: 0.1rem ;
         }
     }
     .details__category-item {
@@ -182,6 +202,20 @@
     .details__action-icons {
         @include mixins.tablet {
             justify-content: center;
+        }
+    }
+    .details__inventory-item,
+    .details__category-item,
+    .details__inventory-message,
+    .details__quantity-item,
+    .details__warehouse-name {
+        @include mixins.desktop {
+            font-size: 1rem;
+        }
+    }
+    .details__inventory-message {
+        @include mixins.desktop {
+            width: 7rem;
         }
     }
 }

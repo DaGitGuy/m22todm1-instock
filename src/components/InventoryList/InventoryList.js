@@ -19,7 +19,7 @@ const InventoryList = ({ inventoryData }) => {
             <article className="inventory-list__header">
                 <h1 className="inventory-list__title" >Inventory</h1>
                 <div className="inventory-list-nav">
-                    <SearchBar />
+                    <SearchBar className="inventory-list-search" />
                     <button className="inventory-list-nav__button">+ Add New Item</button>
                 </div>
             </article>
@@ -115,7 +115,6 @@ const InventoryList = ({ inventoryData }) => {
                             <img className='details__delete-icon' src={deleteIcon} />
                             <img className='details__edit-icon' src={editIcon} />
                         </div>
-
                     </section>
                 </article>
             ))

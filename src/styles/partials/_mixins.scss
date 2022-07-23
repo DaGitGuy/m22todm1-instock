@@ -35,3 +35,12 @@ $desktop-breakpoint: 80rem;
     height: 2.25rem;
     border-radius: 1.25rem;
 }
+
+@mixin icon($color){
+    svg {
+        fill: $color;
+        circle, line, path {
+            fill:$color;
+        }
+    }
+}

@@ -100,32 +100,6 @@ class App extends React.Component {
                 }}
               />
 
-<<<<<<< HEAD
-            <Route
-              path="/warehouse/:id/edit"
-              render={(routeProps) => {
-                return (
-                  <EditWarehouse
-                    {...routeProps}
-                  // warehouseData={this.state.warehouseData}
-                  />
-                );
-              }}
-            />
-
-            <Route
-              path="/inventory"
-              exact
-              render={(routeProps) => {
-                return (
-                  <InventoryList
-                     {...routeProps}
-                    inventoryData={this.state.inventoryData}
-                  />
-                );
-              }}
-            />
-=======
               <Route
                 path="/warehouse/:id/edit"
                 render={(routeProps) => {
@@ -149,8 +123,7 @@ class App extends React.Component {
               />
             );
           }}
-        /> */}
->>>>>>> develop
+         /> */}
 
               <Route
                 exact
@@ -179,26 +152,20 @@ class App extends React.Component {
                 }}
               />
 
-              {/* <Route
-          exact
-          path="/inventory/item/:id"
-          render={(routeProps) => {
-            return <InventoryDetails {...routeProps} />;
-          }}
-<<<<<<< HEAD
-         /> */}
-          </Switch>
-          <Footer />
-        </Router>
-      </div>
-=======
-        /> */}
+                    {/* <Route
+                exact
+                path="/inventory/item/:id"
+                render={(routeProps) => {
+                  return <InventoryDetails {...routeProps} />;
+                }}
+                /> */}
             </Switch>
           </Router>
+        
+          <Footer />
         </div>
-        <Footer />
       </>
->>>>>>> develop
+     
     );
   }
 }

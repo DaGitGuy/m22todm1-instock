@@ -11,11 +11,12 @@ import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import WarehouseList from "./components/WarehouseList/WarehouseList";
 import WarehouseDetails from "./components/WarehouseDetails/WarehouseDetails";
+import ItemDetails from "./components/ItemDetails/ItemDetails";
 import AddNewWarehouse from "./components/AddNewWarehouse/AddNewWarehouse";
 import AddNewInventory from "./components/AddNewInventory/AddNewInventory";
-import EditInventory from "./components/EditInventory/EditInventory";
 import EditWarehouse from "./components/EditWarehouse/EditWarehouse";
-import InventoryList from './components/InventoryList/InventoryList';
+import EditInventory from "./components/EditInventory/EditInventory";
+import InventoryList from "./components/InventoryList/InventoryList";
 
 import "./App.scss";
 
@@ -60,9 +61,8 @@ class App extends React.Component {
     return (
       <>
         <div className="page__wrapper">
-          <Header />
-          {/* <DeleteItemModal /> */}
           <Router>
+            <Header />
             <Switch>
               <Route exact path="/">
                 <Redirect to="/warehouse" />
@@ -85,7 +85,6 @@ class App extends React.Component {
                   return <AddNewWarehouse {...routeProps} />;
                 }}
               />
-
               <Route
                 exact
                 path="/warehouse/:id"
@@ -113,17 +112,17 @@ class App extends React.Component {
               />
 
               {/* <Route
-          path="/inventory"
-          exact
-          render={(routeProps) => {
-            return (
-              <InventoryList
-                {...routeProps}
-                inventoryList={this.state.inventoryData}
-              />
-            );
-          }}
-         /> */}
+            path="/inventory"
+            exact
+            render={(routeProps) => {
+              return (
+                <InventoryList
+                  {...routeProps}
+                  inventoryList={this.state.inventoryData}
+                />
+              );
+            }}
+          /> */}
 
               <Route
                 exact
@@ -151,21 +150,26 @@ class App extends React.Component {
                   );
                 }}
               />
-
-                    {/* <Route
+              <Route
                 exact
-                path="/inventory/item/:id"
+                path="/inventory/:id"
                 render={(routeProps) => {
-                  return <InventoryDetails {...routeProps} />;
+                  return (
+                    <ItemDetails
+                      {...routeProps}
+                      inventoryData={this.state.inventoryData}
+                      warehouseData={this.state.warehouseData}
+                    />
+                  );
                 }}
-                /> */}
+              />
             </Switch>
+            <Footer />
           </Router>
         
           <Footer />
         </div>
       </>
-     
     );
   }
 }

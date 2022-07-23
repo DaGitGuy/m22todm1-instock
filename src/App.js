@@ -103,24 +103,24 @@ class App extends React.Component {
                   return (
                     <EditWarehouse
                       {...routeProps}
-                      // warehouseData={this.state.warehouseData}
+                      warehouseData={this.state.warehouseData}
                     />
                   );
                 }}
               />
 
               <Route
-            path="/inventory"
-            exact
-            render={(routeProps) => {
-              return (
-                <InventoryList
-                  {...routeProps}
-                  inventoryList={this.state.inventoryData}
-                />
-              );
-            }}
-          />
+                path="/inventory"
+                exact
+                render={(routeProps) => {
+                  return (
+                    <InventoryList
+                      {...routeProps}
+                      inventoryData={this.state.inventoryData}
+                    />
+                  );
+                }}
+              />
 
               <Route
                 exact
@@ -162,11 +162,11 @@ class App extends React.Component {
                 }}
               />
             </Switch>
-            <Footer />
           </Router>
         
           <Footer />
         </div>
+        <Footer />
       </>
     );
   }

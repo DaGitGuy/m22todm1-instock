@@ -1,20 +1,21 @@
-import React from 'react';
+import React from "react";
 import {
   BrowserRouter as Router,
   Route,
   Switch,
   Redirect,
-} from 'react-router-dom';
-import axios from 'axios';
+} from "react-router-dom";
+import axios from "axios";
 
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import WarehouseList from './components/WarehouseList/WarehouseList';
 import WarehouseDetails from './components/WarehouseDetails/WarehouseDetails';
-import AddNewWarehouse from './components/AddNewWarehouse/AddNewWarehouse';
-import EditWarehouse from './components/EditWarehouse/EditWarehouse';
-import AddNewInventory from './components/AddNewInventory/AddNewInventory';
 import ItemDetails from './components/ItemDetails/ItemDetails';
+import AddNewWarehouse from './components/AddNewWarehouse/AddNewWarehouse';
+import AddNewInventory from './components/AddNewInventory/AddNewInventory';
+import EditWarehouse from './components/EditWarehouse/EditWarehouse';
+import EditInventory from "./components/EditInventory/EditInventory";
 
 import './App.scss';
 
@@ -23,8 +24,8 @@ const SERVER_URL =
 
 class App extends React.Component {
   state = {
-    warehouseData: '',
-    inventoryData: '',
+    warehouseData: "",
+    inventoryData: "",
   };
 
   componentDidMount() {
@@ -135,14 +136,18 @@ class App extends React.Component {
               }}
             />
 
-            {/* <Route
-          path="/inventory/:id/edit"
-          render={(routeProps) => {
-            return (
-              <EditInventory {...routeProps} warehouseNames={warehouseNames} />
-            );
-          }}
-        /> */}
+            <Route
+              path="/inventory/:id/edit"
+              render={(routeProps) => {
+                return (
+                  <EditInventory
+                    {...routeProps}
+                    inventoryData={this.state.inventoryData}
+                    warehouseData={this.state.warehouseData}
+                  />
+                );
+              }}
+            />
 
             <Route
               exact

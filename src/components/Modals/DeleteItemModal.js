@@ -49,7 +49,7 @@ const DeleteItemModal = (props) => {
     axios
       .delete(`${SERVER_URL}/warehouse/${this.props.id}`)
       .then((res) => {
-        alert('Item deleted!');
+        alert("Item deleted!");
         <Link to="/inventory" />;
       })
       .catch((err) => {
@@ -57,9 +57,9 @@ const DeleteItemModal = (props) => {
       });
   };
 
-  const handleCancelClick = () =>{
+  const handleCancelClick = () => {
     this.props.handleCancel();
-  }
+  };
 
   if (!this.props) {
     return <h1>Loading...</h1>;
@@ -73,18 +73,23 @@ const DeleteItemModal = (props) => {
         </a>
         <h1 className="modal__header">Delete {selectedItem} inventory item?</h1>
         <p className="modal__text">
-          Please confirm that you'd like to delete {selectedItem} from the inventory list. You won't be able to undo this action.
+          Please confirm that you'd like to delete {selectedItem} from the
+          inventory list. You won't be able to undo this action.
         </p>
         <div className="modal__button-container">
           {/* When keyboarding, cancel should be first to prevent accidental selection of destructive action */}
           <button
             className="modal__button modal__button--cancel"
-            onClick={handleCancelClick}>
+            onClick={handleCancelClick}
+          >
             Cancel
           </button>
           <button
             className="modal__button modal__button--delete"
-            onClick={() => {handleDelete(this.props.selectedItemId)}}>
+            onClick={() => {
+              handleDelete(this.props.selectedItemId);
+            }}
+          >
             Delete
           </button>
         </div>

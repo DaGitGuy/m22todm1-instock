@@ -96,7 +96,7 @@ class AddNewWarehouse extends Component {
       email: this.state.email,
     };
     axios
-      .post('http://localhost:8080/warehouses/add', warehouseDetails)
+      .post(`${SERVER_URL}/warehouses/add`, warehouseDetails)
       .then(() => {
         e.target.reset();
         // TODO success message

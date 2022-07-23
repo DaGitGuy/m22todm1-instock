@@ -7,7 +7,7 @@ import errorIcon from "../../assets/icons/error-24px.svg";
 class EditWarehouse extends React.Component {
   componentDidMount() {
     axios
-      .get(`http://localhost:8080/warehouses/${this.props.match.params.id}`)
+      .get(`${SERVER_URL}/warehouses/${this.props.match.params.id}`)
       .then((res) => {
         const warehouse = res.data;
         this.setState({
@@ -53,7 +53,7 @@ class EditWarehouse extends React.Component {
       alert("Please fill out all fields");
     } else {
       axios
-        .put(`http://localhost:8080/warehouses/${this.props.match.params.id}`, {
+        .put(`${SERVER_URL}/warehouses/${this.props.match.params.id}`, {
           name: this.state.warehouseName,
           address: this.state.address,
           city: this.state.city,

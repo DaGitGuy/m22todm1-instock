@@ -1,1 +1,0 @@
-{"version":3,"sources":["../../styles/partials/_colors.scss","Footer.scss","Footer.css","../../styles/partials/_mixins.scss"],"names":[],"mappings":"AAAA,kBAAA;AAKA,qBAAA;AAIA,sBAAA;AAIA,sBAAA;ACVA;EACI,aAAA;EACA,uBAAA;EACA,0BAAA;EACA,cDDc;AEGlB;ADAI;EACI,mBAAA;EACA,iBAAA;ACER;ACLI;EFCA;IAKQ,kBAAA;IACA,qBAAA;ECGV;AACF;ADAI;EACI,iBAAA;ACER","file":"Footer.css"}

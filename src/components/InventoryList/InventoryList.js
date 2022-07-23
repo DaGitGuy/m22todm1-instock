@@ -23,16 +23,38 @@ const InventoryList = ({ inventoryData }) => {
                     <button className="inventory-list-nav__button">+ Add New Item</button>
                 </div>
             </article>
+            
+               <article>  
+                {/* { Hide this in mobile} */}
+                    <div className='details__header' >
+                            <p className='details__inventory-title details__header--selected' >INVENTORY ITEM</p>
+                            <img className='details__sort-arrows' src={sortArrow} />
+                        </div>
+                        <div className='details__header'>
+                            <p className='details__inventory-status details__header--selected' >STATUS</p>
+                            <img className='details__sort-arrows' src={sortArrow} />
+                        </div>
+                        <div className='details__header'>
+                            <p className='details__category details__header--selected' >CATEGORY</p>
+                            <img className='details__sort-arrows' src={sortArrow} />
+                        </div>
+                        <div className='details__header' >
+                            <p className='details__quantity details__header--selected' >WAREHOUSE</p>
+                            <img className='details__sort-arrows' src={sortArrow} />
+                        </div>
+                        <div className='details__header' >
+                            <p className='details__quantity details__header--selected' >QTY</p>
+                            <img className='details__sort-arrows' src={sortArrow} />
+                        </div>
+                        <p className='details__inventory-action'>ACTIONS</p>
+               </article>
 
             {inventoryData.map((inventory) => (
 
                 <article className='details__inventory'>
                     <section className='details__inventory-box' >
-                        <div className='details__header' >
-                            <p className='details__inventory-title details__header--selected' >INVENTORY ITEM</p>
-                            <img className='details__sort-arrows' src={sortArrow} />
-                        </div>
-
+                        
+                            {/* { Add Headings here that are visible in mobile + none in tablet} */}
                         <div className='details__item-box' >
                             <a className='details__inventory-item' >{inventory.itemName}</a>
                             <img className='details__chevron' src={chevronRight} />
@@ -41,10 +63,7 @@ const InventoryList = ({ inventoryData }) => {
                     </section>
 
                     <section className='details__inventory-box'>
-                        <div className='details__header'>
-                            <p className='details__inventory-status details__header--selected' >STATUS</p>
-                            <img className='details__sort-arrows' src={sortArrow} />
-                        </div>
+   
                         <div className='details__stock-box'>
                             <p className='details__inventory-message'>{inventory.status}</p>
                         </div>
@@ -52,31 +71,21 @@ const InventoryList = ({ inventoryData }) => {
                     </section>
 
                     <section className='details__inventory-box'>
-                        <div className='details__header'>
-                            <p className='details__category details__header--selected' >CATEGORY</p>
-                            <img className='details__sort-arrows' src={sortArrow} />
-                        </div>
+                      
                         <p className='details__category-item' >{inventory.category}</p>
                     </section>
 
                     <section className='details__inventory-box' >
-                        <div className='details__header' >
-                            <p className='details__quantity details__header--selected' >QTY</p>
-                            <img className='details__sort-arrows' src={sortArrow} />
-                        </div>
+                        
                         <p className='details__quantity-item'>{inventory.quantity}</p>
                     </section>
 
                     <section className='details__inventory-box' >
-                        <div className='details__header' >
-                            <p className='details__quantity details__header--selected' >WAREHOUSE</p>
-                            <img className='details__sort-arrows' src={sortArrow} />
-                        </div>
+                        
                         <p className='details__quantity-item'>{inventory.warehouseName}</p>
                     </section>
 
                     <section className='details__inventory-icon' >
-                        <p className='details__inventory-action'>ACTIONS</p>
                         <div className='details__action-icons' >
                             <img className='details__delete-icon' src={deleteIcon} />
                             <img className='details__edit-icon' src={editIcon} />

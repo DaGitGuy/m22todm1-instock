@@ -109,6 +109,9 @@
             background-color: rgba(247, 248, 249, 0.7);
             padding: 0 1rem;
         }
+        @include mixins.desktop {
+            padding-right: 3rem;
+        }
     }
 
     .details__mobile {

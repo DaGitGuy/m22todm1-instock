@@ -4,6 +4,7 @@ import chevronRight from "../../assets/icons/chevron_right-24px.svg";
 import deleteIcon from "../../assets/icons/delete_outline-24px.svg";
 import editIcon from "../../assets/icons/edit-24px.svg";
 
+
 import "./InventoryList.scss";
 // import InventoryListitem from "../InventoryListItem/InventoryListItem";
 import "../WarehouseDetails/WarehouseDetails.scss";

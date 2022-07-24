@@ -15,7 +15,7 @@ class EditInventory extends Component {
       .then((res) => {
         const item = res.data[0];
         this.setState({
-          warehouseId: item.warehouseID,
+          warehouseID: item.warehouseID,
           warehouseName: item.warehouseName,
           item: item.itemName,
           description: item.description,
@@ -52,7 +52,7 @@ class EditInventory extends Component {
     warehouseNames.forEach((warehouse) => {
       if (warehouse.name === e.target.value) {
         this.setState({
-          warehouseId: warehouse.id,
+          warehouseID: warehouse.id,
           warehouseName: warehouse.name,
         });
       }
@@ -133,11 +133,11 @@ class EditInventory extends Component {
       this.state.quantity === ""
     ) {
       alert("Please fill in all the required fields !!!");
-    } else if (this.state.quantity < 1) {
+    } else if (!this.isQuantityValid()) {
       alert("Quantity should be greater than 0");
     } else {
       axios
-        .put(`${SERVER_URL}/inventory/${this.props.match.params.id}`, {
+        .put(`${SERVER_URL}/inventories/${this.props.match.params.id}`, {
           warehouseID: this.state.warehouseID,
           warehouseName: this.state.warehouseName,
           itemName: this.state.item,
@@ -159,6 +159,7 @@ class EditInventory extends Component {
     if (!this.state) {
       return <h1>Loading...</h1>;
     }
+    console.log(this.state)
     return (
       <div className="main-container">
         <div className="main-heading">

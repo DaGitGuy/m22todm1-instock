@@ -7,7 +7,6 @@ import deleteIcon from "../../assets/icons/delete_outline-24px.svg";
 import editIcon from "../../assets/icons/edit-24px.svg";
 
 import "./InventoryList.scss";
-// import InventoryListitem from "../InventoryListItem/InventoryListItem";
 import "../WarehouseDetails/WarehouseDetails.scss";
 
 const InventoryList = ({ inventoryData }) => {
@@ -26,7 +25,7 @@ const InventoryList = ({ inventoryData }) => {
       <article className="inventory-list__header">
         <h1 className="inventory-list__title">Inventory</h1>
         <div className="inventory-list-nav">
-          <SearchBar className="inventory-list-search" />
+          <SearchBar  />
           <button
             className="inventory-list-nav__button"
             onClick={handleClickAdd}>
@@ -129,7 +128,7 @@ const InventoryList = ({ inventoryData }) => {
               STATUS
             </p>
             <div className="details__stock-box">
-              <p className="details__inventory-message">{inventory.status}</p>
+              <p className={(inventory.status==="In Stock")?"details__inventory-message details__inventory-message--instock":"details__inventory-message details__inventory-message--outofstock"}>{inventory.status}</p>
             </div>
           </section>
 

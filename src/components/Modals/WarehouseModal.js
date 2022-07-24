@@ -60,7 +60,7 @@ export default class WarehouseModel extends React.Component {
               Delete
             </button>
             <a href="/" onClick={this.props.closeModal}>
-              <img className="modal__x-icon" src={XIcon} alt="x button" />
+              <img className="modal__x-icon" src={XIcon} alt="close window" />
             </a>
           </div>
         </div>

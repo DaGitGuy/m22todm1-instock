@@ -32,14 +32,14 @@ function WarehouseDetails(props) {
       <section className="details__title-box">
         <div className="details__title-row1">
           <Link to="/warehouse/">
-            <img src={arrowBack} />
+            <img src={arrowBack} alt='go back'/>
           </Link>
           <h2 className="details__title">{selectedWarehouse.name}</h2>
         </div>
 
         <div className="details__title-row2">
           <Link to={`/warehouse/${warehouseId}/edit`}>
-            <img src={editIcon} />
+            <img src={editIcon} alt='edit' />
           </Link>
         </div>
       </section>
@@ -74,145 +74,6 @@ function WarehouseDetails(props) {
       </article>
 
       <WarehouseInventoryList inventory={filteredInventory} />
-
-      {/* <article className="details__inventory">
-        <section className="details__inventory-box">
-          <div className="details__header">
-            <p className="details__inventory-title details__header--selected">
-              INVENTORY ITEM
-            </p>
-            <img className="details__sort-arrows" src={sortArrow} />
-          </div>
-          {filteredInventory.map((item) => (
-            <div className="details__item-box">
-              <Link
-                to={`/inventory/${item.id}`}
-                className="details__inventory-item">
-                {item.itemName}
-              </Link>
-              <img className="details__chevron" src={chevronRight} />
-            </div>
-          ))}
-        </section>
-
-        <section className="details__inventory-box">
-          <div className="details__header">
-            <p className="details__inventory-status details__header--selected">
-              STATUS
-            </p>
-            <img className="details__sort-arrows" src={sortArrow} />
-          </div>
-
-          {filteredInventory.map((item) => (
-            <div className="details__item-box">
-              <p className="details__inventory-message">{item.status}</p>
-            </div>
-          ))}
-        </section>
-
-        <section className="details__inventory-box">
-          <div className="details__header">
-            <p className="details__category details__header--selected">
-              CATEGORY
-            </p>
-            <img className="details__sort-arrows" src={sortArrow} />
-          </div>
-          {filteredInventory.map((item) => (
-            <div className="details__item-box">
-              <p className="details__category-item">{item.category}</p>
-            </div>
-          ))}
-        </section>
-
-        <section className="details__inventory-box">
-          <div className="details__header">
-            <p className="details__quantity details__header--selected">QTY</p>
-            <img className="details__sort-arrows" src={sortArrow} />
-          </div>
-          {filteredInventory.map((item) => (
-            <div className="details__item-box">
-              <p className="details__quantity-item">{item.quantity}</p>
-            </div>
-          ))}
-        </section>
-
-        <section className="details__inventory-icon">
-          <div className="details__header">
-            <p className="details__inventory-action">ACTIONS</p>
-          </div>
-
-          {filteredInventory.map((item) => (
-            <div className="details__action-icons">
-              <img className="details__delete-icon" src={deleteIcon} />
-              <img className="details__edit-icon" src={editIcon} />
-            </div>
-          ))}
-        </section>
-      </article> */}
-
-      {/* <article className="inventory-list__tablet-heading"> */}
-      {/* { Hide this in mobile} */}
-      {/* <div className="details__header">
-          <p className="details__inventory-title details__header--selected">
-            INVENTORY ITEM
-          </p>
-          <section>
-            <img
-              className="details__sort-arrows details__sort-arrows--selected"
-              src={sortArrow}
-            />
-          </section>
-        </div>
-
-        <div className="details__header">
-          <p className="details__category details__header--selected">
-            CATEGORY
-          </p>
-          <section>
-            <img
-              className="details__sort-arrows details__sort-arrows--selected"
-              src={sortArrow}
-            />
-          </section>
-        </div>
-        <div className="details__header">
-          <p className="details__inventory-status details__header--selected">
-            STATUS
-          </p>
-          <section>
-            <img
-              className="details__sort-arrows details__sort-arrows--selected"
-              src={sortArrow}
-            />
-          </section>
-        </div>
-
-        <div className="details__header details__header-quantity">
-          <p className="details__quantity details__header--selected">QTY</p>
-          <section>
-            <img
-              className="details__sort-arrows details__sort-arrows--selected"
-              src={sortArrow}
-            />
-          </section>
-        </div> */}
-
-      {/* <div className="details__header">
-          <p className="details__quantity details__header--selected">
-            WAREHOUSE
-          </p>
-          <section>
-            <img
-              className="details__sort-arrows details__sort-arrows--selected"
-              src={sortArrow}
-            />
-          </section>
-        </div>
-
-        <div className="details__header">
-          <p className="details__inventory-action">ACTIONS</p>
-        </div>
-      </article> */}
     </main>
   );
 }

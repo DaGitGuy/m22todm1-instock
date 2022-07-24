@@ -166,7 +166,6 @@ class App extends React.Component {
         
           <Footer />
         </div>
-        <Footer />
       </>
     );
   }

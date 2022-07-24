@@ -5,33 +5,70 @@ import sortArrow from "../../assets/icons/sort-24px.svg";
 import chevronRight from "../../assets/icons/chevron_right-24px.svg";
 import deleteIcon from "../../assets/icons/delete_outline-24px.svg";
 import editIcon from "../../assets/icons/edit-24px.svg";
-
+import axios from "axios";
 import "./InventoryList.scss";
 // import InventoryListitem from "../InventoryListItem/InventoryListItem";
 import "../WarehouseDetails/WarehouseDetails.scss";
+import React from "react";
+import DeleteItemModal from "../Modals/DeleteItemModal";
 
-const InventoryList = ({ inventoryData }) => {
-  const history = useHistory();
+const SERVER_URL =
+process.env.REACT_APP_SERVER_URL || process.env.REACT_APP_SERVER_URL_BACKUP;
 
-  const handleClickAdd = () => {
-    history.push("/inventory/add");
-  };
-
-  if (!inventoryData) {
-    return <h1>Loading...</h1>;
+class InventoryList extends React.Component{
+  state = {
+    showModal: false,
+    itemID: "",
+    inventoryData: this.props.inventoryData
   }
 
+  showModal = (id) => {
+    this.setState({
+      showModal: true,
+      itemID: id,
+    });
+  }
+
+    closeModal = () => {
+      this.setState({
+        showModal: false,
+      });
+    }
+
+    handleDelete = (id) => {
+      axios.delete(`${SERVER_URL}/inventories/${id}`)
+        .then(res => {
+          this.setState({
+            showModal: false,
+            inventoryData: res.data,
+          });
+          console.log(res.data);
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    }    
+render() {
+  let modal = <></>
+    if (this.state.showModal) {
+      modal = <DeleteItemModal closeModal={this.closeModal} delete={() => this.handleDelete(this.state.itemID)} name={this.props.inventoryData.itemName}/>
+    } 
+
+    if (!this.props.inventoryData) {
+      return <h1>Loading...</h1>;
+    }    
   return (
     <main className="inventory-list">
       <article className="inventory-list__header">
         <h1 className="inventory-list__title">Inventory</h1>
         <div className="inventory-list-nav">
           <SearchBar className="inventory-list-search" />
+          <Link to="/inventory/add">
           <button
-            className="inventory-list-nav__button"
-            onClick={handleClickAdd}>
+            className="inventory-list-nav__button">
             + Add New Item
           </button>
+          </Link>
         </div>
       </article>
 
@@ -99,7 +136,7 @@ const InventoryList = ({ inventoryData }) => {
         </div>
       </article>
 
-      {inventoryData.map((inventory) => (
+      {this.props.inventoryData.map((inventory) => (
         <article className="details__inventory" key={inventory.id}>
           <section className="details__inventory-box">
             <p className="details__inventory-title details__header--selected details__mobile">
@@ -156,7 +193,7 @@ const InventoryList = ({ inventoryData }) => {
 
           <section className="details__inventory-icon">
             <div className="details__action-icons">
-              <img className="details__delete-icon" src={deleteIcon} />
+              <img className="details__delete-icon" src={deleteIcon} onClick={this.showModal} />
               <Link to={`/inventory/${inventory.id}/edit`}>
                 <img className="details__edit-icon" src={editIcon} />
               </Link>
@@ -164,8 +201,10 @@ const InventoryList = ({ inventoryData }) => {
           </section>
         </article>
       ))}
+      {modal}
     </main>
   );
 };
+}
 
 export default InventoryList;

@@ -78,7 +78,7 @@ class WarehouseListItem extends React.Component {
                 </div>
             </div>
             <div className="warehouse-actions">
-                <img src={deleteIcon} alt="delete" onClick={this.showModal}/>
+                <img className="delete__icon" src={deleteIcon} alt="delete" onClick={this.showModal}/>
                 <Link to={`/warehouse/${this.props.id}/edit`}>
                   <img src={editIcon} alt="edit"/>     
                 </Link>

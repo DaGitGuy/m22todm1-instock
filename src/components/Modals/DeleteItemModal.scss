@@ -45,7 +45,7 @@
   &__header {
     font-size: 1.75rem;
     margin: 1.5rem 1.75rem 0 0;
-    font-family: 'Titillium Web Bold';
+    font-family: 'Titillium Web';
 
     @include tablet {
       margin:0 5rem 0 0;
@@ -93,12 +93,15 @@
       background-color: $primary-white;
       color: $secondary-slate;
       border: 1px solid $secondary-cloud;
+      cursor:pointer
     }
 
     &--delete {
       background-color: $support-red;
       border: 1px solid $support-red;
       color: $primary-white;
+      cursor: pointer;
+      
     }
   }
 }

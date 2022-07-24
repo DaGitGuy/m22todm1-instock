@@ -141,7 +141,7 @@ class AddNewWarehouse extends Component {
       <div className="main-container">
         <div className="main-heading">
           <Link className='main-heading__nav-link' to={"/"}>
-            <img className='main-heading__nav-icon' src={backArrow} />
+            <img className='main-heading__nav-icon' src={backArrow} alt='go back'/>
           </Link>
           <h1>Add New Warehouse</h1>
         </div>
@@ -169,7 +169,7 @@ class AddNewWarehouse extends Component {
               />
               {!this.state.warehouseName && this.state.touched.warehouseName && (
                 <span className="warehouse-form__error">
-                  <img className="warehouse-form__error-icon" src={errorIcon} />
+                  <img className="warehouse-form__error-icon" src={errorIcon} alt='error'/>
                   <p className="warehouse-form__error-message">
                     This field is required
                   </p>
@@ -193,7 +193,7 @@ class AddNewWarehouse extends Component {
               />
               {!this.state.address && this.state.touched.address && (
                 <span className="warehouse-form__error">
-                  <img className="warehouse-form__error-icon" src={errorIcon} />
+                  <img className="warehouse-form__error-icon" src={errorIcon} alt='error'/>
                   <p className="warehouse-form__error-message">
                     This field is required
                   </p>
@@ -217,7 +217,7 @@ class AddNewWarehouse extends Component {
               />
               {!this.state.city && this.state.touched.city && (
                 <span className="warehouse-form__error">
-                  <img className="warehouse-form__error-icon" src={errorIcon} />
+                  <img className="warehouse-form__error-icon" src={errorIcon} alt='error' />
                   <p className="warehouse-form__error-message">
                     This field is required
                   </p>
@@ -241,7 +241,7 @@ class AddNewWarehouse extends Component {
               />
               {!this.state.country && this.state.touched.country && (
                 <span className="warehouse-form__error">
-                  <img className="warehouse-form__error-icon" src={errorIcon} />
+                  <img className="warehouse-form__error-icon" src={errorIcon} alt='error' />
                   <p className="warehouse-form__error-message">
                     This field is required
                   </p>
@@ -268,7 +268,7 @@ class AddNewWarehouse extends Component {
               />
               {!this.state.name && this.state.touched.name && (
                 <span className="warehouse-form__error">
-                  <img className="warehouse-form__error-icon" src={errorIcon} />
+                  <img className="warehouse-form__error-icon" src={errorIcon}  alt='error'/>
                   <p className="warehouse-form__error-message">
                     This field is required
                   </p>
@@ -292,7 +292,7 @@ class AddNewWarehouse extends Component {
               />
               {!this.state.position && this.state.touched.position && (
                 <span className="warehouse-form__error">
-                  <img className="warehouse-form__error-icon" src={errorIcon} />
+                  <img className="warehouse-form__error-icon" src={errorIcon}  alt='error' />
                   <p className="warehouse-form__error-message">
                     This field is required
                   </p>
@@ -318,7 +318,7 @@ class AddNewWarehouse extends Component {
               />
               {!this.state.phone && this.state.touched.phone && (
                 <span className="warehouse-form__error">
-                  <img className="warehouse-form__error-icon" src={errorIcon} />
+                  <img className="warehouse-form__error-icon" src={errorIcon}  alt='error' />
                   <p className="warehouse-form__error-message">
                     This field is required
                   </p>
@@ -326,7 +326,7 @@ class AddNewWarehouse extends Component {
               )}
               {this.state.touched.phone && !this.isPhoneValid() && (
                 <span className="warehouse-form__error">
-                  <img className="warehouse-form__error-icon" src={errorIcon} />
+                  <img className="warehouse-form__error-icon" src={errorIcon}  alt='error' />
                   <p className="warehouse-form__error-message">
                     Phone number must follow XXX-XXX-XXXX format
                   </p>
@@ -352,7 +352,7 @@ class AddNewWarehouse extends Component {
               />
               {this.state.touched.email && !this.state.email && (
                 <span className="warehouse-form__error">
-                  <img className="warehouse-form__error-icon" src={errorIcon} />
+                  <img className="warehouse-form__error-icon" src={errorIcon}  alt='error' />
                   <p className="warehouse-form__error-message">
                     This field is required
                   </p>
@@ -360,7 +360,7 @@ class AddNewWarehouse extends Component {
               )}
               {this.state.touched.email && !this.isEmailValid() && (
                 <span className="warehouse-form__error">
-                  <img className="warehouse-form__error-icon" src={errorIcon} />
+                  <img className="warehouse-form__error-icon" src={errorIcon}  alt='error' />
                   <p className="warehouse-form__error-message">
                     Email address must include an @ sign
                   </p>

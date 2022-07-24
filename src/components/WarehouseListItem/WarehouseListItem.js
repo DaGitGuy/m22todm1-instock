@@ -1,4 +1,5 @@
 import './WarehouseListItem.scss';
+import chevronRight from '../../assets/icons/chevron_right-24px.svg';
 import deleteIcon from '../../assets/icons/delete_outline-24px.svg';
 import editIcon from '../../assets/icons/edit-24px.svg';
 import { Link } from 'react-router-dom';
@@ -12,6 +13,7 @@ const WarehouseListItem = ({ id, name, address, city, country, contact }) => {
                         <h4>Warehouse</h4>
                         <Link to={`/warehouse/${id}`}>
                             <p>{name}</p>
+                            <img src={chevronRight} alt=""/>
                         </Link>
                     </div>
                     <div>
@@ -33,7 +35,7 @@ const WarehouseListItem = ({ id, name, address, city, country, contact }) => {
             </div>
             <div className="warehouse-actions">
                 <img src={deleteIcon} alt="delete" />
-                <img src={editIcon} alt="edit"/>
+                <img src={editIcon} alt="edit"/>     
             </div>
         </article>
     );

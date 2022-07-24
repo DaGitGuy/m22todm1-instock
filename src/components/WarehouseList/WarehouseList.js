@@ -1,6 +1,7 @@
 import './WarehouseList.scss';
 import SearchBar from '../../components/SearchBar/SearchBar';
 import WarehouseListItem from '../../components/WarehouseListItem/WarehouseListItem';
+import sortArrow from '../../assets/icons/sort-24px.svg';
 
 const WarehouseList = ({ warehouseData }) => {
   return (
@@ -13,29 +14,50 @@ const WarehouseList = ({ warehouseData }) => {
             </div>
         </div>
         <div className="warehouse-list__headings">
-            <p>Warehouse</p>
-            <p>Address</p>
-            <p>Contact Name</p>
-            <p>Contact Information</p>
+          <div className="headings-container-1">
+            <div>
+              <p>Warehouse</p>
+              <img src={sortArrow} alt="" />
+            </div>
+
+            <div>
+              <p>Address</p>
+              <img src={sortArrow} alt="" />
+            </div>
+
+            <div>
+              <p>Contact Name</p>
+              <img src={sortArrow} alt="" />
+            </div>
+
+            <div>
+              <p>Contact Information</p>
+              <img src={sortArrow} alt="" />
+            </div>
+          </div>
+
+          <div className="headings-container-2">
             <p>Actions</p>
+          </div>
+
         </div>
       
-      {warehouseData.map((warehouse) => {
-        return (
-          <WarehouseListItem 
-            key={warehouse.id}
-            id={warehouse.id}
-            name={warehouse.name}
-            address={warehouse.address}
-            city={warehouse.city}
-            country={warehouse.country}
-            contact={warehouse.contact}
-          />
-        )
-      })
-
-      }
-      
+      <div className="warehouse-list__items">
+        {warehouseData.map((warehouse) => {
+          return (
+            <WarehouseListItem 
+              key={warehouse.id}
+              id={warehouse.id}
+              name={warehouse.name}
+              address={warehouse.address}
+              city={warehouse.city}
+              country={warehouse.country}
+              contact={warehouse.contact}
+            />
+          )
+        })
+        }
+      </div>
     </div>
   );
 };

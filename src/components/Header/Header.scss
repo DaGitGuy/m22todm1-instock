@@ -5,11 +5,12 @@
 
 .header {
     background-color:colors.$background-graphite;
+    height: 12.5rem;
 
     @include mixins.tablet {
         display: flex;
         justify-content: space-between;
-        align-items: center;
+        height: 11.625rem;
     }
     &__image-container {
         display: block;
@@ -17,13 +18,13 @@
     }
     &__image {
         width: 5.6rem;
-        margin: 1rem auto;
+        margin: 1.75rem auto;
         @include mixins.tablet {
-            margin: 0.5rem 0 4rem 1.5rem;
+            margin: 2rem 0 2rem 1.5rem;
         }
         @include mixins.desktop {
             width: 8rem;
-            margin: 1rem 0 4rem 6em;
+            margin: 2rem 0 4rem 8em;
         }
     }
     &__navigation-list {
@@ -41,16 +42,14 @@
         list-style-type: none;
         font-family: "Titillium Web";
         font-weight: 600;
-        padding: 0.5rem 0 4rem 0;
         font-size: 0.9375rem;
         @include mixins.tablet {
-            margin: 0.5rem 1.5rem 0 0;
+            margin: 2rem 1.5rem 0 0;
             font-size: 1rem;
-            padding-bottom: 5rem;
         }
         @include mixins.desktop {
             font-size: 1.2rem ;
-            margin: 1rem 1.5rem 0 0;
+            margin: 2rem 1.5rem 0 0;
         }
     }
 }

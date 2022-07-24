@@ -10,6 +10,8 @@ Create React App, Sass, Axios
 # Back-End Built With
 Node.js, Express, Axios
 
+Access the back-end app at: https://github.com/ashkanbossani/m22todm1-instock-api 
+
 # Authors
 Made with love by Ashkan, Kulani, Valerie & Victory
 

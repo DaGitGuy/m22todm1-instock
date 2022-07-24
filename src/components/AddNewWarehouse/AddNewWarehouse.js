@@ -139,11 +139,11 @@ class AddNewWarehouse extends Component {
   render() {
     return (
       <div className="main-container">
-        <div className="main-header">
-          <Link className='main-header__nav-link' to={"/"}>
-            <img className='main-header__nav-icon' src={backArrow} />
+        <div className="main-heading">
+          <Link className='main-heading__nav-link' to={"/"}>
+            <img className='main-heading__nav-icon' src={backArrow} />
           </Link>
-          <h1 className="main-header__heading">Add New Warehouse</h1>
+          <h1>Add New Warehouse</h1>
         </div>
 
         <form

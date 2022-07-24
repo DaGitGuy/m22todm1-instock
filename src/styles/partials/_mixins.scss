@@ -33,9 +33,9 @@
         vertical-align:middle;
     }
   
-    &__heading {
-      background-color: skyblue;
-      margin: 0;
+    &__title {
+        flex-grow:1;
+
     }
 }
 

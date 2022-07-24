@@ -4,53 +4,79 @@
 @use "../../styles/partials/mixins";
 
 .header {
-    background-color:colors.$background-graphite;
+  background-color: colors.$background-graphite;
+  height: 10rem;
+
+  &__container {
+    max-width: 1020px;
+    margin: 0 auto;
+    padding: 1.5rem 0 0 0;
 
     @include mixins.tablet {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+      padding: 1.5rem 1.5rem 0 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
     }
-    &__image-container {
-        display: block;
-        text-align: center;
+    @include mixins.desktop {
+      padding: 1.5rem 0 0 0;
     }
-    &__image {
-        width: 5.6rem;
-        margin: 1rem auto;
-        @include mixins.tablet {
-            margin: 0.5rem 0 4rem 1.5rem;
-        }
-        @include mixins.desktop {
-            width: 8rem;
-            margin: 1rem 0 4rem 6em;
-        }
+  }
+
+  &__image-container {
+    display: block;
+    text-align: center;
+    margin-bottom: .5rem;
+    @include mixins.tablet {
+      margin-bottom: 0;
     }
-    &__navigation-list {
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-        margin: 0 ;
-        padding-left: 0;
-        @include mixins.desktop {
-            margin-right: 7rem;
-        }
+  }
+  &__image {
+    height: 1.8rem;
+  }
+
+  &__navigation {
+    margin: 0 1rem;
+  }
+
+  &__nav-list {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__nav-list-link {
+    flex-grow: 1;
+    flex-basis: 100%;
+    text-align: center;
+    color: colors.$primary-white;
+    padding:0.5rem 0;
+
+    @include mixins.tablet {
+      padding: 0.5rem 1rem;
     }
-    &__nav-list-item {
-        color: colors.$primary-white;
-        list-style-type: none;
-        font-family: "Titillium Web";
-        font-weight: 600;
-        padding: 0.5rem 0 4rem 0;
-        font-size: 0.9375rem;
-        @include mixins.tablet {
-            margin: 0.5rem 1.5rem 0 0;
-            font-size: 1rem;
-            padding-bottom: 5rem;
-        }
-        @include mixins.desktop {
-            font-size: 1.2rem ;
-            margin: 1rem 1.5rem 0 0;
-        }
+
+    &:hover {
+      text-decoration: underline;
     }
+
+    &:hover,
+    &:active {
+      background-color: colors.$primary-black;
+      border-radius: 20px;
+    }
+  }
+
+  &__nav-list-item {
+    color: colors.$primary-white;
+    list-style-type: none;
+    font-family: "Titillium Web";
+    padding: 0;
+    font-size: 0.9375rem;
+    @include mixins.tablet {
+      font-size: 1.2rem;
+    }
+  }
 }

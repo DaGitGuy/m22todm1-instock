@@ -60,18 +60,6 @@ const WarehouseInventoryList = (props) => {
         </div>
 
         <div className="details__header">
-          <p className="details__quantity details__header--selected">
-            WAREHOUSE
-          </p>
-          <section>
-            <img
-              className="details__sort-arrows details__sort-arrows--selected"
-              src={sortArrow}
-            />
-          </section>
-        </div>
-
-        <div className="details__header">
           <p className="details__inventory-action">ACTIONS</p>
         </div>
       </article>
@@ -116,18 +104,6 @@ const WarehouseInventoryList = (props) => {
             </p>
             <div>
               <p className="details__quantity-item">{inventory.quantity}</p>
-            </div>
-          </section>
-
-          <section className="details__inventory-box">
-            <p className="details__quantity details__header--selected details__mobile">
-              WAREHOUSE
-            </p>
-
-            <div>
-              <p className="details__warehouse-name">
-                {inventory.warehouseName}
-              </p>
             </div>
           </section>
 

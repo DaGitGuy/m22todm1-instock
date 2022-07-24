@@ -151,8 +151,8 @@ class EditWarehouse extends React.Component {
     return (
       <div className="main-container">
         <div className="main-heading">
-          <Link to={`/warehouse/${this.props.match.params.id}`}>
-            <img src={backArrow} />
+          <Link className="main-heading__nav-link" to={`/warehouse/${this.props.match.params.id}`}>
+            <img className="main-heading__nav-icon" src={backArrow} />
           </Link>
           <h1>Edit Warehouse</h1>
         </div>

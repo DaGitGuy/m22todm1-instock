@@ -1,5 +1,17 @@
+@use './styles/partials/mixins';
+
 .page__wrapper {
     min-height:calc(100vh - 5rem);
+}
+
+h1 {
+    font-size:1.75rem;
+    line-height:2rem;
+
+    @include mixins.tablet {
+        font-size:2rem;
+        line-height:2.25rem;
+    }
 }
 
 a {

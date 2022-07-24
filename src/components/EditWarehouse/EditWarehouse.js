@@ -58,7 +58,7 @@ class EditWarehouse extends React.Component {
     } else {
       axios
         .put(`${SERVER_URL}/warehouses/${this.props.match.params.id}`, {
-          name: this.state.warehouseName,
+          warehouseName: this.state.warehouseName,
           address: this.state.address,
           city: this.state.city,
           country: this.state.country,
@@ -71,7 +71,7 @@ class EditWarehouse extends React.Component {
           console.log(res);
           alert("Warehouse updated successfully");
           this.props.history.push(
-            `/warehouse/warehouse/${this.props.match.params.id}`
+            `/warehouse`
           );
         })
         .catch((err) => {

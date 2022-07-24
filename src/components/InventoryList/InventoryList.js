@@ -128,7 +128,7 @@ const InventoryList = ({ inventoryData }) => {
               STATUS
             </p>
             <div className="details__stock-box">
-              <p className="details__inventory-message">{inventory.status}</p>
+              <p className={(inventory.status==="In Stock")?"details__inventory-message details__inventory-message--instock":"details__inventory-message details__inventory-message--outofstock"}>{inventory.status}</p>
             </div>
           </section>
 

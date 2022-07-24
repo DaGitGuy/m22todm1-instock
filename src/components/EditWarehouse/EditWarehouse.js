@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 import "./EditWarehouse.scss";
 import backArrow from "../../assets/icons/arrow_back-24px.svg";
 import errorIcon from "../../assets/icons/error-24px.svg";
 
 const SERVER_URL =
-process.env.REACT_APP_SERVER_URL || process.env.REACT_APP_SERVER_URL_BACKUP;
+  process.env.REACT_APP_SERVER_URL || process.env.REACT_APP_SERVER_URL_BACKUP;
 
 class EditWarehouse extends React.Component {
   componentDidMount() {
@@ -86,9 +87,9 @@ class EditWarehouse extends React.Component {
     this.setState({ touched: touchedStates });
   };
 
-   // TODO better validation rule
-   isPhoneValid = () => {
-    const phonePattern = new RegExp('^[0-9]{3}[-][0-9]{3}[-][0-9]{4}$');
+  // TODO better validation rule
+  isPhoneValid = () => {
+    const phonePattern = new RegExp("^[0-9]{3}[-][0-9]{3}[-][0-9]{4}$");
     const phoneNum = this.state.phone;
 
     if (phonePattern.test(phoneNum)) {
@@ -99,7 +100,7 @@ class EditWarehouse extends React.Component {
 
   // TODO better validation rule
   isEmailValid = () => {
-    if (this.state.email.includes('@')) {
+    if (this.state.email.includes("@")) {
       return true;
     }
     return false;
@@ -146,19 +147,20 @@ class EditWarehouse extends React.Component {
     if (!this.state) {
       return <h1>Loading...</h1>;
     }
-console.log(this.state)
+    console.log(this.state);
     return (
       <div className="main-container">
         <div className="main-heading">
-          <img src={backArrow} />
+          <Link to={`/warehouse/${this.props.match.params.id}`}>
+            <img src={backArrow} />
+          </Link>
           <h1>Edit Warehouse</h1>
         </div>
 
         <form
           className="warehouse-form"
           type="submit"
-          onSubmit={this.handleSubmit}
-        >
+          onSubmit={this.handleSubmit}>
           <fieldset className="warehouse-form__section warehouse-form__section--details">
             <h2 className="warehouse-form__heading">Warehouse Details</h2>
             <label className="warehouse-form__label" htmlFor="warehouseName">
@@ -375,17 +377,14 @@ console.log(this.state)
 
           <div className="warehouse-form__button-wrapper">
             {/* CTA button first in HTML for keyboarding order, reversed visually with flex:row-reverse */}
-            <button
-              className="warehouse-form__button warehouse-form__button--CTA"
-            >
+            <button className="warehouse-form__button warehouse-form__button--CTA">
               Save
             </button>
             {/*  TODO check on expected behavior of cancel button: clear form or close form?  */}
             <button
               className=" warehouse-form__button warehouse-form__button--cancel"
               type="reset"
-              onClick={this.handleOnCancel}
-            >
+              onClick={this.handleOnCancel}>
               Cancel
             </button>
           </div>

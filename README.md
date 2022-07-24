@@ -30,7 +30,7 @@ $ npm install react-router-dom@5.3
 $ npm install axios
 $ npm install dotenv --save
 
-Run the app
+Run the app:
 $ npm start
 
 Run the app in the development mode. 

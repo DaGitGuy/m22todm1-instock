@@ -4,6 +4,9 @@ import './AddNewWarehouse.scss';
 import backArrow from '../../assets/icons/arrow_back-24px.svg';
 import errorIcon from '../../assets/icons/error-24px.svg';
 
+const SERVER_URL =
+process.env.REACT_APP_SERVER_URL || process.env.REACT_APP_SERVER_URL_BACKUP;
+
 class AddNewWarehouse extends Component {
   state = {
     warehouseName: '',
@@ -96,12 +99,12 @@ class AddNewWarehouse extends Component {
       email: this.state.email,
     };
     axios
-      .post('http://localhost:8080/warehouses/add', warehouseDetails)
+      .post(`${SERVER_URL}/warehouses/add`, warehouseDetails)
       .then(() => {
         e.target.reset();
         // TODO success message
         alert('New warehouse added!');
-        // TODO page redirect - to warehouse details?
+        this.props.history.push('/warehouse');
       })
       .catch((err) => {
         console.log(err);

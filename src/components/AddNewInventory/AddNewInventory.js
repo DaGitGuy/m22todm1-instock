@@ -3,7 +3,7 @@ import axios from 'axios';
 import './AddNewInventory.scss';
 import backArrow from '../../assets/icons/arrow_back-24px.svg';
 import errorIcon from '../../assets/icons/error-24px.svg';
-import { Link, Redirect, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const SERVER_URL =
 process.env.REACT_APP_SERVER_URL || process.env.REACT_APP_SERVER_URL_BACKUP;

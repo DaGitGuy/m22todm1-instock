@@ -35,7 +35,9 @@ const WarehouseListItem = ({ id, name, address, city, country, contact }) => {
             </div>
             <div className="warehouse-actions">
                 <img src={deleteIcon} alt="delete" />
-                <img src={editIcon} alt="edit"/>     
+                <Link to={`/warehouse/${id}/edit`}>
+                  <img src={editIcon} alt="edit"/>     
+                </Link>
             </div>
         </article>
     );

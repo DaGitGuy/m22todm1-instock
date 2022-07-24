@@ -1,12 +1,15 @@
-import { Link } from "react-router-dom";
-import deleteIcon from "../../assets/icons/delete_outline-24px.svg";
+import { Link, useHistory } from "react-router-dom";
+import WarehouseInventoryList from "../WarehouseInventoryList/WarehouseInventoryList";
+// import deleteIcon from "../../assets/icons/delete_outline-24px.svg";
 import editIcon from "../../assets/icons/edit-24px.svg";
 import arrowBack from "../../assets/icons/arrow_back-24px.svg";
-import chevronRight from "../../assets/icons/chevron_right-24px.svg";
-import sortArrow from "../../assets/icons/sort-24px.svg";
+// import chevronRight from "../../assets/icons/chevron_right-24px.svg";
+// import sortArrow from "../../assets/icons/sort-24px.svg";
 import "./WarehouseDetails.scss";
 
 function WarehouseDetails(props) {
+  const history = useHistory();
+
   const warehouseId = props.match.params.id;
 
   // filter warehouses data to keep only the selected warehouses' details
@@ -28,7 +31,9 @@ function WarehouseDetails(props) {
     <main className="details">
       <section className="details__title-box">
         <div className="details__title-row1">
-          <img src={arrowBack} />
+          <Link to="/warehouse/">
+            <img src={arrowBack} />
+          </Link>
           <h2 className="details__title">{selectedWarehouse.name}</h2>
         </div>
 
@@ -68,7 +73,9 @@ function WarehouseDetails(props) {
         </article>
       </article>
 
-      <article className="details__inventory">
+      <WarehouseInventoryList inventory={filteredInventory} />
+
+      {/* <article className="details__inventory">
         <section className="details__inventory-box">
           <div className="details__header">
             <p className="details__inventory-title details__header--selected">
@@ -141,7 +148,71 @@ function WarehouseDetails(props) {
             </div>
           ))}
         </section>
-      </article>
+      </article> */}
+
+      {/* <article className="inventory-list__tablet-heading"> */}
+      {/* { Hide this in mobile} */}
+      {/* <div className="details__header">
+          <p className="details__inventory-title details__header--selected">
+            INVENTORY ITEM
+          </p>
+          <section>
+            <img
+              className="details__sort-arrows details__sort-arrows--selected"
+              src={sortArrow}
+            />
+          </section>
+        </div>
+
+        <div className="details__header">
+          <p className="details__category details__header--selected">
+            CATEGORY
+          </p>
+          <section>
+            <img
+              className="details__sort-arrows details__sort-arrows--selected"
+              src={sortArrow}
+            />
+          </section>
+        </div>
+        <div className="details__header">
+          <p className="details__inventory-status details__header--selected">
+            STATUS
+          </p>
+          <section>
+            <img
+              className="details__sort-arrows details__sort-arrows--selected"
+              src={sortArrow}
+            />
+          </section>
+        </div>
+
+        <div className="details__header details__header-quantity">
+          <p className="details__quantity details__header--selected">QTY</p>
+          <section>
+            <img
+              className="details__sort-arrows details__sort-arrows--selected"
+              src={sortArrow}
+            />
+          </section>
+        </div> */}
+
+      {/* <div className="details__header">
+          <p className="details__quantity details__header--selected">
+            WAREHOUSE
+          </p>
+          <section>
+            <img
+              className="details__sort-arrows details__sort-arrows--selected"
+              src={sortArrow}
+            />
+          </section>
+        </div>
+
+        <div className="details__header">
+          <p className="details__inventory-action">ACTIONS</p>
+        </div>
+      </article> */}
     </main>
   );
 }

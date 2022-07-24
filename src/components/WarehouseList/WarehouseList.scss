@@ -2,7 +2,7 @@
 @use '../../styles/partials/colors';
 
 .warehouse-list {
-    margin: 0 1rem 0 1rem;
+    margin: 1.5rem 1rem;
     background-color: colors.$primary-white;
     z-index: 1;
     position: relative;
@@ -56,6 +56,9 @@
                 text-transform: uppercase;
                 color: colors.$secondary-slate;
             }
+            @include mixins.desktop {
+                font-size: 1rem;
+            }
         }
     
         img {
@@ -86,12 +89,12 @@
     }
 
     @include mixins.tablet {
-        margin: 0 2rem 0 2rem;
-        bottom: 6rem;
+        margin: 1rem 2rem 0 2rem;
+        bottom: 4rem;
     }
 
     @include mixins.desktop {
-        margin: 0 8.125rem 0 8.125rem;   
+        margin: 1rem 6rem 6rem 6rem;   
     }
 }
 

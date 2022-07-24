@@ -25,7 +25,7 @@ const InventoryList = ({ inventoryData }) => {
       <article className="inventory-list__header">
         <h1 className="inventory-list__title">Inventory</h1>
         <div className="inventory-list-nav">
-          <SearchBar className="inventory-list-search" />
+          <SearchBar  />
           <button
             className="inventory-list-nav__button"
             onClick={handleClickAdd}>

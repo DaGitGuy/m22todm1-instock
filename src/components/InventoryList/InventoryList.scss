@@ -111,7 +111,7 @@
             padding: 0 1rem;
         }
         @include mixins.desktop {
-            padding-right: 3rem;
+            padding-right: 3.5rem;
         }
     }
 
@@ -129,6 +129,9 @@
             align-items: center;
             margin: 0 1rem 0 0;
             padding: 0 1rem 0 1rem;
+        }
+        @include mixins.desktop {
+            padding: 1.25rem 2rem ;
         }
     }
     .details__header--selected {

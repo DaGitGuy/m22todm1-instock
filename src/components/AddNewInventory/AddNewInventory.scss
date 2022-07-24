@@ -1,41 +1,13 @@
-@use '../../styles/partials/colors';
-@use '../../styles/partials/fonts';
-@use '../../styles/partials/global';
-@use '../../styles/partials/mixins';
+@use "../../styles/partials/colors";
+@use "../../styles/partials/fonts";
+@use "../../styles/partials/mixins";
 
 .main-container {
-  margin: -3rem 1.5rem 1.5rem 1.5rem;
-  box-shadow: 0px 2px 5px colors.$secondary-slate;
-  border-radius: 3px;
-  background-color: colors.$primary-white;
-
-  @media (min-width: 1020px) {
-    max-width: 1020px;
-    margin: -3rem auto;
-  }
+  @include mixins.maincontainer;
 }
 
 .main-heading {
-  display: flex;
-  align-items:center;
-  padding: 1rem;
-  margin: 0;
-
-  @media (min-width: 768px) {
-    border-bottom: 1px solid colors.$secondary-cloud;
-    padding: 1rem 2rem;
-  }
-  &__nav-link {
-    margin-right: 1rem;
-    padding: 0;
-  }
-
-  &__nav-icon {
-    margin:0;
-    padding:0;
-    height:1.75rem;
-    width:auto;
-  }
+@include mixins.mainheader;
 }
 
 .inventory-form {
@@ -88,7 +60,7 @@
     border: 1px solid colors.$secondary-cloud;
     line-height: 2rem;
     padding: 0 1rem;
-    font-family: 'Titillium Web';
+    font-family: "Titillium Web";
 
     &:active,
     &:focus {

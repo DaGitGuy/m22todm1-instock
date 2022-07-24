@@ -1,46 +1,13 @@
 @use "../../styles/partials/colors";
 @use "../../styles/partials/fonts";
-@use "../../styles/partials/global";
 @use "../../styles/partials/mixins";
 
-// TODO: Error styling
-// TODO: fonts, typography, padding, breakpoints from partials
-
 .main-container {
-  margin: -6rem 1.5rem 0 1.5rem;
-  box-shadow: 0px 2px 5px colors.$secondary-slate;
-  border-radius: 3px;
-  background-color: colors.$primary-white;
-
-  @media (min-width: 1020px) {
-    max-width: 1020px;
-    margin: -6rem auto 0 auto;
-  }
+  @include mixins.maincontainer;
 }
 
 .main-header {
-  display: flex;
-  align-items: center;
-  height: 6rem;
-  background-color: lime;
-
-  @media (min-width: 768px) {
-    border-bottom: 1px solid colors.$secondary-cloud;
-    padding: 0 2rem;
-  }
-
-  &__nav-link {
-    background-color: salmon;
-  }
-
-  &__nav-icon {
-    margin: 0;
-  }
-
-  &__heading {
-    background-color: skyblue;
-    margin: 0;
-  }
+  @include mixins.mainheader;
 }
 
 .warehouse-form {

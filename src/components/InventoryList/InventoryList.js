@@ -43,7 +43,7 @@ const InventoryList = ({ inventoryData }) => {
           <section>
             <img
               className="details__sort-arrows details__sort-arrows--selected"
-              src={sortArrow}
+              src={sortArrow} alt='sort'
             />
           </section>
         </div>
@@ -55,7 +55,7 @@ const InventoryList = ({ inventoryData }) => {
           <section>
             <img
               className="details__sort-arrows details__sort-arrows--selected"
-              src={sortArrow}
+              src={sortArrow}  alt='sort'
             />
           </section>
         </div>
@@ -66,7 +66,7 @@ const InventoryList = ({ inventoryData }) => {
           <section>
             <img
               className="details__sort-arrows details__sort-arrows--selected"
-              src={sortArrow}
+              src={sortArrow}  alt='sort'
             />
           </section>
         </div>
@@ -76,7 +76,7 @@ const InventoryList = ({ inventoryData }) => {
           <section>
             <img
               className="details__sort-arrows details__sort-arrows--selected"
-              src={sortArrow}
+              src={sortArrow}  alt='sort'
             />
           </section>
         </div>
@@ -88,7 +88,7 @@ const InventoryList = ({ inventoryData }) => {
           <section>
             <img
               className="details__sort-arrows details__sort-arrows--selected"
-              src={sortArrow}
+              src={sortArrow}  alt='sort'
             />
           </section>
         </div>
@@ -109,7 +109,7 @@ const InventoryList = ({ inventoryData }) => {
             <div className="details__item-box">
               <Link className='details__link' to={`/inventory/${inventory.id}`}>
                 <p className="details__inventory-item">{inventory.itemName}</p>
-                <img className="details__chevron" src={chevronRight} />
+                <img className="details__chevron" src={chevronRight} alt='' />
               </Link>
             </div>
           </section>
@@ -155,9 +155,9 @@ const InventoryList = ({ inventoryData }) => {
 
           <section className="details__inventory-icon">
             <div className="details__action-icons">
-              <img className="details__delete-icon" src={deleteIcon} />
+              <img className="details__delete-icon" src={deleteIcon} alt='delete' />
               <Link to={`/inventory/${inventory.id}/edit`}>
-                <img className="details__edit-icon" src={editIcon} />
+                <img className="details__edit-icon" src={editIcon} alt='edit' />
               </Link>
             </div>
           </section>

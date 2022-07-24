@@ -36,7 +36,7 @@ class ItemDetails extends Component {
             <img
               className="main-heading__back-button"
               src={arrowBack}
-              alt="Go back to inventory list"
+              alt="Go back"
             />
           </Link>
           <h1 className="main-heading__title">
@@ -46,7 +46,7 @@ class ItemDetails extends Component {
             <img
               className="main-heading__edit-icon"
               src={editIcon}
-              alt="Edit item"
+              alt="edit"
             />
           </Link>
         </section>

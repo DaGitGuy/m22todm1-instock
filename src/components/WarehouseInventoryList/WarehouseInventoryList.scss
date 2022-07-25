@@ -207,8 +207,12 @@
         }
     }
     .details__action-icons {
+        display: flex;
+        justify-content: space-between;
+        padding-right: 1rem;
         @include mixins.tablet {
-            justify-content: center;
+            padding-right: 0.6rem;
+            justify-content: flex-end;
         }
     }
     .details__inventory-item,

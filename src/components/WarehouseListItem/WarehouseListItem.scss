@@ -154,6 +154,10 @@
             margin-left: 1rem;
         }
     }
+    a {
+        margin-top: auto;
+        margin-bottom: auto;
+    }
 
     @include mixins.tablet {
         justify-content: flex-end;

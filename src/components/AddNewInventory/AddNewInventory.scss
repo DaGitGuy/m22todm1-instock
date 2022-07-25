@@ -147,18 +147,30 @@
     &--cancel {
       background-color: colors.$primary-white;
       border: 1px solid colors.$secondary-cloud;
+      font-weight: 600;
+      color: colors.$secondary-slate;
     }
 
-    &--CTA {
+    &--CTA-2 {
       background-color: colors.$primary-indigo;
       color: colors.$primary-white;
       border: 1px solid colors.$primary-indigo;
+      font-weight: 600;
 
       &:disabled {
         border-color: colors.$secondary-cloud;
         background-color: colors.$background-light-grey;
         color: colors.$secondary-cloud;
         cursor: not-allowed;
+
+        &:hover {
+          background-color: colors.$background-light-grey;
+          border: 1px solid colors.$secondary-cloud;
+        }
+      }
+      &:hover {
+        background-color: colors.$background-graphite;
+        border: none;
       }
     }
   }

@@ -13,6 +13,7 @@
     border-radius: 0.25rem;
     @include mixins.tablet {
         margin: 1rem 2rem 2rem 2rem;
+        bottom: 7.45rem;
     }
     @include mixins.desktop {
         margin: 1rem 6rem 6rem 6rem;
@@ -39,6 +40,7 @@
     font-size: 1.75rem;
     @include mixins.tablet {
         font-size: 2rem ;
+        padding-top: 0;
     }
 }
 &__title-row2 {
@@ -54,7 +56,7 @@
     border-bottom: 0.01rem solid colors.$secondary-cloud;
     @include mixins.tablet {
         display: flex;
-        justify-content: right;
+        justify-content: center;
         margin-top: 1rem;
     }
     @include mixins.desktop {

@@ -41,7 +41,6 @@ class InventoryList extends React.Component{
             showModal: false,
             inventoryData: res.data,
           });
-          console.log(res.data);
         })
         .catch(err => {
           console.log(err);

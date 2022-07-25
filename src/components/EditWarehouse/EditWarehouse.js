@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import { Component } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import "./EditWarehouse.scss";
@@ -8,7 +8,7 @@ import errorIcon from "../../assets/icons/error-24px.svg";
 const SERVER_URL =
   process.env.REACT_APP_SERVER_URL || process.env.REACT_APP_SERVER_URL_BACKUP;
 
-class EditWarehouse extends React.Component {
+class EditWarehouse extends Component {
   componentDidMount() {
     axios
       .get(`${SERVER_URL}/warehouses/${this.props.match.params.id}`)
@@ -85,7 +85,6 @@ class EditWarehouse extends React.Component {
     this.setState({ touched: touchedStates });
   };
 
-  // TODO better validation rule
   isPhoneValid = () => {
     const phonePattern = new RegExp("^[0-9]{3}[-][0-9]{3}[-][0-9]{4}$");
     const phoneNum = this.state.phone;
@@ -96,7 +95,6 @@ class EditWarehouse extends React.Component {
     return false;
   };
 
-  // TODO better validation rule
   isEmailValid = () => {
     if (this.state.email.includes("@")) {
       return true;
@@ -136,7 +134,7 @@ class EditWarehouse extends React.Component {
     this.setState({ email: e.target.value });
   };
 
-  handleOnCancel = (e) => {
+  handleCancel = (e) => {
     e.preventDefault();
     this.props.history.goBack();
   };
@@ -145,7 +143,6 @@ class EditWarehouse extends React.Component {
     if (!this.state) {
       return <h1>Loading...</h1>;
     }
-    console.log(this.state);
     return (
       <div className="main-container">
         <div className="main-heading">
@@ -424,11 +421,10 @@ class EditWarehouse extends React.Component {
             <button className="warehouse-form__button warehouse-form__button--CTA">
               Save
             </button>
-            {/*  TODO check on expected behavior of cancel button: clear form or close form?  */}
             <button
               className=" warehouse-form__button warehouse-form__button--cancel"
               type="reset"
-              onClick={this.handleOnCancel}>
+              onClick={this.handleCancel}>
               Cancel
             </button>
           </div>

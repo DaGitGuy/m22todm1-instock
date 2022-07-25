@@ -3,7 +3,7 @@ import axios from "axios";
 import "./EditInventory.scss";
 import backArrow from "../../assets/icons/arrow_back-24px.svg";
 import errorIcon from "../../assets/icons/error-24px.svg";
-import { Link, Redirect, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const SERVER_URL =
   process.env.REACT_APP_SERVER_URL || process.env.REACT_APP_SERVER_URL_BACKUP;
@@ -82,9 +82,8 @@ class EditInventory extends Component {
   // then sort alphabetically
   getCategories = () => {
     const { inventoryData } = this.props;
-    const allCategories = [];
-    Array.from(inventoryData).map(({ category }) => {
-      allCategories.push(category);
+    const allCategories = Array.from(inventoryData).map((item) => {
+      return item.category;
     });
     const uniqueCategories = [...new Set(allCategories)];
     const categoryList = uniqueCategories.sort();
@@ -95,9 +94,8 @@ class EditInventory extends Component {
   // then sort alphabetically
   getWarehouseList = () => {
     const { warehouseData } = this.props;
-    const allWarehouseNames = [];
-    Array.from(warehouseData).map(({ name }) => {
-      allWarehouseNames.push(name);
+    const allWarehouseNames = Array.from(warehouseData).map((warehouse) => {
+      return warehouse.name;
     });
     const uniqueWarehouseNames = [...new Set(allWarehouseNames)];
     const warehouseList = uniqueWarehouseNames.sort();
@@ -155,11 +153,16 @@ class EditInventory extends Component {
     }
   };
 
+  handleCancel = (e) => {
+    e.preventDefault();
+    this.props.history.goBack();
+  };
+
   render() {
     if (!this.state) {
       return <h1>Loading...</h1>;
     }
-    console.log(this.state)
+    console.log(this.state);
     return (
       <div className="main-container">
         <div className="main-heading">
@@ -396,14 +399,12 @@ class EditInventory extends Component {
 
           <div className="inventory-form__button-wrapper">
             {/* CTA button first in HTML for keyboarding order, reversed visually with flex:row-reverse */}
-            <button className="inventory-form__button inventory-form__button--CTA" >
+            <button className="inventory-form__button inventory-form__button--CTA">
               Save
             </button>
-            <Link to="/inventory">
-              <button className=" inventory-form__button inventory-form__button--cancel">
+              <button className=" inventory-form__button inventory-form__button--cancel" onClick={this.handleCancel}>
                 Cancel
               </button>
-            </Link>
           </div>
         </form>
       </div>

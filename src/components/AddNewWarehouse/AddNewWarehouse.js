@@ -113,27 +113,9 @@ class AddNewWarehouse extends Component {
       });
   };
 
-  handleCancel = () => {
-    this.setState({
-      warehouseName: "",
-      address: "",
-      city: "",
-      country: "",
-      name: "",
-      position: "",
-      phone: "",
-      email: "",
-      touched: {
-        warehouseName: false,
-        address: false,
-        city: false,
-        country: false,
-        name: false,
-        position: false,
-        phone: false,
-        email: false,
-      },
-    });
+  handleCancel = (e) => {
+    e.preventDefault();
+    this.props.history.goBack();
   };
 
   render() {

@@ -8,7 +8,7 @@ import errorIcon from "../../assets/icons/error-24px.svg";
 const SERVER_URL =
   process.env.REACT_APP_SERVER_URL || process.env.REACT_APP_SERVER_URL_BACKUP;
 
-class EditWarehouse extends React.Component {
+class EditWarehouse extends Component {
   componentDidMount() {
     axios
       .get(`${SERVER_URL}/warehouses/${this.props.match.params.id}`)
@@ -136,7 +136,7 @@ class EditWarehouse extends React.Component {
     this.setState({ email: e.target.value });
   };
 
-  handleOnCancel = (e) => {
+  handleCancel = (e) => {
     e.preventDefault();
     this.props.history.goBack();
   };
@@ -428,7 +428,7 @@ class EditWarehouse extends React.Component {
             <button
               className=" warehouse-form__button warehouse-form__button--cancel"
               type="reset"
-              onClick={this.handleOnCancel}>
+              onClick={this.handleCancel}>
               Cancel
             </button>
           </div>

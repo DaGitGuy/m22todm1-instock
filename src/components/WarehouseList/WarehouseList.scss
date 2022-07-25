@@ -120,6 +120,7 @@
         border-radius: 1.25rem;
         border: none;
         color: colors.$primary-white;
+        cursor:pointer;
 
         &:hover {
             background-color: colors.$background-graphite;

@@ -2,11 +2,11 @@
 @use '../../styles/partials/colors';
 
 .warehouse-list {
-    margin: 1.5rem 1rem;
+    margin: 0 1rem 0 1rem;
     background-color: colors.$primary-white;
     z-index: 1;
     position: relative;
-    bottom: 4.5rem;
+    bottom: 4.1rem;
     border-radius: 0.188rem;
     box-shadow: 0 0.125rem 0.313rem rgba(19, 24, 44, 0.1);
 
@@ -17,7 +17,7 @@
             font-size: 1.75rem;
             line-height: 2.25rem;
             margin-top: 0;
-            padding-top: 2.375rem;
+            padding-top: 2.1rem;
 
             @include mixins.tablet {
                 font-size: 2rem;
@@ -86,9 +86,6 @@
                 border-top: none;
             }
         }
-    .warehouse-list-item:hover {
-        background-color: rgba(46, 102, 230, 0.07);
-    }
     }
 
     @include mixins.tablet {
@@ -124,6 +121,7 @@
 
         &:hover {
             background-color: colors.$background-graphite;
+            cursor: pointer;
         }
 
         @include mixins.tablet {

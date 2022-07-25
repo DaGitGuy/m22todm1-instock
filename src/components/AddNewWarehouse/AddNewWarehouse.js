@@ -354,7 +354,7 @@ class AddNewWarehouse extends Component {
           <div className="warehouse-form__button-wrapper">
             {/* CTA button first in HTML for keyboarding order, reversed visually with flex:row-reverse */}
             <button
-              className="warehouse-form__button warehouse-form__button--CTA"
+              className="warehouse-form__button warehouse-form__button--CTA-2"
               disabled={!this.isFormValid()}>
               + Add Warehouse
             </button>

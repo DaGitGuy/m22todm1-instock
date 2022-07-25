@@ -371,7 +371,7 @@ class AddNewInventory extends Component {
           <div className="inventory-form__button-wrapper">
             {/* CTA button first in HTML for keyboarding order, reversed visually with flex:row-reverse */}
             <button
-              className="inventory-form__button inventory-form__button--CTA"
+              className='inventory-form__button inventory-form__button--CTA-2'
               disabled={!this.isFormValid()}>
               + Add Item
             </button>

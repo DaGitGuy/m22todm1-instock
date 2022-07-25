@@ -9,7 +9,7 @@
     background-color: colors.$primary-white;
     z-index: 1;
     position: relative;
-    bottom: 4rem;
+    bottom: 5.2rem;
     border-radius: 0.25rem;
     @include mixins.tablet {
         margin: 1rem 2rem 2rem 2rem;
@@ -28,9 +28,14 @@
     width: 85%;
     display: flex;
     padding-left: 1rem;
+
+    img {
+        margin-top: 2.5rem;
+    }
 }
 &__title {
     padding-left: 0.5rem;
+    padding-top: 0.4rem;
     font-size: 1.75rem;
     @include mixins.tablet {
         font-size: 2rem ;
@@ -39,6 +44,10 @@
 &__title-row2 {
     width: 15%;
     padding-left: 0.5rem;
+
+    img {
+        margin-top: 0.9rem;
+    }
 }
 
 &__address {

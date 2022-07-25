@@ -35,7 +35,6 @@ class WarehouseListItem extends React.Component {
             this.setState({
                 showModal: false,
             })
-            console.log(res.data)
         })
         .catch(err => {
             console.log(err);
@@ -48,7 +47,6 @@ class WarehouseListItem extends React.Component {
         if (this.state.showModal) {
             modal = <WarehouseModal closeModal={this.closeModal} delete={this.handleDelete} name={this.props.name}/>
         }
-        console.log(this.props)
     return (
         <article className="warehouse-list-item">
             <div className="warehouse-info">

@@ -33,14 +33,13 @@ export default class WarehouseInventoryList extends React.Component {
       });
     }
 
-    handleDelete = (id) => {
-      axios.delete(`${SERVER_URL}/inventories/${id}`)
+    handleDelete = () => {
+      axios.delete(`${SERVER_URL}/inventories/${this.state.itemID}`)
         .then(res => {
           this.setState({
             showModal: false,
             inventoryData: res.data,
           });
-          console.log(res.data);
         })
         .catch(err => {
           console.log(err);
@@ -51,7 +50,7 @@ export default class WarehouseInventoryList extends React.Component {
   render() {
     let modal = <></>
     if (this.state.showModal) {
-      modal = <DeleteItemModal closeModal={this.closeModal} delete={() => this.handleDelete(this.state.itemID)} />
+      modal = <DeleteItemModal closeModal={this.closeModal} delete={() => this.handleDelete()} />
     } 
  
   return (
@@ -156,7 +155,7 @@ export default class WarehouseInventoryList extends React.Component {
 
           <section className="details__inventory-icon">
             <div className="details__action-icons">
-              <img className="details__delete-icon" src={deleteIcon} onClick={this.showModal} alt="delete"/>
+              <img className="details__delete-icon" src={deleteIcon} onClick={()=>{this.showModal(inventory.id)}} alt="delete"/>
               <Link to={`/inventory/${inventory.id}/edit`}>
                 <img className="details__edit-icon" src={editIcon} alt='edit' />
               </Link>

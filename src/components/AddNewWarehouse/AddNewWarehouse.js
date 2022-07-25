@@ -43,7 +43,6 @@ class AddNewWarehouse extends Component {
     this.setState({ touched: touchedStates });
   };
 
-  // TODO better validation rule
   isPhoneValid = () => {
     const phonePattern = new RegExp("^[0-9]{3}[-][0-9]{3}[-][0-9]{4}$");
     const phoneNum = this.state.phone;
@@ -54,7 +53,6 @@ class AddNewWarehouse extends Component {
     return false;
   };
 
-  // TODO better validation rule
   isEmailValid = () => {
     if (this.state.email.includes("@")) {
       return true;
@@ -103,7 +101,6 @@ class AddNewWarehouse extends Component {
       .post(`${SERVER_URL}/warehouses/add`, warehouseDetails)
       .then(() => {
         e.target.reset();
-        // TODO success message
         alert("New warehouse added!");
         
         this.props.history.push("/warehouse");
@@ -113,27 +110,9 @@ class AddNewWarehouse extends Component {
       });
   };
 
-  handleCancel = () => {
-    this.setState({
-      warehouseName: "",
-      address: "",
-      city: "",
-      country: "",
-      name: "",
-      position: "",
-      phone: "",
-      email: "",
-      touched: {
-        warehouseName: false,
-        address: false,
-        city: false,
-        country: false,
-        name: false,
-        position: false,
-        phone: false,
-        email: false,
-      },
-    });
+  handleCancel = (e) => {
+    e.preventDefault();
+    this.props.history.goBack();
   };
 
   render() {
@@ -376,7 +355,6 @@ class AddNewWarehouse extends Component {
               disabled={!this.isFormValid()}>
               + Add Warehouse
             </button>
-            {/*  TODO check on expected behavior of cancel button: clear form or close form?  */}
             <button
               className=" warehouse-form__button warehouse-form__button--cancel"
               type="reset"

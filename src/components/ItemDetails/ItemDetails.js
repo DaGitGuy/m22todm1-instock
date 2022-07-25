@@ -28,7 +28,6 @@ class ItemDetails extends Component {
       return <h1>Loading...</h1>;
     }
 
-    console.log(this.state.itemDetails);
     return (
       <main className="main-container">
         <section className="main-heading">

@@ -85,7 +85,6 @@ class EditWarehouse extends Component {
     this.setState({ touched: touchedStates });
   };
 
-  // TODO better validation rule
   isPhoneValid = () => {
     const phonePattern = new RegExp("^[0-9]{3}[-][0-9]{3}[-][0-9]{4}$");
     const phoneNum = this.state.phone;
@@ -96,7 +95,6 @@ class EditWarehouse extends Component {
     return false;
   };
 
-  // TODO better validation rule
   isEmailValid = () => {
     if (this.state.email.includes("@")) {
       return true;
@@ -145,7 +143,6 @@ class EditWarehouse extends Component {
     if (!this.state) {
       return <h1>Loading...</h1>;
     }
-    console.log(this.state);
     return (
       <div className="main-container">
         <div className="main-heading">
@@ -424,7 +421,6 @@ class EditWarehouse extends Component {
             <button className="warehouse-form__button warehouse-form__button--CTA">
               Save
             </button>
-            {/*  TODO check on expected behavior of cancel button: clear form or close form?  */}
             <button
               className=" warehouse-form__button warehouse-form__button--cancel"
               type="reset"

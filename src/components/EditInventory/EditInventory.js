@@ -48,7 +48,6 @@ class EditInventory extends Component {
     const warehouseNames = this.props.warehouseData.map((warehouse) => {
       return { id: warehouse.id, name: warehouse.name };
     });
-    console.log(warehouseNames);
     warehouseNames.forEach((warehouse) => {
       if (warehouse.name === e.target.value) {
         this.setState({
@@ -162,7 +161,6 @@ class EditInventory extends Component {
     if (!this.state) {
       return <h1>Loading...</h1>;
     }
-    console.log(this.state);
     return (
       <div className="main-container">
         <div className="main-heading">

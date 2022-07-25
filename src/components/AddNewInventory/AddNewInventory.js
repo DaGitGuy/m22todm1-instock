@@ -116,7 +116,6 @@ class AddNewInventory extends Component {
       .post(`${SERVER_URL}/inventories/add`, inventoryDetails)
       .then(() => {
         e.target.reset();
-        // TODO user-friendly success message
         alert("New item added!");
         this.props.history.push("/inventory");
       })
@@ -375,7 +374,6 @@ class AddNewInventory extends Component {
               disabled={!this.isFormValid()}>
               + Add Item
             </button>
-            {/*  TODO check on expected behavior of cancel button: clear form or close form?  */}
             <button
               className=" inventory-form__button inventory-form__button--cancel"
               type="reset"

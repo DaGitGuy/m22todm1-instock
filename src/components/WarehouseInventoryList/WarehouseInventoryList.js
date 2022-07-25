@@ -34,14 +34,12 @@ export default class WarehouseInventoryList extends React.Component {
     }
 
     handleDelete = () => {
-      console.log(this.state.itemID);
       axios.delete(`${SERVER_URL}/inventories/${this.state.itemID}`)
         .then(res => {
           this.setState({
             showModal: false,
             inventoryData: res.data,
           });
-          console.log(res.data);
         })
         .catch(err => {
           console.log(err);

@@ -4,9 +4,51 @@ import deleteIcon from '../../assets/icons/delete_outline-24px.svg';
 import editIcon from '../../assets/icons/edit-24px.svg';
 import { Link } from 'react-router-dom';
 import React from 'react';
+import axios from 'axios';
+import WarehouseModal from '../Modals/WarehouseModal';
+
+const SERVER_URL =
+process.env.REACT_APP_SERVER_URL || process.env.REACT_APP_SERVER_URL_BACKUP;
 
 class WarehouseListItem extends React.Component {
+    state = {
+        showModal: false
+    }
+
+    showModal = (id) => {
+        this.setState({
+            showModal: true,
+            id: id
+        });
+    }
+
+
+    closeModal = () => {
+        this.setState({
+            showModal: false
+        });
+    }
+
+    handleDelete = () => {
+        axios.delete(`${SERVER_URL}/warehouses/${this.props.id}`)
+        .then(res => {
+            this.setState({
+                showModal: false,
+            })
+            console.log(res.data)
+        })
+        .catch(err => {
+            console.log(err);
+        })
+    }
+
+
     render () {
+        let modal = <></>
+        if (this.state.showModal) {
+            modal = <WarehouseModal closeModal={this.closeModal} delete={this.handleDelete} name={this.props.name}/>
+        }
+        console.log(this.props)
     return (
         <article className="warehouse-list-item">
             <div className="warehouse-info">
@@ -36,11 +78,12 @@ class WarehouseListItem extends React.Component {
                 </div>
             </div>
             <div className="warehouse-actions">
-                <img src={deleteIcon} alt="delete" />
+                <img className="delete__icon" src={deleteIcon} alt="delete" onClick={this.showModal}/>
                 <Link to={`/warehouse/${this.props.id}/edit`}>
                   <img src={editIcon} alt="edit"/>     
                 </Link>
             </div>
+            {modal}
         </article>
     );
 };

@@ -25,15 +25,14 @@ const SERVER_URL =
 
 class App extends React.Component {
   state = {
-    warehouseData: "",
-    inventoryData: "",
+    warehouseData: [],
+    inventoryData: [],
   };
 
   componentDidMount() {
     axios
       .get(`${SERVER_URL}/warehouses`)
       .then((res) => {
-        console.log(res.data);
         this.setState({
           warehouseData: res.data,
         });
@@ -54,10 +53,9 @@ class App extends React.Component {
       });
   }
   render() {
-    if (!this.state.warehouseData) {
+    if (!this.state.warehouseData.length) {
       return <h1>Loading...</h1>;
     }
-
     return (
       <>
         <div className="page__wrapper">
@@ -165,8 +163,9 @@ class App extends React.Component {
               />
             </Switch>
           </Router>
+        
+          <Footer />
         </div>
-        <Footer />
       </>
     );
   }

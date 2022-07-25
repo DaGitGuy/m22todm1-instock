@@ -7,7 +7,6 @@ import deleteIcon from "../../assets/icons/delete_outline-24px.svg";
 import editIcon from "../../assets/icons/edit-24px.svg";
 import axios from "axios";
 import "./InventoryList.scss";
-// import InventoryListitem from "../InventoryListItem/InventoryListItem";
 import "../WarehouseDetails/WarehouseDetails.scss";
 import React from "react";
 import DeleteItemModal from "../Modals/DeleteItemModal";
@@ -81,7 +80,7 @@ render() {
           <section>
             <img
               className="details__sort-arrows details__sort-arrows--selected"
-              src={sortArrow}
+              src={sortArrow} alt='sort'
             />
           </section>
         </div>
@@ -93,7 +92,7 @@ render() {
           <section>
             <img
               className="details__sort-arrows details__sort-arrows--selected"
-              src={sortArrow}
+              src={sortArrow}  alt='sort'
             />
           </section>
         </div>
@@ -104,7 +103,7 @@ render() {
           <section>
             <img
               className="details__sort-arrows details__sort-arrows--selected"
-              src={sortArrow}
+              src={sortArrow}  alt='sort'
             />
           </section>
         </div>
@@ -114,7 +113,7 @@ render() {
           <section>
             <img
               className="details__sort-arrows details__sort-arrows--selected"
-              src={sortArrow}
+              src={sortArrow}  alt='sort'
             />
           </section>
         </div>
@@ -126,7 +125,7 @@ render() {
           <section>
             <img
               className="details__sort-arrows details__sort-arrows--selected"
-              src={sortArrow}
+              src={sortArrow}  alt='sort'
             />
           </section>
         </div>
@@ -147,7 +146,7 @@ render() {
             <div className="details__item-box">
               <Link className='details__link' to={`/inventory/${inventory.id}`}>
                 <p className="details__inventory-item">{inventory.itemName}</p>
-                <img className="details__chevron" src={chevronRight} />
+                <img className="details__chevron" src={chevronRight} alt='' />
               </Link>
             </div>
           </section>
@@ -166,7 +165,7 @@ render() {
               STATUS
             </p>
             <div className="details__stock-box">
-              <p className="details__inventory-message">{inventory.status}</p>
+              <p className={(inventory.status==="In Stock")?"details__inventory-message details__inventory-message--instock":"details__inventory-message details__inventory-message--outofstock"}>{inventory.status}</p>
             </div>
           </section>
 
@@ -195,7 +194,7 @@ render() {
             <div className="details__action-icons">
               <img className="details__delete-icon" src={deleteIcon} onClick={this.showModal} />
               <Link to={`/inventory/${inventory.id}/edit`}>
-                <img className="details__edit-icon" src={editIcon} />
+                <img className="details__edit-icon" src={editIcon} alt='edit' />
               </Link>
             </div>
           </section>

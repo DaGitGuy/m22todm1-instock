@@ -11,6 +11,8 @@
     &__text { //p3
         font-size: 0.688rem;
         line-height: 1rem;
+        margin: 6rem;
+        padding: 1rem;
 
         @include mixins.tablet {
             font-size: 0.75rem;

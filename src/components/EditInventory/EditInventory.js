@@ -167,7 +167,7 @@ class EditInventory extends Component {
             <img
               className="main-heading__nav-icon"
               src={backArrow}
-              alt="Go back to warehouse list"
+              alt="Go back"
               role="link"
               tabIndex="0"
             />

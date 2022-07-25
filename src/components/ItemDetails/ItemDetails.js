@@ -36,17 +36,17 @@ class ItemDetails extends Component {
             <img
               className="main-heading__back-button"
               src={arrowBack}
-              alt="Go back to inventory list"
+              alt="Go back"
             />
           </Link>
-          <h2 className="main-heading__title">
+          <h1 className="main-heading__title">
             {this.state.itemDetails.itemName}
-          </h2>
-          <Link to={`./${this.itemId}/edit`} className="main-heading__nav-link">
+          </h1>
+          <Link to={`./${this.itemId}/edit`} className="main-heading__nav-link main-heading__nav-link--right">
             <img
               className="main-heading__edit-icon"
               src={editIcon}
-              alt="Edit item"
+              alt="edit"
             />
           </Link>
         </section>

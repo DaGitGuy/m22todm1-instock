@@ -17,9 +17,9 @@ export default class DeleteItemModal extends React.Component {
         <a href="/inventory" onClick={this.props.closeModal}>
           <img className="modal__x-icon" src={closeIcon} alt="close" />
         </a>
-        <h1 className="modal__header">Delete {this.props.name.itemName} inventory item?</h1>
+        <h1 className="modal__header">Delete {this.props.name} inventory item?</h1>
         <p className="modal__text">
-          Please confirm that you'd like to delete {this.props.name.itemName} from the
+          Please confirm that you'd like to delete {this.props.name} from the
           inventory list. You won't be able to undo this action.
         </p>
         <div className="modal__button-container">

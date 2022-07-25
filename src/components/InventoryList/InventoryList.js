@@ -50,7 +50,8 @@ class InventoryList extends React.Component{
 render() {
   let modal = <></>
     if (this.state.showModal) {
-      modal = <DeleteItemModal closeModal={this.closeModal} delete={() => this.handleDelete(this.state.itemID)} name={this.props.inventoryData.itemName}/>
+      modal = <DeleteItemModal closeModal={this.closeModal} delete={() => this.handleDelete(this.state.itemID)} 
+      />
     } 
 
     if (!this.props.inventoryData) {
@@ -192,7 +193,7 @@ render() {
 
           <section className="details__inventory-icon">
             <div className="details__action-icons">
-              <img className="details__delete-icon" src={deleteIcon} onClick={this.showModal} />
+              <img className="details__delete-icon" src={deleteIcon} onClick={this.showModal} alt="delete" />
               <Link to={`/inventory/${inventory.id}/edit`}>
                 <img className="details__edit-icon" src={editIcon} alt='edit' />
               </Link>

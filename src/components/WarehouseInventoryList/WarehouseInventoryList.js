@@ -51,7 +51,7 @@ export default class WarehouseInventoryList extends React.Component {
   render() {
     let modal = <></>
     if (this.state.showModal) {
-      modal = <DeleteItemModal closeModal={this.closeModal} delete={() => this.handleDelete(this.state.itemID)} name = {this.props.inventory}/>
+      modal = <DeleteItemModal closeModal={this.closeModal} delete={() => this.handleDelete(this.state.itemID)} />
     } 
  
   return (
@@ -156,7 +156,7 @@ export default class WarehouseInventoryList extends React.Component {
 
           <section className="details__inventory-icon">
             <div className="details__action-icons">
-              <img className="details__delete-icon" src={deleteIcon} onClick={this.showModal} />
+              <img className="details__delete-icon" src={deleteIcon} onClick={this.showModal} alt="delete"/>
               <Link to={`/inventory/${inventory.id}/edit`}>
                 <img className="details__edit-icon" src={editIcon} alt='edit' />
               </Link>

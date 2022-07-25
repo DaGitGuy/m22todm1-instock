@@ -50,9 +50,9 @@ export default class WarehouseInventoryList extends React.Component {
   render() {
     let modal = <></>
     if (this.state.showModal) {
-      modal = <DeleteItemModal closeModal={this.closeModal} delete={() => this.handleDelete()} />
+      modal = <DeleteItemModal closeModal={this.closeModal} delete={() => this.handleDelete(this.state.itemID)} />
     } 
- 
+    console.log(this.state.itemID)
   return (
     <main className="warehouse-inventory-list">
       <article className="warehouse-inventory-list__tablet-heading">

@@ -100,6 +100,7 @@ class AddNewWarehouse extends Component {
     axios
       .post(`${SERVER_URL}/warehouses/add`, warehouseDetails)
       .then(() => {
+        console.log(warehouseDetails);
         e.target.reset();
         alert("New warehouse added!");
         

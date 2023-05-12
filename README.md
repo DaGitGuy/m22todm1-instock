@@ -16,21 +16,21 @@ Access the back-end app at: https://github.com/ashkanbossani/m22todm1-instock-ap
 Made with love by Ashkan, Kulani, Valerie & Victory
 
 # Install
-Clone this repository via HTTPS or SSH:
-$ git clone https://github.com/DaGitGuy/m22todm1-instock.git
+Clone this repository via HTTPS or SSH:<br>
+$ git clone https://github.com/DaGitGuy/m22todm1-instock.git <br>
 $ git clone git@github.com:DaGitGuy/m22todm1-instock.git
 
-Go into the repository:
+Go into the repository:<br>
 $ cd m22todm1-instock
 
-Install dependencies:
-$ npm install
-$ npm install sass
-$ npm install react-router-dom@5.3
-$ npm install axios
+Install dependencies:<br>
+$ npm install <br>
+$ npm install sass <br>
+$ npm install react-router-dom@5.3 <br>
+$ npm install axios <br>
 $ npm install dotenv --save
 
-Run the app:
+Run the app:<br>
 $ npm start
 
 Run the app in the development mode. 

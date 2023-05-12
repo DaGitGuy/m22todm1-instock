@@ -1,5 +1,5 @@
 # Project Overview
-InStock -- a modern Inventory Management System with a fast React front-end and a robust Express back-end. 
+Front-end for InStock -- a modern Inventory Management System with a fast React front-end and a robust Express back-end. 
 
 # Design
 The application design is responsive for mobile, tablet and desktop layouts.
